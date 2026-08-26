@@ -1,58 +1,8 @@
 "use client";
 
-import { useEffect, useRef } from "react";
 import { AlertCircle, EyeOff, Shuffle, TrendingDown } from "lucide-react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
 
 export default function ProblemSection() {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const headlineRef = useRef<HTMLDivElement>(null);
-  const cardsRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const headline = headlineRef.current;
-      const cards = cardsRef.current?.children;
-
-      if (!headline || !cards) return;
-
-      gsap.fromTo(
-        headline,
-        { opacity: 0, y: 40 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 1,
-          scrollTrigger: {
-            trigger: headline,
-            start: "top 80%",
-            toggleActions: "play none none reverse",
-          },
-        }
-      );
-
-      gsap.fromTo(
-        cards,
-        { opacity: 0, y: 50, scale: 0.96 },
-        {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          duration: 0.8,
-          stagger: 0.12,
-          scrollTrigger: {
-            trigger: cardsRef.current,
-            start: "top 75%",
-            toggleActions: "play none none reverse",
-          },
-        }
-      );
-    }
-  }, []);
-
   const problems = [
     {
       num: "01",
@@ -81,12 +31,12 @@ export default function ProblemSection() {
   ];
 
   return (
-    <section className="bg-brand-bg py-24 md:py-32 relative overflow-hidden" ref={sectionRef} id="solutions">
+    <section className="bg-brand-bg py-24 md:py-32 relative overflow-hidden" id="solutions">
       <div className="max-w-7xl mx-auto px-6 md:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-          
-          {/* Left Column: Headline */}
-          <div className="lg:col-span-5 lg:sticky lg:top-36" ref={headlineRef}>
+
+          {/* Left Column */}
+          <div className="lg:col-span-5 lg:sticky lg:top-36">
             <span className="text-xs font-semibold tracking-[0.15em] text-sage-deep mb-3 uppercase block">
               THE CRITICAL GAP
             </span>
@@ -103,8 +53,8 @@ export default function ProblemSection() {
             </div>
           </div>
 
-          {/* Right Column: Staggered list */}
-          <div className="lg:col-span-7 flex flex-col gap-6" ref={cardsRef}>
+          {/* Right Column */}
+          <div className="lg:col-span-7 flex flex-col gap-6">
             {problems.map((prob, i) => (
               <div
                 key={i}

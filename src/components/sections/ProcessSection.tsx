@@ -1,57 +1,6 @@
-"use client";
-
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { MessageSquare, Hammer, Search, Users, RotateCw } from "lucide-react";
 
-gsap.registerPlugin(ScrollTrigger);
-
 export default function ProcessSection() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const titleRef = useRef<HTMLDivElement>(null);
-  const stepsListRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const title = titleRef.current;
-      const steps = stepsListRef.current?.children;
-
-      if (!title || !steps) return;
-
-      gsap.fromTo(
-        title,
-        { opacity: 0, y: 30 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          scrollTrigger: {
-            trigger: title,
-            start: "top 85%",
-            toggleActions: "play none none reverse",
-          },
-        }
-      );
-
-      gsap.fromTo(
-        steps,
-        { opacity: 0, x: -30 },
-        {
-          opacity: 1,
-          x: 0,
-          duration: 0.8,
-          stagger: 0.15,
-          scrollTrigger: {
-            trigger: stepsListRef.current,
-            start: "top 80%",
-            toggleActions: "play none none reverse",
-          },
-        }
-      );
-    }
-  }, []);
-
   const steps = [
     {
       num: "01",
@@ -88,9 +37,8 @@ export default function ProcessSection() {
   return (
     <section className="bg-brand-bg py-24 md:py-32 relative overflow-hidden" id="how-it-works">
       <div className="max-w-7xl mx-auto px-6 md:px-8">
-        
-        {/* Section Header */}
-        <div className="mb-20" ref={titleRef}>
+
+        <div className="mb-20">
           <span className="text-xs font-semibold tracking-[0.15em] text-sage-deep mb-3 uppercase block">
             THE PROCESS
           </span>
@@ -99,14 +47,12 @@ export default function ProcessSection() {
           </h2>
         </div>
 
-        {/* Steps Horizontal/Vertical timeline */}
-        <div className="flex flex-col gap-6 md:gap-8" ref={stepsListRef}>
+        <div className="flex flex-col gap-6 md:gap-8">
           {steps.map((step, idx) => (
-            <div 
+            <div
               key={idx}
               className="flex flex-col md:flex-row items-start gap-6 md:gap-12 bg-white border border-brand-text/5 rounded-2xl p-6 md:p-8 hover:border-sage-soft transition-all duration-300 hover:shadow-xs group"
             >
-              {/* Step number and icon */}
               <div className="flex items-center gap-4 shrink-0">
                 <span className="font-sans text-3xl font-light text-sage-soft group-hover:text-sage-deep transition-colors duration-300">
                   {step.num}
@@ -115,8 +61,6 @@ export default function ProcessSection() {
                   {step.icon}
                 </div>
               </div>
-
-              {/* Title & Desc */}
               <div className="flex-grow">
                 <h3 className="text-lg md:text-xl font-bold text-brand-text mb-2 tracking-tight group-hover:text-sage-deep transition-colors duration-300">
                   {step.title}

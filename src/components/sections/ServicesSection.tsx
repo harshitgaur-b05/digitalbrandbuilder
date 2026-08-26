@@ -1,56 +1,6 @@
-"use client";
-
-import { useEffect, useRef } from "react";
 import { Laptop, Search, Megaphone, Share2, ShoppingCart, Award, ArrowRight } from "lucide-react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
 
 export default function ServicesSection() {
-  const headlineRef = useRef<HTMLDivElement>(null);
-  const gridRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const headline = headlineRef.current;
-      const cards = gridRef.current?.children;
-
-      if (!headline || !cards) return;
-
-      gsap.fromTo(
-        headline,
-        { opacity: 0, y: 40 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 1,
-          scrollTrigger: {
-            trigger: headline,
-            start: "top 80%",
-            toggleActions: "play none none reverse",
-          },
-        }
-      );
-
-      gsap.fromTo(
-        cards,
-        { opacity: 0, y: 50 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          stagger: 0.12,
-          scrollTrigger: {
-            trigger: gridRef.current,
-            start: "top 75%",
-            toggleActions: "play none none reverse",
-          },
-        }
-      );
-    }
-  }, []);
-
   const services = [
     {
       title: "Websites",
@@ -82,7 +32,7 @@ export default function ServicesSection() {
     },
     {
       title: "Ecommerce",
-      desc: "Sophisticated shopify or custom storefront setups built to remove friction. Advanced product filtering, cart optimization, and checkout optimization.",
+      desc: "Sophisticated Shopify or custom storefront setups built to remove friction. Advanced product filtering, cart optimization, and checkout optimization.",
       icon: <ShoppingCart size={32} className="text-sage-deep" />,
       colSpan: "lg:col-span-2",
       tags: ["Shopify", "Inventory", "Payments"],
@@ -98,11 +48,10 @@ export default function ServicesSection() {
 
   return (
     <section className="bg-brand-bg py-24 md:py-32 relative overflow-hidden" id="solutions">
-      {/* Background shape */}
-      <div className="absolute pointer-events-none z-0 opacity-30 bottom-[-5%] right-[-5%] w-[45vw] h-[45vw] rounded-[40%_60%_70%_30%/_50%_30%_70%_50%] bg-brand-secondary filter blur-3xl"></div>
+      <div className="absolute pointer-events-none z-0 opacity-30 bottom-[-5%] right-[-5%] w-[45vw] h-[45vw] rounded-[40%_60%_70%_30%/_50%_30%_70%_50%] bg-brand-secondary blur-3xl" />
 
       <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10">
-        <div className="text-center mb-20 md:mb-28" ref={headlineRef}>
+        <div className="text-center mb-20 md:mb-28">
           <span className="text-xs font-semibold tracking-[0.15em] text-sage-deep mb-3 uppercase block">
             OUR PLATFORM
           </span>
@@ -114,10 +63,10 @@ export default function ServicesSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6" ref={gridRef}>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {services.map((service, i) => (
-            <div 
-              key={i} 
+            <div
+              key={i}
               className={`bg-white border border-brand-text/5 rounded-2xl p-8 shadow-xs flex flex-col justify-between min-h-[380px] transition-all duration-500 hover:-translate-y-1.5 hover:shadow-md hover:border-sage-soft group ${service.colSpan}`}
             >
               <div className="flex justify-between items-start mb-10">
@@ -132,7 +81,6 @@ export default function ServicesSection() {
                   ))}
                 </div>
               </div>
-
               <div className="flex flex-col items-start mt-auto">
                 <h3 className="text-xl md:text-2xl font-bold text-brand-text mb-3 tracking-tight">{service.title}</h3>
                 <p className="text-sm md:text-base text-brand-muted leading-relaxed mb-6">{service.desc}</p>
