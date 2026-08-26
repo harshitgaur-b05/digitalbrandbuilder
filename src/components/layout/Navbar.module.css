@@ -1,0 +1,230 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  background-color: transparent;
+  border-bottom: 1px solid transparent;
+  padding: 1.75rem 0;
+  transition: padding var(--transition-smooth), 
+              background-color var(--transition-smooth), 
+              border-color var(--transition-smooth);
+}
+
+.scrolled {
+  padding: 1.1rem 0;
+  background-color: rgba(243, 241, 235, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-color: rgba(126, 142, 113, 0.15);
+  box-shadow: var(--shadow-sm);
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 var(--space-sm);
+  }
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  z-index: 101;
+}
+
+.logoText {
+  font-family: var(--font-sans), sans-serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--color-text);
+  text-transform: lowercase;
+}
+
+.logoText span {
+  font-weight: 400;
+  color: var(--color-sage-deep);
+}
+
+.logoText span span {
+  font-weight: 300;
+  color: var(--color-text-muted);
+}
+
+/* Nav links desktop */
+.nav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+}
+
+.navLink {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  transition: var(--transition-fast);
+  position: relative;
+  padding: 0.25rem 0;
+}
+
+.navLink::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--color-text);
+  transition: var(--transition-smooth);
+}
+
+.navLink:hover {
+  color: var(--color-text);
+}
+
+.navLink:hover::after {
+  width: 100%;
+}
+
+/* Action buttons desktop */
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.loginBtn {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--color-text);
+  padding: 0.5rem 1rem;
+  transition: var(--transition-fast);
+}
+
+.loginBtn:hover {
+  color: var(--color-sage-deep);
+}
+
+.ctaBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--color-text);
+  color: var(--bg-primary);
+  padding: 0.75rem 1.5rem;
+  border-radius: 100px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: var(--transition-smooth);
+}
+
+.ctaBtn:hover {
+  background-color: var(--color-sage-deep);
+  transform: translateY(-1px);
+}
+
+.arrow {
+  transition: transform var(--transition-smooth);
+}
+
+.ctaBtn:hover .arrow {
+  transform: translateX(4px);
+}
+
+/* Mobile Toggle */
+.menuToggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-text);
+  z-index: 101;
+  padding: 0.5rem;
+}
+
+/* Mobile Drawer styles */
+.mobileDrawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: var(--bg-primary);
+  z-index: 99;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.drawerOpen {
+  opacity: 1;
+  visibility: visible;
+}
+
+.mobileNav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+  text-align: center;
+}
+
+.mobileNavLink {
+  font-size: 2rem;
+  font-weight: 400;
+  color: var(--color-text);
+  transition: var(--transition-fast);
+}
+
+.mobileNavLink:hover {
+  color: var(--color-sage-deep);
+}
+
+.mobileActions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-top: var(--space-lg);
+}
+
+.mobileLoginBtn {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.mobileCtaBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--color-text);
+  color: var(--bg-primary);
+  padding: 1rem 2rem;
+  border-radius: 100px;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+@media (max-width: 1024px) {
+  .nav, .actions {
+    display: none;
+  }
+  
+  .menuToggle {
+    display: block;
+  }
+}

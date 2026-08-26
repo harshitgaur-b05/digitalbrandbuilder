@@ -1,0 +1,263 @@
+.section {
+  background-color: var(--bg-secondary);
+  padding: var(--space-2xl) 0;
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid rgba(126, 142, 113, 0.12);
+  border-bottom: 1px solid rgba(126, 142, 113, 0.12);
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+}
+
+.header {
+  text-align: center;
+  margin-bottom: var(--space-2xl);
+}
+
+.eyebrow {
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: var(--color-sage-deep);
+  margin-bottom: var(--space-sm);
+  text-transform: uppercase;
+  display: block;
+}
+
+.headline {
+  font-family: var(--font-sans), sans-serif;
+  font-size: clamp(2.2rem, 3.5vw, 3.8rem);
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+  margin-bottom: var(--space-md);
+}
+
+.subtext {
+  font-size: 1.1rem;
+  color: var(--color-text-muted);
+  max-width: 620px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Timeline Layout */
+.timelineWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.svgContainer {
+  position: absolute;
+  top: 40px;
+  left: 0;
+  width: 100%;
+  height: 120px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.svgPath {
+  width: 100%;
+  height: 100%;
+}
+
+.stepsContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  position: relative;
+  z-index: 2;
+  gap: var(--space-md);
+}
+
+.stepCard {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+}
+
+.iconBadge {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: var(--color-white);
+  border: 1px solid rgba(126, 142, 113, 0.15);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-bottom: var(--space-lg);
+  z-index: 3;
+  transition: var(--transition-smooth);
+}
+
+.iconInner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 4;
+}
+
+.icon {
+  color: var(--color-sage-deep);
+  transition: var(--transition-fast);
+}
+
+.pulseRing {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: rgba(160, 173, 145, 0.12);
+  z-index: 2;
+  transition: var(--transition-smooth);
+}
+
+.stepCard:hover .iconBadge {
+  transform: scale(1.05);
+  border-color: var(--color-sage-soft);
+  box-shadow: var(--shadow-md);
+}
+
+.stepCard:hover .icon {
+  transform: scale(1.1);
+  color: var(--color-text);
+}
+
+.stepCard:hover .pulseRing {
+  transform: scale(1.25);
+  opacity: 0;
+}
+
+.stepContent {
+  padding: 0 var(--space-xs);
+}
+
+.stepHeader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-sm);
+}
+
+.stepNum {
+  font-family: var(--font-sans), sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--color-sage-soft);
+}
+
+.stepTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-text);
+  letter-spacing: -0.01em;
+}
+
+.stepDesc {
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+}
+
+.mobileArrow {
+  display: none;
+}
+
+/* Responsive Overrides */
+@media (max-width: 1024px) {
+  .svgContainer {
+    display: none;
+  }
+  
+  .stepsContainer {
+    flex-direction: column;
+    gap: var(--space-xl);
+    align-items: center;
+  }
+  
+  .stepCard {
+    width: 100%;
+    max-width: 480px;
+    flex-direction: row;
+    text-align: left;
+    align-items: flex-start;
+    gap: var(--space-lg);
+  }
+  
+  .iconBadge {
+    margin-bottom: 0;
+    flex-shrink: 0;
+    width: 70px;
+    height: 70px;
+  }
+  
+  .stepContent {
+    padding: 0;
+  }
+  
+  .stepHeader {
+    justify-content: flex-start;
+  }
+  
+  .mobileArrow {
+    display: block;
+    position: absolute;
+    bottom: -45px;
+    left: 35px;
+    font-size: 1.5rem;
+    color: var(--color-sage-soft);
+    pointer-events: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: var(--space-xl) 0;
+  }
+  
+  .header {
+    margin-bottom: var(--space-xl);
+  }
+  
+  .headline {
+    font-size: 2rem;
+  }
+  
+  .subtext {
+    font-size: 1rem;
+  }
+  
+  .stepCard {
+    gap: var(--space-md);
+  }
+  
+  .iconBadge {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .mobileArrow {
+    left: 30px;
+    bottom: -40px;
+  }
+  
+  .stepTitle {
+    font-size: 1.15rem;
+  }
+  
+  .stepDesc {
+    font-size: 0.9rem;
+  }
+}

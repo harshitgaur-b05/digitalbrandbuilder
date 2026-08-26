@@ -1,0 +1,56 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-bg: #F3F1EB;
+  --color-brand-secondary: #E8E5DD;
+  --color-sage-soft: #A0AD91;
+  --color-sage-deep: #7E8E71;
+  --color-brand-text: #20211D;
+  --color-brand-muted: #5A5D55;
+  --font-sans: var(--font-sans), system-ui, -apple-system, sans-serif;
+}
+
+:root {
+  --background: #F3F1EB;
+  --foreground: #20211D;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+
+/* Custom smooth transitions utility */
+.transition-smooth {
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Float animations for orbital nodes */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-float-slow {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-medium {
+  animation: float 4.5s ease-in-out infinite;
+}
+
+.animate-float-fast {
+  animation: float 3.5s ease-in-out infinite;
+}
+
+/* Disable animations if prefers-reduced-motion is true */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-delay: 0s !important;
+    animation-duration: 0s !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0s !important;
+    scroll-behavior: auto !important;
+  }
+}
