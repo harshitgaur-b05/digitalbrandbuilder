@@ -4,7 +4,8 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import TableOfContents from "../TableOfContents";
 import Link from 'next/link';
-import { ArrowLeft, ArrowRight, Clock, User, ChevronRight } from 'lucide-react';
+import Image from 'next/image';
+import { ArrowLeft, ArrowRight, Clock, User, ChevronRight, ImageIcon } from 'lucide-react';
 
 // ── Helpers ─────────────────────────────────────────────────────────────────
 
@@ -137,6 +138,25 @@ export default async function Page(props: { params: Promise<{ slug: string[] }> 
                   <span>{post.readTime}</span>
                 </div>
                 <span className="text-sm text-[#5A5D55]">{post.date}</span>
+              </div>
+
+              {/* Cover Image */}
+              <div className="mb-10 w-full aspect-[16/7] rounded-2xl overflow-hidden border border-[#20211D]/6">
+                {post.image ? (
+                  <Image
+                    src={post.image}
+                    alt={post.title}
+                    fill
+                    className="object-cover"
+                  />
+                ) : (
+                  <div className="w-full h-full bg-[#E8E5DD] flex flex-col items-center justify-center gap-3">
+                    <ImageIcon size={36} className="text-[#A0AD91]" strokeWidth={1.5} />
+                    <p className="text-xs font-semibold text-[#A0AD91] tracking-widest uppercase">
+                      Cover Image
+                    </p>
+                  </div>
+                )}
               </div>
 
               {/* Body */}
