@@ -6,17 +6,16 @@ import { revalidatePath } from 'next/cache';
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     await verifyAuth(request);
     await connectDB();
-    
-    const service = await Service.findById(params.id);
+    const { id } = await params;
+    const service = await Service.findById(id);
     if (!service) {
       return NextResponse.json({ success: false, error: 'Service not found' }, { status: 404 });
     }
-    
     return NextResponse.json({ success: true, data: service });
   } catch (error: any) {
     if (error.message === 'Unauthorized') return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -26,26 +25,22 @@ export async function GET(
 
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     await verifyAuth(request);
     await connectDB();
-
+    const { id } = await params;
     const body = await request.json();
-    
-    const updatedService = await Service.findByIdAndUpdate(params.id, body, {
+    const updatedService = await Service.findByIdAndUpdate(id, body, {
       new: true,
       runValidators: true,
     });
-
     if (!updatedService) {
       return NextResponse.json({ success: false, error: 'Service not found' }, { status: 404 });
     }
-    
     revalidatePath('/services');
     revalidatePath(`/services/${updatedService.slug}`);
-
     return NextResponse.json({ success: true, data: updatedService });
   } catch (error: any) {
     if (error.message === 'Unauthorized') return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -58,21 +53,18 @@ export async function PUT(
 
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     await verifyAuth(request);
     await connectDB();
-
-    const deletedService = await Service.findByIdAndDelete(params.id);
-    
+    const { id } = await params;
+    const deletedService = await Service.findByIdAndDelete(id);
     if (!deletedService) {
       return NextResponse.json({ success: false, error: 'Service not found' }, { status: 404 });
     }
-
     revalidatePath('/services');
     revalidatePath(`/services/${deletedService.slug}`);
-
     return NextResponse.json({ success: true, data: {} });
   } catch (error: any) {
     if (error.message === 'Unauthorized') return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });

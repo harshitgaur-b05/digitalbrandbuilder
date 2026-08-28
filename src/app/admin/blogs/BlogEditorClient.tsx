@@ -417,7 +417,7 @@ export default function BlogEditorClient({ mode, initialData }: BlogEditorClient
                   <RichToolbar editor={editor} />
 
                   {editor && (
-                    <BubbleMenu editor={editor} tippyOptions={{ duration: 100 }}>
+                    <BubbleMenu editor={editor}>
                       <div className="bubble-menu">
                         <button type="button" className={editor.isActive('bold') ? 'is-active' : ''} onClick={() => editor.chain().focus().toggleBold().run()}>B</button>
                         <button type="button" className={editor.isActive('italic') ? 'is-active' : ''} onClick={() => editor.chain().focus().toggleItalic().run()}>I</button>

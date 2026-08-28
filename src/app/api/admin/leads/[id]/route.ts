@@ -5,27 +5,24 @@ import { verifyAuth } from '@/lib/auth';
 
 export async function PATCH(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     await verifyAuth(request);
     await connectDB();
-
+    const { id } = await params;
     const { status } = await request.json();
     if (!status || !['unread', 'contacted', 'archived'].includes(status)) {
       return NextResponse.json({ success: false, error: 'Invalid status value.' }, { status: 400 });
     }
-
     const updatedLead = await Lead.findByIdAndUpdate(
-      params.id,
+      id,
       { status },
       { new: true, runValidators: true }
     );
-
     if (!updatedLead) {
       return NextResponse.json({ success: false, error: 'Lead not found.' }, { status: 404 });
     }
-
     return NextResponse.json({ success: true, data: updatedLead });
   } catch (error: any) {
     if (error.message === 'Unauthorized') {
@@ -37,17 +34,16 @@ export async function PATCH(
 
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     await verifyAuth(request);
     await connectDB();
-
-    const deletedLead = await Lead.findByIdAndDelete(params.id);
+    const { id } = await params;
+    const deletedLead = await Lead.findByIdAndDelete(id);
     if (!deletedLead) {
       return NextResponse.json({ success: false, error: 'Lead not found.' }, { status: 404 });
     }
-
     return NextResponse.json({ success: true, data: {} });
   } catch (error: any) {
     if (error.message === 'Unauthorized') {

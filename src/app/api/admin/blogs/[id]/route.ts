@@ -6,17 +6,16 @@ import { revalidatePath } from 'next/cache';
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     await verifyAuth(request);
     await connectDB();
-    
-    const blog = await Blog.findById(params.id);
+    const { id } = await params;
+    const blog = await Blog.findById(id);
     if (!blog) {
       return NextResponse.json({ success: false, error: 'Blog not found' }, { status: 404 });
     }
-    
     return NextResponse.json({ success: true, data: blog });
   } catch (error: any) {
     if (error.message === 'Unauthorized') return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -26,26 +25,22 @@ export async function GET(
 
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     await verifyAuth(request);
     await connectDB();
-
+    const { id } = await params;
     const body = await request.json();
-    
-    const updatedBlog = await Blog.findByIdAndUpdate(params.id, body, {
+    const updatedBlog = await Blog.findByIdAndUpdate(id, body, {
       new: true,
       runValidators: true,
     });
-
     if (!updatedBlog) {
       return NextResponse.json({ success: false, error: 'Blog not found' }, { status: 404 });
     }
-    
     revalidatePath('/blogs');
     revalidatePath(`/blogs/${updatedBlog.slug}`);
-
     return NextResponse.json({ success: true, data: updatedBlog });
   } catch (error: any) {
     if (error.message === 'Unauthorized') return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -58,21 +53,18 @@ export async function PUT(
 
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     await verifyAuth(request);
     await connectDB();
-
-    const deletedBlog = await Blog.findByIdAndDelete(params.id);
-    
+    const { id } = await params;
+    const deletedBlog = await Blog.findByIdAndDelete(id);
     if (!deletedBlog) {
       return NextResponse.json({ success: false, error: 'Blog not found' }, { status: 404 });
     }
-
     revalidatePath('/blogs');
     revalidatePath(`/blogs/${deletedBlog.slug}`);
-
     return NextResponse.json({ success: true, data: {} });
   } catch (error: any) {
     if (error.message === 'Unauthorized') return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
