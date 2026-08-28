@@ -127,9 +127,4 @@ BlogSchema.pre<IBlog>('validate', async function () {
   }
 });
 
-// Delete cached model in dev to pick up schema changes on hot reload
-if (process.env.NODE_ENV !== 'production' && mongoose.models.Blog) {
-  delete mongoose.models.Blog;
-}
-
-export default mongoose.model<IBlog>('Blog', BlogSchema);
+export default (mongoose.models.Blog as mongoose.Model<IBlog>) || mongoose.model<IBlog>('Blog', BlogSchema);
