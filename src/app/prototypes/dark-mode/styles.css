@@ -1,0 +1,491 @@
+/* ============================================================
+   DARK MODE PROTOTYPE — Isolated Styles
+   All scoped to .proto-root so nothing leaks into production.
+   ============================================================ */
+
+/* ── Design Tokens: Light Mode ─────────────────────────────── */
+.proto-root {
+  --bg:           #F3F1EB;
+  --bg-secondary: #E8E5DD;
+  --fg:           #20211D;
+  --fg-muted:     #5A5D55;
+  --sage-soft:    #A0AD91;
+  --sage-deep:    #7E8E71;
+  --card-bg:      #ffffff;
+  --card-border:  rgba(32, 33, 29, 0.06);
+  --nav-bg:       rgba(243, 241, 235, 0.92);
+
+  --ease-out:     cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out:  cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-spring:  cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  font-family: -apple-system, BlinkMacSystemFont, 'Outfit', 'Segoe UI', sans-serif;
+  min-height: 100dvh;
+  background-color: var(--bg);
+  color: var(--fg);
+}
+
+/* ── Design Tokens: Dark Mode ──────────────────────────────── */
+.proto-root.proto-dark {
+  --bg:           #12130F;
+  --bg-secondary: #1C1D18;
+  --fg:           #ECEBE6;
+  --fg-muted:     #A3A59E;
+  --sage-soft:    #8A9A7A;
+  --sage-deep:    #9BB088;
+  --card-bg:      #1C1D18;
+  --card-border:  rgba(255, 255, 255, 0.08);
+  --nav-bg:       rgba(18, 19, 15, 0.92);
+}
+
+/* ── Shared layout ─────────────────────────────────────────── */
+.proto-root * { box-sizing: border-box; margin: 0; padding: 0; }
+
+.proto-nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 40px;
+  background: var(--nav-bg);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--card-border);
+}
+
+.proto-logo {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--fg);
+  text-decoration: none;
+}
+
+.proto-logo span.accent { color: var(--sage-deep); font-weight: 400; }
+.proto-logo span.light  { color: var(--fg-muted);  font-weight: 300; }
+
+.proto-nav-links {
+  display: flex; gap: 32px;
+  list-style: none;
+}
+
+.proto-nav-links a {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--fg-muted);
+  text-decoration: none;
+  transition: color 150ms ease-out;
+}
+
+.proto-nav-links a:hover { color: var(--fg); }
+
+.proto-hero {
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  padding: 120px 40px 64px;
+  background-color: var(--bg);
+}
+
+.proto-hero-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.proto-eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--sage-deep);
+  margin-bottom: 20px;
+  display: block;
+}
+
+.proto-h1 {
+  font-size: clamp(2.4rem, 5vw, 4.5rem);
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: var(--fg);
+  margin-bottom: 20px;
+  max-width: 800px;
+}
+
+.proto-h1 em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--sage-deep);
+}
+
+.proto-p {
+  font-size: 18px;
+  line-height: 1.65;
+  color: var(--fg-muted);
+  max-width: 520px;
+  margin-bottom: 36px;
+}
+
+.proto-ctas {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.proto-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--fg);
+  color: var(--bg);
+  padding: 14px 28px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 160ms var(--ease-out), opacity 160ms var(--ease-out), background-color 200ms var(--ease-out), color 200ms var(--ease-out);
+}
+
+.proto-btn-primary:hover {
+  opacity: 0.85;
+  transform: translateY(-1px);
+}
+
+.proto-btn-primary:active { transform: scale(0.97); }
+
+.proto-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: var(--fg);
+  padding: 14px 28px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 500;
+  border: 1.5px solid var(--sage-soft);
+  cursor: pointer;
+  text-decoration: none;
+  transition: border-color 200ms var(--ease-out), color 200ms var(--ease-out), background-color 200ms var(--ease-out);
+}
+
+.proto-btn-secondary:hover {
+  border-color: var(--fg);
+  background: var(--bg-secondary);
+}
+
+.proto-tags {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.proto-tag {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--fg-muted);
+  opacity: 0.7;
+}
+
+.proto-tag-dot {
+  color: var(--sage-soft);
+  font-weight: 900;
+}
+
+/* Cards strip */
+.proto-cards {
+  display: flex;
+  gap: 16px;
+  margin-top: 60px;
+  flex-wrap: wrap;
+}
+
+.proto-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  padding: 20px 24px;
+  flex: 1;
+  min-width: 160px;
+  max-width: 220px;
+}
+
+.proto-card-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--sage-soft) 20%, transparent);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.proto-card-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--fg);
+}
+
+.proto-card-sub {
+  font-size: 12px;
+  color: var(--fg-muted);
+  margin-top: 2px;
+}
+
+/* ── Toggle Button Base ────────────────────────────────────── */
+.proto-toggle {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--bg-secondary);
+  border: 1.5px solid var(--card-border);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.proto-toggle:active { transform: scale(0.95); }
+
+/* =========================================================
+   VARIANT 1: Quiet Spring
+   Simple, crisp, hardware-accelerated CSS transition.
+   Everything fades with the exact right easing curve.
+   ========================================================= */
+
+.variant-quiet .proto-root {
+  transition:
+    background-color 200ms var(--ease-out),
+    color 200ms var(--ease-out);
+}
+
+.variant-quiet .proto-nav,
+.variant-quiet .proto-hero,
+.variant-quiet .proto-card,
+.variant-quiet .proto-btn-primary,
+.variant-quiet .proto-btn-secondary,
+.variant-quiet .proto-h1,
+.variant-quiet .proto-p,
+.variant-quiet .proto-eyebrow {
+  transition:
+    background-color 200ms var(--ease-out),
+    color 200ms var(--ease-out),
+    border-color 200ms var(--ease-out),
+    opacity 200ms var(--ease-out);
+}
+
+/* Spring icon animation */
+.quiet-icon-sun,
+.quiet-icon-moon {
+  position: absolute;
+  transition:
+    transform 350ms cubic-bezier(0.34, 1.56, 0.64, 1),
+    opacity 200ms var(--ease-out);
+}
+
+.quiet-icon-sun  { opacity: 1;  transform: translateY(0)    rotate(0deg); }
+.quiet-icon-moon { opacity: 0;  transform: translateY(24px) rotate(-30deg); }
+
+.proto-dark .quiet-icon-sun  { opacity: 0;  transform: translateY(-24px) rotate(30deg); }
+.proto-dark .quiet-icon-moon { opacity: 1;  transform: translateY(0)      rotate(0deg); }
+
+/* =========================================================
+   VARIANT 2: Organic Sweep
+   Circular clip-path reveal from the toggle origin.
+   ========================================================= */
+
+.sweep-canvas {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 35;
+  clip-path: circle(0% at var(--ox, 50%) var(--oy, 50%));
+  transition: clip-path 0s;
+}
+
+.sweep-canvas.sweep-animating {
+  transition: clip-path 650ms cubic-bezier(0.32, 0.72, 0, 1);
+  clip-path: circle(200% at var(--ox, 50%) var(--oy, 50%));
+}
+
+/* SVG sun→moon morph toggle */
+.sweep-toggle-icon {
+  transition: transform 300ms var(--ease-spring), opacity 200ms ease-out;
+}
+
+.sweep-sun  { opacity: 1; transform: rotate(0deg)  scale(1); }
+.sweep-moon { opacity: 0; transform: rotate(30deg) scale(0.8); position: absolute; }
+
+.proto-dark .sweep-sun  { opacity: 0; transform: rotate(-30deg) scale(0.8); }
+.proto-dark .sweep-moon { opacity: 1; transform: rotate(0deg)   scale(1); }
+
+/* =========================================================
+   VARIANT 3: Atmospheric Pulse
+   A dreamy radial glow bloom from the toggle, blur crossfade.
+   ========================================================= */
+
+.pulse-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 38;
+  opacity: 0;
+  transition: opacity 0s;
+}
+
+.pulse-overlay.pulse-in {
+  animation: pulse-bloom 750ms var(--ease-out) forwards;
+}
+
+@keyframes pulse-bloom {
+  0% {
+    opacity: 0;
+    backdrop-filter: blur(0px) saturate(1);
+    -webkit-backdrop-filter: blur(0px) saturate(1);
+  }
+  35% {
+    opacity: 1;
+    backdrop-filter: blur(12px) saturate(1.5);
+    -webkit-backdrop-filter: blur(12px) saturate(1.5);
+  }
+  100% {
+    opacity: 0;
+    backdrop-filter: blur(0px) saturate(1);
+    -webkit-backdrop-filter: blur(0px) saturate(1);
+  }
+}
+
+/* Gradient orb inside the pulse overlay */
+.pulse-orb {
+  position: absolute;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(155, 176, 136, 0.35) 0%, rgba(126, 142, 113, 0.18) 40%, transparent 70%);
+  animation: orb-expand 750ms var(--ease-out) forwards;
+}
+
+@keyframes orb-expand {
+  from { width: 0px; height: 0px; opacity: 0; }
+  40%  { opacity: 1; }
+  to   { width: 600px; height: 600px; opacity: 0; }
+}
+
+/* Atmospheric fade-rotate icon */
+.atmo-icon-wrap {
+  position: relative;
+  width: 20px; height: 20px;
+}
+
+.atmo-sun,
+.atmo-moon {
+  position: absolute;
+  inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  transition:
+    opacity 400ms var(--ease-out),
+    transform 400ms var(--ease-out);
+}
+
+.atmo-sun  { opacity: 1; transform: rotate(0deg)   scale(1); }
+.atmo-moon { opacity: 0; transform: rotate(-60deg) scale(0.5); }
+
+.proto-dark .atmo-sun  { opacity: 0; transform: rotate(60deg) scale(0.5); }
+.proto-dark .atmo-moon { opacity: 1; transform: rotate(0deg)  scale(1); }
+
+/* =========================================================
+   PICKER — Verbatim from PICKER.md
+   ========================================================= */
+
+.proto-picker {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2147483647;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 4px;
+  border-radius: 999px;
+  background: rgba(10, 10, 10, 0.82);
+  -webkit-backdrop-filter: blur(12px) saturate(1.4);
+  backdrop-filter: blur(12px) saturate(1.4);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.08) inset,
+    0 8px 24px rgba(0, 0, 0, 0.24),
+    0 2px 6px rgba(0, 0, 0, 0.12);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 13px;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.proto-picker-highlight {
+  position: absolute;
+  top: 4px;
+  left: 0;
+  height: 28px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  will-change: transform;
+}
+
+.proto-picker[data-ready] .proto-picker-highlight {
+  transition:
+    transform 250ms cubic-bezier(0.23, 1, 0.32, 1),
+    width 250ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .proto-picker[data-ready] .proto-picker-highlight { transition: none; }
+  .sweep-canvas.sweep-animating { transition: clip-path 0s; }
+  .pulse-overlay.pulse-in { animation: none; }
+}
+
+.proto-picker-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 28px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.55);
+  font: inherit;
+  cursor: pointer;
+  transition: color 150ms ease-out;
+}
+
+.proto-picker-item:hover  { color: rgba(255, 255, 255, 0.85); }
+.proto-picker-item:active { transform: scale(0.97); }
+
+.proto-picker-item:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.4);
+  outline-offset: 2px;
+}
+
+.proto-picker-item[data-active] { color: #fff; }
+
+.proto-picker-divider {
+  width: 1px;
+  height: 16px;
+  margin: 0 4px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.proto-picker-replay {
+  padding: 0 10px;
+  font-size: 14px;
+}

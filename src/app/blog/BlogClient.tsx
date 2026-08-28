@@ -52,7 +52,7 @@ export default function BlogClient({ posts }: { posts: BlogPost[] }) {
                 </div>
 
                 <div className="p-8 flex flex-col flex-1">
-                    <div className="flex items-center justify-between mb-6">
+                  <div className="flex items-center justify-between mb-6">
                     <span className="text-[10px] font-bold tracking-widest text-[#7E8E71] bg-[#A0AD91]/10 px-3 py-1 rounded-full uppercase">
                       {post.category}
                     </span>
@@ -66,15 +66,15 @@ export default function BlogClient({ posts }: { posts: BlogPost[] }) {
                   <p className="text-sm md:text-base text-[#5A5D55] leading-relaxed mb-6">
                     {post.description}
                   </p>
-                </div>
-                <div className="flex items-center justify-between pt-5 border-t border-[#20211D]/5 mt-auto">
-                  <div className="flex items-center gap-1.5 text-xs text-[#5A5D55]">
-                    <Clock size={12} />
-                    <span>{post.readTime}</span>
+                  <div className="flex items-center justify-between pt-5 border-t border-[#20211D]/5 mt-auto">
+                    <div className="flex items-center gap-1.5 text-xs text-[#5A5D55]">
+                      <Clock size={12} />
+                      <span>{post.readTime}</span>
+                    </div>
+                    <span className="text-xs text-[#7E8E71] font-semibold flex items-center gap-1">
+                      Read article <ArrowRight size={12} />
+                    </span>
                   </div>
-                  <span className="text-xs text-[#7E8E71] font-semibold flex items-center gap-1">
-                    Read article <ArrowRight size={12} />
-                  </span>
                 </div>
               </article>
             </Link>
