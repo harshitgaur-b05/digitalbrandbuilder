@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import slugify from 'slugify';
 import { useEditor, EditorContent } from '@tiptap/react';
@@ -80,12 +80,36 @@ function ToolbarButton({
 // ─── Rich Text Toolbar ────────────────────────────────────────────────────────
 
 function RichToolbar({ editor }: { editor: ReturnType<typeof useEditor> }) {
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const [uploading, setUploading] = useState(false);
+
   const addImage = useCallback(() => {
-    const url = window.prompt('Enter image URL:');
-    if (url && editor) {
-      editor.chain().focus().setImage({ src: url }).run();
+    fileInputRef.current?.click();
+  }, []);
+
+  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    
+    setUploading(true);
+    const formData = new FormData();
+    formData.append('file', file);
+    
+    try {
+      const res = await fetch('/api/upload', { method: 'POST', body: formData });
+      const data = await res.json();
+      if (data.url && editor) {
+        editor.chain().focus().setImage({ src: data.url }).run();
+      } else {
+        alert(data.error || 'Upload failed');
+      }
+    } catch (err) {
+      alert('Error uploading image');
+    } finally {
+      setUploading(false);
+      if (fileInputRef.current) fileInputRef.current.value = '';
     }
-  }, [editor]);
+  };
 
   const setLink = useCallback(() => {
     if (!editor) return;
@@ -103,6 +127,7 @@ function RichToolbar({ editor }: { editor: ReturnType<typeof useEditor> }) {
 
   return (
     <div className="flex flex-wrap items-center gap-0.5 px-3 py-2 border-b border-[#E8E5DD] bg-white sticky top-0 z-10 rounded-t-2xl">
+      <input type="file" ref={fileInputRef} className="hidden" accept="image/*" onChange={handleImageUpload} />
       {/* History */}
       <div className="flex gap-0.5 pr-2 border-r border-[#E8E5DD] mr-2">
         <ToolbarButton title="Undo" onClick={() => editor.chain().focus().undo().run()} disabled={!editor.can().undo()}>
@@ -185,8 +210,12 @@ function RichToolbar({ editor }: { editor: ReturnType<typeof useEditor> }) {
         <ToolbarButton title="Insert Link" active={editor.isActive('link')} onClick={setLink}>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-4 h-4"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
         </ToolbarButton>
-        <ToolbarButton title="Insert Image" onClick={addImage}>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-4 h-4"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        <ToolbarButton title="Insert Image" onClick={addImage} disabled={uploading}>
+          {uploading ? (
+            <span className="w-4 h-4 border-2 border-[#5A5D55]/20 border-t-[#5A5D55] rounded-full animate-spin"></span>
+          ) : (
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-4 h-4"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          )}
         </ToolbarButton>
       </div>
 
@@ -515,7 +544,26 @@ export default function BlogEditorClient({ mode, initialData }: BlogEditorClient
                         />
                       </div>
                       <div className="border-t border-[#E8E5DD] pt-4 space-y-3">
-                        <p className="text-[10px] font-bold text-[#5A5D55] uppercase tracking-wider">Hero Banner</p>
+                        <div className="flex justify-between items-center mb-1.5">
+                          <p className="text-[10px] font-bold text-[#5A5D55] uppercase tracking-wider mb-0">Hero Banner</p>
+                          <label className="text-[10px] font-bold text-[#7E8E71] uppercase tracking-wider cursor-pointer hover:underline">
+                            Upload Image
+                            <input type="file" className="hidden" accept="image/*" onChange={async (e) => {
+                              const file = e.target.files?.[0];
+                              if (!file) return;
+                              const formData = new FormData();
+                              formData.append('file', file);
+                              try {
+                                const res = await fetch('/api/upload', { method: 'POST', body: formData });
+                                const data = await res.json();
+                                if (data.url) setHeroUrl(data.url);
+                                else alert(data.error || 'Upload failed');
+                              } catch(err) {
+                                alert('Upload failed');
+                              }
+                            }} />
+                          </label>
+                        </div>
                         <input
                           type="text"
                           value={heroUrl}

@@ -38,6 +38,7 @@ export async function POST(request: NextRequest) {
     if (error.code === 11000) {
       return NextResponse.json({ success: false, error: 'Blog with this slug/title already exists.' }, { status: 400 });
     }
-    return NextResponse.json({ success: false, error: error.message }, { status: 500 });
+    console.error('Blog creation error:', error);
+    return NextResponse.json({ success: false, error: error.stack || error.message }, { status: 500 });
   }
 }

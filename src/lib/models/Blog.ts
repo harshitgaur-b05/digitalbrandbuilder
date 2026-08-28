@@ -1,5 +1,4 @@
 import mongoose, { Schema, Document } from 'mongoose';
-import slugify from 'slugify';
 
 // Interfaces for TypeScript
 export interface ISection {
@@ -119,11 +118,18 @@ BlogSchema.virtual('date').get(function (this: IBlog) {
 });
 
 // Hooks
-BlogSchema.pre<IBlog>('validate', function (next: any) {
+BlogSchema.pre<IBlog>('validate', async function () {
   if (this.title && !this.slug) {
-    this.slug = slugify(this.title, { lower: true, strict: true });
+    this.slug = this.title
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/(^-|-$)+/g, '');
   }
-  next();
 });
 
-export default mongoose.models.Blog || mongoose.model<IBlog>('Blog', BlogSchema);
+// Delete cached model in dev to pick up schema changes on hot reload
+if (process.env.NODE_ENV !== 'production' && mongoose.models.Blog) {
+  delete mongoose.models.Blog;
+}
+
+export default mongoose.model<IBlog>('Blog', BlogSchema);

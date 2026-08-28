@@ -9,7 +9,17 @@
   --color-sage-deep: #7E8E71;
   --color-brand-text: #20211D;
   --color-brand-muted: #5A5D55;
-  --font-sans: var(--font-sans), system-ui, -apple-system, sans-serif;
+  --font-sans: var(--font-outfit), system-ui, -apple-system, sans-serif;
+
+  /* Service page design system tokens */
+  --color-background: #F3F1EB;
+  --color-on-surface: #20211D;
+  --color-on-surface-variant: #5A5D55;
+  --color-surface-container-low: #E8E5DD;
+  --color-surface-container-high: #DCD8CE;
+  --color-outline-variant: #e0ddd4;
+  --color-brand-accent: #7E8E71;
+  --color-brand-bg: #F3F1EB;
 }
 
 :root {
