@@ -18,8 +18,8 @@ function WebsiteBg() {
 
 function SeoBg() {
   return (
-    <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent flex items-center justify-center overflow-hidden">
-      <div className="relative flex items-center justify-center w-32 h-32">
+    <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent flex items-start justify-end overflow-hidden overflow-hidden p-6">
+      <div className="relative flex items-center justify-center w-32 h-32 opacity-40 transform translate-x-4 -translate-y-4">
         {[0.15, 0.25, 0.35].map((op, i) => (
           <div
             key={i}

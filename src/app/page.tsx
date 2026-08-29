@@ -6,6 +6,9 @@ import TransformationSection from "@/components/sections/TransformationSection";
 import ServicesSection from "@/components/sections/ServicesSection";
 import ProcessSection from "@/components/sections/ProcessSection";
 import CaseStudies from "@/components/sections/CaseStudies";
+import TestimonialSection from "@/components/sections/TestimonialSection";
+import BlogSection from "@/components/sections/BlogSection";
+import AuditSection from "@/components/sections/AuditSection";
 import FinalCTA from "@/components/sections/FinalCTA";
 import Footer from "@/components/layout/Footer";
 
@@ -35,10 +38,19 @@ export default function Home() {
         {/* SECTION 6 - HOW IT WORKS */}
         <ProcessSection />
 
-        {/* SECTION 7 - PROOF */}
+        {/* SECTION 7 - PROOF / CASE STUDIES */}
         <CaseStudies />
 
-        {/* SECTION 8 - FINAL CTA */}
+        {/* SECTION 8 - TESTIMONIALS */}
+        <TestimonialSection />
+
+        {/* SECTION 9 - BLOG */}
+        <BlogSection />
+
+        {/* SECTION 10 - FREE AUDIT */}
+        <AuditSection />
+
+        {/* SECTION 11 - FINAL CTA */}
         <FinalCTA />
       </main>
 

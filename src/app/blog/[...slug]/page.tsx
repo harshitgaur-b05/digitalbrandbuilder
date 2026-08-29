@@ -343,10 +343,7 @@ export default async function Page(props: { params: Promise<{ slug: string[] }> 
             {/* ── Right Sidebar ── */}
             <aside className="hidden lg:flex flex-col gap-5 w-60 xl:w-64 shrink-0 sticky top-28 self-start">
 
-              {/* TOC — client component with IntersectionObserver */}
-              <TableOfContents items={tocItems} />
-
-              {/* CTA Card */}
+              {/* CTA Card (Moved to top so it is never hidden) */}
               <div className="bg-primary/5 dark:bg-primary/10 border border-primary/20 rounded-2xl p-6 text-foreground">
                 <p className="text-[10px] font-bold tracking-widest text-primary uppercase mb-3">
                   Work with us
@@ -363,6 +360,11 @@ export default async function Page(props: { params: Promise<{ slug: string[] }> 
                 >
                   Get in Touch <ArrowRight size={13} />
                 </Link>
+              </div>
+
+              {/* TOC — client component with IntersectionObserver */}
+              <div className="max-h-[calc(100vh-28rem)] overflow-y-auto pr-2 custom-scrollbar">
+                <TableOfContents items={tocItems} />
               </div>
 
             </aside>
