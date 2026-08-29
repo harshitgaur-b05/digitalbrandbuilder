@@ -1,6 +1,8 @@
 "use client";
 
 import React, { useRef, useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 import "./GooeyNav.css";
 
 interface GooeyNavItem {
@@ -34,6 +36,7 @@ const GooeyNav: React.FC<GooeyNavProps> = ({
   const filterRef = useRef<HTMLSpanElement>(null);
   const textRef = useRef<HTMLSpanElement>(null);
   const [activeIndex, setActiveIndex] = useState<number>(initialActiveIndex);
+  const router = useRouter();
 
   const noise = (n = 1) => n / 2 - Math.random() * n;
 
@@ -125,7 +128,10 @@ const GooeyNav: React.FC<GooeyNavProps> = ({
     };
     Object.assign(filterRef.current.style, styles);
     Object.assign(textRef.current.style, styles);
-    textRef.current.innerText = element.innerText;
+    
+    // Only use the text from the main anchor tag to prevent dropdown text from appearing in the effect
+    const anchor = element.querySelector('a');
+    textRef.current.innerText = anchor ? anchor.innerText : element.innerText;
   };
 
   const handleClick = (
@@ -157,7 +163,7 @@ const GooeyNav: React.FC<GooeyNavProps> = ({
 
     // Navigate after slight delay so animation fires
     setTimeout(() => {
-      window.location.href = href;
+      router.push(href);
     }, 100);
   };
 
@@ -205,19 +211,32 @@ const GooeyNav: React.FC<GooeyNavProps> = ({
       <div className="gooey-nav-container" ref={containerRef}>
         <nav aria-label="Main Navigation">
           <ul ref={navRef}>
-            {items.map((item, index) => (
-              <li
-                key={index}
-                className={activeIndex === index ? "active" : ""}
-              >
-                <a
-                  href={item.href}
-                  onClick={(e) => handleClick(e, index, item.href)}
+            {items.map((item, index) => {
+              const isServices = item.label === "Services";
+              return (
+                <li
+                  key={index}
+                  className={`${activeIndex === index ? "active" : ""} group relative`}
                 >
-                  {item.label}
-                </a>
-              </li>
-            ))}
+                  <a
+                    href={item.href}
+                    onClick={(e) => handleClick(e, index, item.href)}
+                  >
+                    {item.label}
+                  </a>
+                  {isServices && (
+                    <div className="absolute top-[80%] left-1/2 -translate-x-1/2 mt-3 w-56 bg-card border border-border rounded-2xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 p-2 space-y-1">
+                      <Link href="/services/websites" className="block px-4 py-2 text-xs font-semibold text-foreground hover:bg-primary/10 rounded-xl transition-colors">Websites</Link>
+                      <Link href="/services/seo" className="block px-4 py-2 text-xs font-semibold text-foreground hover:bg-primary/10 rounded-xl transition-colors">SEO + AEO + GEO</Link>
+                      <Link href="/services/marketing" className="block px-4 py-2 text-xs font-semibold text-foreground hover:bg-primary/10 rounded-xl transition-colors">Performance Marketing</Link>
+                      <Link href="/services/social-media" className="block px-4 py-2 text-xs font-semibold text-foreground hover:bg-primary/10 rounded-xl transition-colors">Social Media</Link>
+                      <Link href="/services/content-writing" className="block px-4 py-2 text-xs font-semibold text-foreground hover:bg-primary/10 rounded-xl transition-colors">Content Writing</Link>
+                      <Link href="/services/brand-presence" className="block px-4 py-2 text-xs font-semibold text-foreground hover:bg-primary/10 rounded-xl transition-colors">Brand Presence</Link>
+                    </div>
+                  )}
+                </li>
+              );
+            })}
           </ul>
         </nav>
         <span className="effect filter" ref={filterRef} />

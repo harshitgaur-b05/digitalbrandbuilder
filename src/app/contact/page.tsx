@@ -35,6 +35,7 @@ export default function ContactPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (status === "submitting") return;
     setStatus("submitting");
     setErrorMessage("");
 
@@ -151,6 +152,12 @@ export default function ContactPage() {
               ) : (
                 <form onSubmit={handleSubmit} className="bg-card border border-foreground/5 rounded-2xl p-8 md:p-10 shadow-xs flex flex-col gap-6">
                   
+                  {status === "error" && (
+                    <div className="bg-red-500/10 border border-red-500/20 text-red-600 px-4 py-3 rounded-lg text-sm font-medium">
+                      {errorMessage}
+                    </div>
+                  )}
+
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="flex flex-col gap-2">
                       <label htmlFor="name" className="text-xs font-semibold text-foreground uppercase tracking-wider">Your Name *</label>
@@ -219,9 +226,10 @@ export default function ContactPage() {
 
                   <button
                     type="submit"
-                    className="inline-flex items-center justify-center gap-3 bg-foreground text-background px-8 py-4 rounded-full text-sm font-medium hover:bg-primary hover:-translate-y-px transition-all duration-300 group w-full md:w-auto self-start"
+                    disabled={status === "submitting"}
+                    className="inline-flex items-center justify-center gap-3 bg-foreground text-background px-8 py-4 rounded-full text-sm font-medium hover:bg-primary hover:-translate-y-px transition-all duration-300 group w-full md:w-auto self-start disabled:opacity-55 disabled:cursor-not-allowed"
                   >
-                    Send Message
+                    {status === "submitting" ? "Sending..." : "Send Message"}
                     <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
                   </button>
 

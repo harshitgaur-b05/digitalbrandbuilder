@@ -100,18 +100,32 @@ export default function Navbar() {
           mobileMenuOpen ? "opacity-100 visible" : "opacity-0 invisible pointer-events-none"
         }`}
       >
-        <nav className="flex flex-col items-center gap-7 text-center" aria-label="Mobile Navigation">
-          {navLinks.map(({ label, href }) => (
-            <Link
-              key={href}
-              href={href}
-              className={`text-3xl font-normal transition-colors ${
-                pathname === href ? "text-primary" : "text-foreground hover:text-primary"
-              }`}
-            >
-              {label}
-            </Link>
-          ))}
+        <nav className="flex flex-col items-center gap-5 text-center" aria-label="Mobile Navigation">
+          {navLinks.map(({ label, href }) => {
+            const isServices = label === "Services";
+            return (
+              <div key={href} className="flex flex-col items-center gap-2">
+                <Link
+                  href={href}
+                  className={`text-2xl font-normal transition-colors ${
+                    pathname === href ? "text-primary" : "text-foreground hover:text-primary"
+                  }`}
+                >
+                  {label}
+                </Link>
+                {isServices && (
+                  <div className="flex flex-col gap-1.5 mt-0.5">
+                    <Link href="/services/websites" className="text-xs font-semibold text-muted-foreground hover:text-primary transition-colors">Websites</Link>
+                    <Link href="/services/seo" className="text-xs font-semibold text-muted-foreground hover:text-primary transition-colors">SEO + AEO + GEO</Link>
+                    <Link href="/services/marketing" className="text-xs font-semibold text-muted-foreground hover:text-primary transition-colors">Performance Marketing</Link>
+                    <Link href="/services/social-media" className="text-xs font-semibold text-muted-foreground hover:text-primary transition-colors">Social Media</Link>
+                    <Link href="/services/content-writing" className="text-xs font-semibold text-muted-foreground hover:text-primary transition-colors">Content Writing</Link>
+                    <Link href="/services/brand-presence" className="text-xs font-semibold text-muted-foreground hover:text-primary transition-colors">Brand Presence</Link>
+                  </div>
+                )}
+              </div>
+            );
+          })}
 
           <div className="mt-4">
             <Link

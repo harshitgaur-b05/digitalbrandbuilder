@@ -106,6 +106,8 @@ export default function ServicePageShell({ data }: Props) {
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
+  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "instant" });
@@ -118,9 +120,37 @@ export default function ServicePageShell({ data }: Props) {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleFormSubmit = (e: React.FormEvent) => {
+  const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (formData.name && formData.email) setIsSubmitted(true);
+    if (status === "submitting") return;
+    setStatus("submitting");
+    setErrorMessage("");
+
+    try {
+      const res = await fetch("/api/leads", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          service: hero.name,
+          message: `Website URL: ${formData.website}\n\nChallenge: ${formData.challenge}`,
+        }),
+      });
+
+      const data = await res.json();
+      if (res.ok && data.success) {
+        setIsSubmitted(true);
+        setStatus("success");
+      } else {
+        throw new Error(data.error || "Failed to submit request.");
+      }
+    } catch (error: any) {
+      console.error(error);
+      setStatus("error");
+      setErrorMessage(error.message || "An unexpected error occurred.");
+    }
   };
 
   return (
@@ -525,6 +555,12 @@ export default function ServicePageShell({ data }: Props) {
                       onSubmit={handleFormSubmit}
                       className="space-y-4"
                     >
+                      {status === "error" && (
+                        <div className="bg-red-500/10 border border-red-500/20 text-red-600 px-4 py-3 rounded-2xl text-xs font-semibold">
+                          {errorMessage}
+                        </div>
+                      )}
+
                       {/* Name */}
                       <div>
                         <label className="block text-xs font-bold text-on-surface uppercase tracking-wider mb-2 pl-1">
@@ -616,9 +652,10 @@ export default function ServicePageShell({ data }: Props) {
 
                       <button
                         type="submit"
-                        className="w-full inline-flex items-center justify-center font-display font-bold uppercase tracking-wider text-brand-bg bg-brand-accent py-4 rounded-full text-xs sm:text-sm transition-all duration-300 hover:shadow-md hover:-translate-y-0.5 active:scale-[0.98] cursor-pointer mt-2"
+                        disabled={status === "submitting"}
+                        className="w-full inline-flex items-center justify-center font-display font-bold uppercase tracking-wider text-brand-bg bg-brand-accent py-4 rounded-full text-xs sm:text-sm transition-all duration-300 hover:shadow-md hover:-translate-y-0.5 active:scale-[0.98] cursor-pointer mt-2 disabled:opacity-60 disabled:cursor-not-allowed"
                       >
-                        {leadForm.ctaLabel}
+                        {status === "submitting" ? "Sending Request..." : leadForm.ctaLabel}
                       </button>
                     </motion.form>
                   ) : (
