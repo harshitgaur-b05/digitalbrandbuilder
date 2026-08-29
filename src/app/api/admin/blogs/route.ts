@@ -28,11 +28,8 @@ export async function POST(request: NextRequest) {
     const newBlog = await Blog.create(body);
     
     // Revalidate paths where blogs might be displayed
-    revalidatePath('/blogs');
-    revalidatePath(`/blogs/${newBlog.slug}`);
-
-    // If you had a dynamic sitemap endpoint, you'd bust its cache here
-    // e.g. sitemapState.bust();
+    revalidatePath('/blog');
+    revalidatePath(`/blog/${newBlog.slug}`);
 
     return NextResponse.json({ success: true, data: newBlog }, { status: 201 });
   } catch (error: any) {

@@ -39,8 +39,8 @@ export async function PUT(
     if (!updatedBlog) {
       return NextResponse.json({ success: false, error: 'Blog not found' }, { status: 404 });
     }
-    revalidatePath('/blogs');
-    revalidatePath(`/blogs/${updatedBlog.slug}`);
+    revalidatePath('/blog');
+    revalidatePath(`/blog/${updatedBlog.slug}`);
     return NextResponse.json({ success: true, data: updatedBlog });
   } catch (error: any) {
     if (error.message === 'Unauthorized') return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -63,8 +63,8 @@ export async function DELETE(
     if (!deletedBlog) {
       return NextResponse.json({ success: false, error: 'Blog not found' }, { status: 404 });
     }
-    revalidatePath('/blogs');
-    revalidatePath(`/blogs/${deletedBlog.slug}`);
+    revalidatePath('/blog');
+    revalidatePath(`/blog/${deletedBlog.slug}`);
     return NextResponse.json({ success: true, data: {} });
   } catch (error: any) {
     if (error.message === 'Unauthorized') return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });

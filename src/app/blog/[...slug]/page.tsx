@@ -159,9 +159,22 @@ export default async function Page(props: { params: Promise<{ slug: string[] }> 
                 )}
               </div>
 
-              {/* Body */}
+              {/* Body — rich HTML from Tiptap editor, or legacy sections */}
               <div>
-                {post.body?.map((section, i) => renderSection(section, i))}
+                {post.content ? (
+                  <div
+                    className="prose prose-neutral dark:prose-invert max-w-none
+                      prose-headings:font-bold prose-headings:tracking-tight prose-headings:text-foreground
+                      prose-p:text-muted-foreground prose-p:leading-relaxed
+                      prose-a:text-primary prose-a:no-underline hover:prose-a:underline
+                      prose-blockquote:border-l-primary prose-blockquote:text-muted-foreground
+                      prose-code:text-primary prose-strong:text-foreground
+                      prose-img:rounded-xl prose-img:border prose-img:border-foreground/8"
+                    dangerouslySetInnerHTML={{ __html: post.content }}
+                  />
+                ) : (
+                  post.body?.map((section, i) => renderSection(section, i))
+                )}
               </div>
 
               {/* Bottom CTA */}
