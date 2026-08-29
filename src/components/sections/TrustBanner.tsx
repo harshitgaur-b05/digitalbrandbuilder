@@ -15,12 +15,12 @@ export default function TrustBanner() {
         <span className="text-sm font-semibold text-primary shrink-0 uppercase tracking-wider">
           Built for businesses ready to grow, compete, and build a stronger digital presence.
         </span>
-        <div className="flex flex-wrap items-center justify-center lg:justify-end gap-x-6 gap-y-3">
+        <div className="flex flex-wrap items-center justify-center lg:justify-end gap-x-4 gap-y-2">
           {industries.map((industry, index) => (
-            <span key={index} className="text-sm font-bold text-foreground flex items-center whitespace-nowrap">
+            <span key={index} className="text-xs sm:text-sm font-bold text-foreground flex items-center whitespace-nowrap">
               {industry}
               {index < industries.length - 1 && (
-                <span className="ml-6 text-primary/70 font-extrabold" aria-hidden="true">·</span>
+                <span className="ml-4 text-primary/70 font-extrabold" aria-hidden="true">·</span>
               )}
             </span>
           ))}

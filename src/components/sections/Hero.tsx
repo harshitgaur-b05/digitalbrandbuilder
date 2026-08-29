@@ -118,14 +118,14 @@ export default function Hero() {
         <div className="lg:col-span-6 xl:col-span-7 flex flex-col items-start">
           <span
             ref={eyebrowRef}
-            className="text-[11px] font-bold tracking-[0.2em] text-primary mb-5 uppercase"
+            className="text-[10px] sm:text-[11px] font-bold tracking-[0.2em] text-primary mb-4 sm:mb-5 uppercase"
           >
             DIGITAL GROWTH FOR MODERN BUSINESSES
           </span>
 
           <h1
             ref={headlineRef}
-            className="font-sans text-[2.8rem] sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl font-medium leading-[1.05] tracking-[-0.03em] text-foreground mb-5"
+            className="font-sans text-4xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-6xl font-medium leading-[1.1] tracking-[-0.02em] text-foreground mb-4 sm:mb-5"
           >
             Turn your business into a brand people{" "}
             <span className="italic font-normal text-primary">find, trust & choose.</span>
@@ -133,7 +133,7 @@ export default function Hero() {
 
           <p
             ref={textRef}
-            className="text-base md:text-lg leading-relaxed text-muted-foreground max-w-xl mb-8"
+            className="text-sm sm:text-base md:text-lg leading-relaxed text-muted-foreground max-w-xl mb-6 sm:mb-8"
           >
             Digital Brand Builder brings your digital presence together—from high-performing websites and SEO to Google Ads, social media, and ecommerce. We help businesses build a stronger online presence, reach the right customers, and turn digital visibility into sustainable growth.
           </p>
@@ -169,7 +169,7 @@ export default function Hero() {
           {/* Beam container — MUST be `relative` and a measurable element */}
           <div
             ref={containerRef}
-            className="relative flex items-center justify-center w-full"
+            className="relative flex items-center justify-center w-full max-w-[100vw] scale-[0.75] sm:scale-100 origin-center"
             style={{ minHeight: 440 }}
           >
             {/* ── Grid Layout: 3 cols × 3 rows centred ── */}
@@ -179,7 +179,7 @@ export default function Hero() {
                           [HUB]
               [Ecom]   [Brand]    [Social]
             */}
-            <div className="grid grid-cols-3 gap-y-10 gap-x-6 items-center justify-items-center">
+            <div className="grid grid-cols-[auto_auto_auto] gap-y-10 gap-x-4 sm:gap-x-6 items-center justify-items-center w-max mx-auto">
               {/* Row 1 */}
               <ServiceNode nodeRef={websiteRef} icon={<Globe size={16} className="text-primary" />} label="Website" />
               <ServiceNode nodeRef={seoRef} icon={<Search size={16} className="text-primary" />} label="SEO" />

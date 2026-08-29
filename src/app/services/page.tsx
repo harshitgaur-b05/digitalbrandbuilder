@@ -116,15 +116,15 @@ export default function ServicesPage() {
           </div>
 
           {/* Stat strip — uses site card pattern */}
-          <div className="mt-12 grid grid-cols-3 divide-x divide-border border border-border rounded-2xl overflow-hidden bg-card shadow-sm">
+          <div className="mt-12 grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-border border border-border rounded-2xl overflow-hidden bg-card shadow-sm">
             {[
               { label: "Services", value: "6" },
               { label: "Industries served", value: "12+" },
               { label: "Clients grown", value: "40+" },
             ].map((s) => (
-              <div key={s.label} className="px-6 py-5">
+              <div key={s.label} className="px-5 py-4 sm:px-6 sm:py-5">
                 <p className="text-2xl md:text-3xl font-semibold text-foreground tracking-tight">{s.value}</p>
-                <p className="text-xs text-muted-foreground uppercase tracking-widest mt-1">{s.label}</p>
+                <p className="text-[10px] sm:text-xs text-muted-foreground uppercase tracking-widest mt-1">{s.label}</p>
               </div>
             ))}
           </div>
@@ -184,7 +184,7 @@ export default function ServicesPage() {
 
         {/* ─── BOTTOM CTA ────────────────────────────────────────── */}
         <section className="border-t border-border bg-muted/30">
-          <div className="max-w-7xl mx-auto px-6 md:px-8 py-24 md:py-32">
+          <div className="max-w-7xl mx-auto px-6 md:px-8 py-16 md:py-32">
             <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
               <div className="max-w-xl">
                 <span className="text-[11px] font-bold tracking-[0.2em] text-primary uppercase block mb-4">

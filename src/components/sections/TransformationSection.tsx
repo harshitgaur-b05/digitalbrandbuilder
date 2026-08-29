@@ -59,25 +59,36 @@ export default function TransformationSection() {
             </svg>
           </div>
 
-          <div className="flex flex-col lg:flex-row justify-between items-stretch lg:items-start relative z-20 gap-12 lg:gap-6">
+          <div className="flex flex-col lg:flex-row justify-between items-stretch lg:items-start relative z-20 gap-6 lg:gap-6">
             {stages.map((stage, i) => (
-              <div key={i} className="flex-1 flex flex-col lg:items-center lg:text-center relative group">
-                <div className="w-[68px] h-[68px] md:w-[80px] md:h-[80px] rounded-full bg-card border border-border shadow-sm flex items-center justify-center relative mb-6 lg:mb-8 z-30 transition-[border-color,box-shadow] duration-500 group-hover:border-primary/50 group-hover:shadow-md shrink-0">
-                  <div className="absolute inset-0 rounded-full bg-primary/10 group-hover:scale-[1.2] group-hover:opacity-0 transition-[transform,opacity] duration-700" />
-                  <div className="flex items-center justify-center z-40">
-                    {stage.icon}
+              <div key={i} className="flex-1 relative group">
+                
+                {/* Mobile Premium Card Shell (hidden on desktop) */}
+                <div className="absolute inset-0 bg-card rounded-[2rem] ring-1 ring-black/5 dark:ring-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgba(255,255,255,0.02)] lg:hidden pointer-events-none transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:ring-primary/30" />
+
+                {/* Content */}
+                <div className="relative z-10 flex flex-col lg:items-center lg:text-center p-6 lg:p-0 h-full">
+                  <div className="w-[56px] h-[56px] lg:w-[80px] lg:h-[80px] rounded-full bg-background lg:bg-card border border-border lg:border-border shadow-sm flex items-center justify-center relative mb-5 lg:mb-8 transition-[border-color,box-shadow,transform] duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:border-primary/50 group-hover:shadow-md group-hover:-translate-y-1 shrink-0">
+                    <div className="absolute inset-0 rounded-full bg-primary/10 group-hover:scale-[1.25] group-hover:opacity-0 transition-[transform,opacity] duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" />
+                    <div className="flex items-center justify-center relative z-20">
+                      {stage.icon}
+                    </div>
+                  </div>
+                  
+                  <div className="flex-grow">
+                    <div className="flex items-center lg:justify-center gap-3 mb-3">
+                      <span className="text-[10px] font-bold text-primary/90 uppercase tracking-[0.2em] bg-primary/10 px-3 py-1 rounded-full shrink-0">
+                        {`0${i + 1}`}
+                      </span>
+                      <h3 className="text-xl font-bold text-foreground tracking-tight transition-colors duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:text-primary">
+                        {stage.title}
+                      </h3>
+                    </div>
+                    <p className="text-sm text-muted-foreground leading-relaxed max-w-sm lg:mx-auto">
+                      {stage.desc}
+                    </p>
                   </div>
                 </div>
-                <div className="pl-4 lg:pl-0 flex-grow">
-                  <div className="flex items-center lg:justify-center gap-2 mb-2">
-                    <span className="text-xs font-bold text-primary/70">0{i + 1}</span>
-                    <h3 className="text-lg md:text-xl font-bold text-foreground tracking-tight">{stage.title}</h3>
-                  </div>
-                  <p className="text-sm md:text-base text-muted-foreground leading-relaxed max-w-sm lg:mx-auto">{stage.desc}</p>
-                </div>
-                {i < stages.length - 1 && (
-                  <div className="absolute left-[34px] md:left-[40px] top-[74px] md:top-[86px] w-[1px] h-[72px] bg-primary/30 lg:hidden" aria-hidden="true" />
-                )}
               </div>
             ))}
           </div>

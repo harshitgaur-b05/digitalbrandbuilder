@@ -80,15 +80,18 @@ export default function Navbar() {
           </Link>
         </div>
 
-        {/* Mobile Toggle */}
-        <button
-          className="block lg:hidden bg-transparent border-none cursor-pointer text-foreground z-50 p-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-lg"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          aria-expanded={mobileMenuOpen}
-          aria-label="Toggle menu"
-        >
-          {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        {/* Mobile Toggle & Theme */}
+        <div className="flex lg:hidden items-center gap-3 z-50">
+          <AnimatedThemeToggler variant="star" />
+          <button
+            className="bg-transparent border-none cursor-pointer text-foreground p-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-lg"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-expanded={mobileMenuOpen}
+            aria-label="Toggle menu"
+          >
+            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Drawer */}
@@ -109,9 +112,7 @@ export default function Navbar() {
               {label}
             </Link>
           ))}
-          <div className="mt-4">
-            <AnimatedThemeToggler variant="star" />
-          </div>
+
           <div className="mt-4">
             <Link
               href="/contact"

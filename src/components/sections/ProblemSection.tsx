@@ -54,11 +54,11 @@ export default function ProblemSection() {
           </div>
 
           {/* Right Column */}
-          <div className="lg:col-span-7 flex flex-col gap-6">
+          <div className="lg:col-span-7 flex overflow-x-auto lg:overflow-visible snap-x snap-mandatory pb-8 lg:pb-0 -mx-6 px-6 lg:mx-0 lg:px-0 lg:flex-col gap-6 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
             {problems.map((prob, i) => (
               <div
                 key={i}
-                className={`bg-card border border-border rounded-2xl p-6 md:p-8 shadow-sm hover:shadow-md dark:shadow-[0_4px_20px_rgba(43,158,220,0.08)] hover:border-primary/50 transition-[transform,box-shadow,border-color] duration-500 motion-safe:hover:-translate-y-1 ${
+                className={`flex-none w-[85vw] sm:w-[350px] lg:w-auto snap-center bg-card border border-border rounded-2xl p-6 md:p-8 shadow-sm hover:shadow-md dark:shadow-[0_4px_20px_rgba(43,158,220,0.08)] hover:border-primary/50 transition-[transform,box-shadow,border-color] duration-500 motion-safe:hover:-translate-y-1 ${
                   i % 2 === 0 ? "lg:mr-8" : "lg:ml-8"
                 }`}
               >
