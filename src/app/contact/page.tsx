@@ -30,10 +30,39 @@ export default function ContactPage() {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: wire up to backend / form service
-    setSubmitted(true);
+    setStatus("submitting");
+    setErrorMessage("");
+
+    try {
+      const res = await fetch("/api/leads", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          service: formData.service,
+          message: `Business: ${formData.business}\n\n${formData.message}`,
+        }),
+      });
+
+      const data = await res.json();
+      if (res.ok && data.success) {
+        setSubmitted(true);
+        setStatus("success");
+      } else {
+        throw new Error(data.error || "Failed to submit request.");
+      }
+    } catch (error: any) {
+      console.error(error);
+      setStatus("error");
+      setErrorMessage(error.message || "An unexpected error occurred.");
+    }
   };
 
   return (
