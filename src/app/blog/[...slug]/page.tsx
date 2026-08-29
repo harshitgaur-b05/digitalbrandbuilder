@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getBlogPost, type BlogSection } from '@/lib/source';
 import Navbar from "@/components/layout/Navbar";
@@ -65,6 +66,26 @@ function renderSection(section: BlogSection, index: number) {
   }
 }
 
+// ── Metadata + JSON-LD ───────────────────────────────────────────────────────
+
+export async function generateMetadata(
+  props: { params: Promise<{ slug: string[] }> }
+): Promise<Metadata> {
+  const { slug } = await props.params;
+  const post = await getBlogPost(slug.join('/'));
+  if (!post) return {};
+
+  return {
+    title: `${post.title} | digitalbrandbuilder`,
+    description: post.description,
+    openGraph: {
+      title: post.title,
+      description: post.description,
+      images: post.image ? [post.image] : [],
+    },
+  };
+}
+
 // ── Page ────────────────────────────────────────────────────────────────────
 
 export default async function Page(props: { params: Promise<{ slug: string[] }> }) {
@@ -82,8 +103,49 @@ export default async function Page(props: { params: Promise<{ slug: string[] }> 
       type: s.type as "heading" | "subheading",
     }));
 
+  // ── FAQ JSON-LD (FAQPage schema) ──────────────────────────────────────────
+  const faqSchema =
+    post.faqs && post.faqs.length > 0
+      ? {
+          '@context': 'https://schema.org',
+          '@type': 'FAQPage',
+          mainEntity: post.faqs.map((faq) => ({
+            '@type': 'Question',
+            name: faq.question,
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: faq.answer,
+            },
+          })),
+        }
+      : null;
+
+  // ── Article JSON-LD ───────────────────────────────────────────────────────
+  const articleSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: post.title,
+    description: post.description,
+    author: { '@type': 'Person', name: post.author ?? 'digitalbrandbuilder' },
+    datePublished: post.date,
+    image: post.image ?? undefined,
+    url: `https://digitalbrandbuilder.in/blog/${post.slug}`,
+  };
+
   return (
     <div className="min-h-screen flex flex-col bg-background text-foreground antialiased">
+      {/* ── Structured Data ── */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+      {faqSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+      )}
+
       <Navbar />
       <main className="flex-grow pt-28 pb-24">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
@@ -176,6 +238,55 @@ export default async function Page(props: { params: Promise<{ slug: string[] }> 
                   post.body?.map((section, i) => renderSection(section, i))
                 )}
               </div>
+
+              {/* ── FAQ Section ────────────────────────────────────────────── */}
+              {post.faqs && post.faqs.length > 0 && (
+                <section className="mt-16" aria-label="Frequently Asked Questions">
+                  <div className="flex items-center gap-3 mb-8">
+                    <div className="h-px flex-1 bg-foreground/8" />
+                    <h2 className="text-xl font-bold text-foreground tracking-tight shrink-0">
+                      Frequently Asked Questions
+                    </h2>
+                    <div className="h-px flex-1 bg-foreground/8" />
+                  </div>
+
+                  <div className="space-y-3">
+                    {post.faqs.map((faq, i) => (
+                      <details
+                        key={i}
+                        className="group bg-card border border-foreground/6 rounded-2xl overflow-hidden transition-all duration-200 open:border-primary/20"
+                      >
+                        <summary className="flex items-start justify-between gap-4 px-6 py-5 cursor-pointer list-none select-none">
+                          <div className="flex items-start gap-3 min-w-0">
+                            <span className="shrink-0 mt-0.5 text-[10px] font-bold text-primary bg-primary/20/10 px-2 py-0.5 rounded-full uppercase tracking-wider">
+                              {faq.tag || `Q${i + 1}`}
+                            </span>
+                            <span className="font-semibold text-foreground text-base leading-snug">
+                              {faq.question}
+                            </span>
+                          </div>
+                          {/* Chevron — rotates on open */}
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            strokeWidth={2}
+                            stroke="currentColor"
+                            className="w-4 h-4 shrink-0 mt-1 text-muted-foreground transition-transform duration-200 group-open:rotate-180"
+                          >
+                            <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                          </svg>
+                        </summary>
+                        <div className="px-6 pb-6 pt-1 border-t border-foreground/5">
+                          <p className="text-muted-foreground text-sm md:text-base leading-relaxed pl-8">
+                            {faq.answer}
+                          </p>
+                        </div>
+                      </details>
+                    ))}
+                  </div>
+                </section>
+              )}
 
               {/* Bottom CTA */}
               <div className="mt-16 bg-card border border-foreground/5 rounded-2xl p-8">

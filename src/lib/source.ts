@@ -2,6 +2,12 @@ import connectDB from '@/lib/mongodb';
 import Blog from '@/lib/models/Blog';
 
 // ─── Public-facing blog post type (used by /blog page & card components) ─────
+export interface FAQ {
+  question: string;
+  answer: string;
+  tag?: string;
+}
+
 export interface BlogPost {
   id: string;
   slug: string;
@@ -18,6 +24,7 @@ export interface BlogPost {
   body?: BlogSection[];
   // Rich HTML content from the Tiptap editor (used on individual post pages)
   content?: string;
+  faqs?: FAQ[];
 }
 
 export interface BlogSection {
@@ -60,6 +67,13 @@ function mapBlog(doc: any): BlogPost {
     published: doc.isActive === true,
     image: doc.heroImage?.url,
     content: doc.content, // rich HTML from Tiptap
+    faqs: doc.faqs?.length
+      ? doc.faqs.map((f: { question: string; answer: string; tag?: string }) => ({
+          question: f.question,
+          answer: f.answer,
+          tag: f.tag,
+        }))
+      : undefined,
   };
 }
 
