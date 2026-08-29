@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
-import { Outfit } from "next/font/google";
+import { Outfit, Geist } from "next/font/google";
+import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
+import { cn } from "@/lib/utils";
+
+const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 const outfit = Outfit({
   variable: "--font-outfit",
@@ -39,9 +43,19 @@ export default function RootLayout({ children }: LayoutProps) {
   return (
     <html
       lang="en"
-      className={`${outfit.variable} h-full antialiased`}
+      className={cn("h-full", "antialiased", outfit.variable, "font-sans", geist.variable)}
+      suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col" suppressHydrationWarning>{children}</body>
+      <body className="min-h-full flex flex-col" suppressHydrationWarning>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   );
 }

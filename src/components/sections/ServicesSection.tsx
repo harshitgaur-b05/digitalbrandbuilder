@@ -4,26 +4,26 @@ import { BentoCard, BentoGrid } from "@/components/ui/BentoGrid";
 // ─── Card Backgrounds ──────────────────────────────────────────────────────
 function WebsiteBg() {
   return (
-    <div className="absolute inset-0 bg-gradient-to-br from-brand-secondary/80 to-transparent flex items-start justify-end p-6 overflow-hidden">
+    <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent flex items-start justify-end p-6 overflow-hidden">
       <div className="flex flex-col gap-2 opacity-40">
         {[140, 200, 160, 220, 180].map((w, i) => (
-          <div key={i} className="h-2 rounded-full bg-sage-deep" style={{ width: w }} />
+          <div key={i} className="h-2 rounded-full bg-primary" style={{ width: w }} />
         ))}
       </div>
-      <div className="absolute bottom-12 right-8 w-24 h-16 rounded-lg border border-sage-soft/25 bg-white/50 shadow-sm" />
-      <div className="absolute bottom-20 right-16 w-16 h-10 rounded-md border border-sage-soft/20 bg-white/40 shadow-sm" />
+      <div className="absolute bottom-12 right-8 w-24 h-16 rounded-lg border border-primary/25 bg-background/50 shadow-sm" />
+      <div className="absolute bottom-20 right-16 w-16 h-10 rounded-md border border-primary/20 bg-background/40 shadow-sm" />
     </div>
   );
 }
 
 function SeoBg() {
   return (
-    <div className="absolute inset-0 bg-gradient-to-br from-sage-soft/10 to-transparent flex items-center justify-center overflow-hidden">
+    <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent flex items-center justify-center overflow-hidden">
       <div className="relative flex items-center justify-center w-32 h-32">
         {[0.15, 0.25, 0.35].map((op, i) => (
           <div
             key={i}
-            className="absolute rounded-full border border-sage-deep"
+            className="absolute rounded-full border border-primary"
             style={{
               width: 60 + i * 36,
               height: 60 + i * 36,
@@ -31,7 +31,7 @@ function SeoBg() {
             }}
           />
         ))}
-        <Search size={22} className="text-sage-deep z-10 opacity-60" />
+        <Search size={22} className="text-primary z-10 opacity-60" />
       </div>
     </div>
   );
@@ -39,7 +39,7 @@ function SeoBg() {
 
 function MarketingBg() {
   return (
-    <div className="absolute inset-0 bg-gradient-to-br from-brand-secondary/60 to-transparent overflow-hidden">
+    <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent overflow-hidden">
       <div className="absolute top-6 right-6 flex flex-col gap-2 opacity-35">
         {[
           { w: 80, h: 8 },
@@ -48,8 +48,8 @@ function MarketingBg() {
           { w: 100, h: 8 },
         ].map((bar, i) => (
           <div key={i} className="flex items-center gap-2">
-            <div className="w-5 h-5 rounded bg-sage-soft/40 shrink-0" />
-            <div className="h-2 rounded-full bg-sage-deep/50" style={{ width: bar.w }} />
+            <div className="w-5 h-5 rounded bg-primary/40 shrink-0" />
+            <div className="h-2 rounded-full bg-primary/50" style={{ width: bar.w }} />
           </div>
         ))}
       </div>
@@ -59,12 +59,12 @@ function MarketingBg() {
 
 function SocialBg() {
   return (
-    <div className="absolute inset-0 bg-gradient-to-br from-sage-soft/8 to-transparent overflow-hidden">
+    <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent overflow-hidden">
       <div className="absolute top-5 right-5 grid grid-cols-3 gap-2 opacity-30">
         {Array.from({ length: 9 }).map((_, i) => (
           <div
             key={i}
-            className="rounded-lg bg-sage-deep"
+            className="rounded-lg bg-primary"
             style={{
               width: 28 + (i % 3) * 6,
               height: 28 + (i % 2) * 10,
@@ -78,13 +78,13 @@ function SocialBg() {
 
 function EcomBg() {
   return (
-    <div className="absolute inset-0 bg-gradient-to-br from-brand-secondary/70 to-transparent overflow-hidden">
+    <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent overflow-hidden">
       <div className="absolute top-5 right-6 flex gap-3 opacity-35">
         {[1, 2, 3].map((i) => (
           <div key={i} className="flex flex-col gap-1.5 items-center">
-            <div className="w-14 h-16 rounded-lg border border-sage-soft/40 bg-white/50" />
-            <div className="w-10 h-1.5 rounded-full bg-sage-deep/40" />
-            <div className="w-8 h-1.5 rounded-full bg-sage-soft/40" />
+            <div className="w-14 h-16 rounded-lg border border-primary/40 bg-background/50" />
+            <div className="w-10 h-1.5 rounded-full bg-primary/40" />
+            <div className="w-8 h-1.5 rounded-full bg-primary/30" />
           </div>
         ))}
       </div>
@@ -94,17 +94,17 @@ function EcomBg() {
 
 function BrandBg() {
   return (
-    <div className="absolute inset-0 bg-gradient-to-br from-sage-soft/10 to-transparent overflow-hidden">
+    <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent overflow-hidden">
       <div className="absolute top-6 right-6 opacity-30 flex flex-col gap-2">
         <div className="flex gap-2">
-          {["#7E8E71", "#A0AD91", "#E8E5DD", "#20211D"].map((c, i) => (
+          {["var(--color-primary)", "var(--color-primary-foreground)", "var(--color-muted)", "var(--color-card)"].map((c, i) => (
             <div key={i} className="w-7 h-7 rounded-full" style={{ backgroundColor: c }} />
           ))}
         </div>
         <div className="flex flex-col gap-1.5 mt-2">
-          <div className="w-28 h-3 rounded-full bg-sage-deep/40" />
-          <div className="w-20 h-2 rounded-full bg-sage-soft/40" />
-          <div className="w-24 h-2 rounded-full bg-sage-soft/25" />
+          <div className="w-28 h-3 rounded-full bg-primary/40" />
+          <div className="w-20 h-2 rounded-full bg-primary/30" />
+          <div className="w-24 h-2 rounded-full bg-primary/20" />
         </div>
       </div>
     </div>
@@ -178,18 +178,18 @@ const features = [
 // ─── Section ───────────────────────────────────────────────────────────────
 export default function ServicesSection() {
   return (
-    <section className="bg-brand-bg py-24 md:py-32 relative overflow-hidden" id="solutions">
-      <div className="absolute pointer-events-none z-0 opacity-25 bottom-[-5%] right-[-5%] w-[45vw] h-[45vw] rounded-[40%_60%_70%_30%/_50%_30%_70%_50%] bg-brand-secondary blur-3xl" />
+    <section className="bg-background py-24 md:py-32 relative overflow-hidden transition-colors duration-500" id="solutions">
+      <div className="absolute pointer-events-none z-0 opacity-25 bottom-[-5%] right-[-5%] w-[45vw] h-[45vw] rounded-[40%_60%_70%_30%/_50%_30%_70%_50%] bg-muted blur-3xl" />
 
       <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10">
         <div className="text-center mb-20 md:mb-24">
-          <span className="text-xs font-semibold tracking-[0.15em] text-sage-deep mb-3 uppercase block">
+          <span className="text-xs font-semibold tracking-[0.15em] text-primary mb-3 uppercase block">
             OUR PLATFORM
           </span>
-          <h2 className="font-sans text-4xl md:text-5xl font-medium leading-[1.15] tracking-tight text-brand-text mb-4">
+          <h2 className="font-sans text-4xl md:text-5xl font-medium leading-[1.15] tracking-tight text-foreground mb-4">
             Everything your business needs to grow online.
           </h2>
-          <p className="text-base md:text-lg text-brand-muted max-w-xl mx-auto leading-relaxed">
+          <p className="text-base md:text-lg text-muted-foreground max-w-xl mx-auto leading-relaxed">
             One integrated growth engine — no juggling multiple agencies.
           </p>
         </div>

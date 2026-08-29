@@ -5,12 +5,12 @@
 
 /* ── Design Tokens: Light Mode ─────────────────────────────── */
 .proto-root {
-  --bg:           #F3F1EB;
-  --bg-secondary: #E8E5DD;
-  --fg:           #20211D;
-  --fg-muted:     #5A5D55;
-  --sage-soft:    #A0AD91;
-  --sage-deep:    #7E8E71;
+  --bg:           var(--background);
+  --bg-secondary: var(--muted);
+  --fg:           var(--foreground);
+  --fg-muted:     var(--muted-foreground);
+  --sage-soft:    oklch(0.65 0.15 250 / 70%);
+  --sage-deep:    var(--primary);
   --card-bg:      #ffffff;
   --card-border:  rgba(32, 33, 29, 0.06);
   --nav-bg:       rgba(243, 241, 235, 0.92);

@@ -1,140 +1,209 @@
 import type { Metadata } from "next";
-import { Laptop, Search, Megaphone, Share2, ShoppingCart, Award, ArrowRight } from "lucide-react";
+import {
+  Laptop,
+  Search,
+  Megaphone,
+  Share2,
+  PenLine,
+  Award,
+  ArrowRight,
+  ArrowUpRight,
+} from "lucide-react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import { BentoCard, BentoGrid } from "@/components/ui/BentoGrid";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Services | digitalbrandbuilder",
-  description: "Explore our full suite of digital growth services — websites, SEO, performance marketing, social media, ecommerce, and brand presence for Indian businesses.",
+  description:
+    "Explore our full suite of digital growth services — websites, SEO, performance marketing, social media, ecommerce, and brand presence for Indian businesses.",
 };
 
-function WebsiteBg() {
-  return (
-    <div className="absolute inset-0 bg-gradient-to-br from-[#E8E5DD]/80 to-transparent flex items-start justify-end p-6 overflow-hidden">
-      <div className="flex flex-col gap-2 opacity-40">
-        {[140, 200, 160, 220, 180].map((w, i) => (
-          <div key={i} className="h-2 rounded-full bg-[#7E8E71]" style={{ width: w }} />
-        ))}
-      </div>
-    </div>
-  );
-}
-function SeoBg() {
-  return (
-    <div className="absolute inset-0 bg-gradient-to-br from-[#A0AD91]/10 to-transparent flex items-center justify-center overflow-hidden">
-      <div className="relative flex items-center justify-center w-32 h-32">
-        {[0.12, 0.22, 0.32].map((op, i) => (
-          <div key={i} className="absolute rounded-full border border-[#7E8E71]" style={{ width: 60 + i * 36, height: 60 + i * 36, opacity: op }} />
-        ))}
-        <Search size={22} className="text-[#7E8E71] z-10 opacity-60" />
-      </div>
-    </div>
-  );
-}
-function MarketingBg() {
-  return (
-    <div className="absolute inset-0 bg-gradient-to-br from-[#E8E5DD]/60 to-transparent overflow-hidden">
-      <div className="absolute top-6 right-6 flex flex-col gap-2 opacity-35">
-        {[80, 120, 60, 100].map((w, i) => (
-          <div key={i} className="flex items-center gap-2">
-            <div className="w-5 h-5 rounded bg-[#A0AD91]/40 shrink-0" />
-            <div className="h-2 rounded-full bg-[#7E8E71]/50" style={{ width: w }} />
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-function SocialBg() {
-  return (
-    <div className="absolute inset-0 bg-gradient-to-br from-[#A0AD91]/8 to-transparent overflow-hidden">
-      <div className="absolute top-5 right-5 grid grid-cols-3 gap-2 opacity-30">
-        {Array.from({ length: 9 }).map((_, i) => (
-          <div key={i} className="rounded-lg bg-[#7E8E71]" style={{ width: 28 + (i % 3) * 6, height: 28 + (i % 2) * 10 }} />
-        ))}
-      </div>
-    </div>
-  );
-}
-function EcomBg() {
-  return (
-    <div className="absolute inset-0 bg-gradient-to-br from-[#E8E5DD]/70 to-transparent overflow-hidden">
-      <div className="absolute top-5 right-6 flex gap-3 opacity-35">
-        {[1, 2, 3].map((i) => (
-          <div key={i} className="flex flex-col gap-1.5 items-center">
-            <div className="w-14 h-16 rounded-lg border border-[#A0AD91]/40 bg-white/50" />
-            <div className="w-10 h-1.5 rounded-full bg-[#7E8E71]/40" />
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-function BrandBg() {
-  return (
-    <div className="absolute inset-0 bg-gradient-to-br from-[#A0AD91]/10 to-transparent overflow-hidden">
-      <div className="absolute top-6 right-6 opacity-30 flex flex-col gap-2">
-        <div className="flex gap-2">
-          {["#7E8E71", "#A0AD91", "#E8E5DD", "#20211D"].map((c, i) => (
-            <div key={i} className="w-7 h-7 rounded-full" style={{ backgroundColor: c }} />
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
-
 const services = [
-  { Icon: Laptop, name: "Websites", description: "Speed-optimized, high-converting digital storefronts with flawless mobile experience and polished transitions that lock in trust from the first visit.", href: "#websites", cta: "Learn more", background: <WebsiteBg />, className: "lg:col-span-2", id: "websites" },
-  { Icon: Search, name: "SEO", description: "Local mapping and keyword authority that puts you where local buyers look. We optimize citations, keywords, and your full code structure.", href: "/services/seo", cta: "Learn more", background: <SeoBg />, className: "lg:col-span-1", id: "seo" },
-  { Icon: Megaphone, name: "Performance Marketing", description: "Paid search and social campaigns targeting buying intent. Google Ads, Meta Ads, retargeting — maximizing acquisition through proven funnels.", href: "#marketing", cta: "Learn more", background: <MarketingBg />, className: "lg:col-span-1", id: "marketing" },
-  { Icon: Share2, name: "Social Media", description: "An organic content engine elevating your brand character. Design templates, editorial copy, and reels to build a loyal community.", href: "#social", cta: "Learn more", background: <SocialBg />, className: "lg:col-span-2", id: "social" },
-  { Icon: ShoppingCart, name: "Ecommerce", description: "Sophisticated Shopify or custom storefronts built to remove friction — advanced filtering, cart optimization, and checkout tuning.", href: "#ecommerce", cta: "Learn more", background: <EcomBg />, className: "lg:col-span-2", id: "ecommerce" },
-  { Icon: Award, name: "Brand Presence", description: "Complete visual frameworks — logos, color palettes, and typographic guides so your offline legacy looks premium online.", href: "#brand", cta: "Learn more", background: <BrandBg />, className: "lg:col-span-1", id: "brand" },
+  {
+    number: "01",
+    Icon: Laptop,
+    name: "Websites",
+    description:
+      "Speed-optimized, high-converting digital storefronts with flawless mobile experience and polished transitions that lock in trust from the first visit.",
+    href: "#websites",
+    span: "lg:col-span-2",
+    accent: true,
+  },
+  {
+    number: "02",
+    Icon: Search,
+    name: "SEO + AEO + GEO",
+    description:
+      "Local mapping and keyword authority that puts you where local buyers look — traditional rankings, voice search, and AI-powered discovery.",
+    href: "/services/seo",
+    span: "lg:col-span-1",
+    accent: false,
+  },
+  {
+    number: "03",
+    Icon: Megaphone,
+    name: "Performance Marketing",
+    description:
+      "Paid search and social campaigns targeting buying intent. Google Ads, Meta Ads, retargeting — maximizing acquisition through proven funnels.",
+    href: "#marketing",
+    span: "lg:col-span-1",
+    accent: false,
+  },
+  {
+    number: "04",
+    Icon: Share2,
+    name: "Social Media",
+    description:
+      "An organic content engine elevating your brand character. Design templates, editorial copy, and reels to build a loyal community.",
+    href: "#social",
+    span: "lg:col-span-2",
+    accent: true,
+  },
+  {
+    number: "05",
+    Icon: PenLine,
+    name: "Content Writing",
+    description:
+      "SEO-driven blogs, landing pages, and brand copy that attract, educate, and convert — written by humans who understand your industry and your audience.",
+    href: "#content",
+    span: "lg:col-span-2",
+    accent: false,
+  },
+  {
+    number: "06",
+    Icon: Award,
+    name: "Brand Presence",
+    description:
+      "Complete visual frameworks — logos, color palettes, and typographic guides so your offline legacy looks premium online.",
+    href: "#brand",
+    span: "lg:col-span-1",
+    accent: true,
+  },
 ];
 
 export default function ServicesPage() {
   return (
-    <div className="min-h-screen flex flex-col bg-[#F3F1EB] text-[#20211D] antialiased">
+    <div className="min-h-screen flex flex-col bg-background text-foreground antialiased">
       <Navbar />
-      <main className="flex-grow">
 
-        {/* Page Hero */}
-        <section className="relative pt-36 pb-20 overflow-hidden bg-[#F3F1EB]">
-          <div className="absolute pointer-events-none top-[-10%] right-[-5%] w-[45vw] h-[45vw] rounded-[40%_60%_30%_70%/_60%_30%_70%_40%] bg-[#E8E5DD] opacity-40 blur-3xl" />
-          <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10">
-            <span className="text-xs font-semibold tracking-[0.18em] text-[#7E8E71] mb-4 uppercase block">OUR SERVICES</span>
-            <h1 className="font-sans text-5xl md:text-7xl font-medium leading-[1.05] tracking-tight text-[#20211D] mb-6 max-w-4xl">
-              Every tool your business needs to win online.
-            </h1>
-            <p className="text-lg md:text-xl text-[#5A5D55] max-w-2xl leading-relaxed">
-              One integrated growth engine — websites, SEO, marketing, social, and brand — built and run for you.
-            </p>
+      {/* ── Background ambient orbs — matches Hero.tsx language ── */}
+      <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
+        <div className="absolute -top-32 -right-32 w-[55vw] h-[55vw] rounded-[42%_58%_30%_70%/_60%_30%_68%_40%] bg-[rgba(255,165,0,0.10)] dark:bg-[rgba(255,165,0,0.07)] blur-3xl" />
+        <div className="absolute -bottom-32 -left-32 w-[40vw] h-[40vw] rounded-[50%_30%_60%_40%/_40%_60%_30%_50%] bg-[rgba(43,158,220,0.12)] dark:bg-[rgba(43,158,220,0.08)] blur-3xl" />
+      </div>
+
+      <main className="flex-grow relative z-10">
+
+        {/* ─── HERO ──────────────────────────────────────────────── */}
+        <section className="relative pt-28 pb-16 md:pt-36 md:pb-24 px-6 md:px-8 max-w-7xl mx-auto">
+          <span className="text-[11px] font-bold tracking-[0.2em] text-primary mb-5 uppercase block">
+            OUR SERVICES
+          </span>
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
+            <div className="lg:col-span-8">
+              <h1 className="font-sans text-[clamp(2.5rem,6vw,5rem)] font-medium leading-[1.05] tracking-[-0.03em] text-foreground">
+                Every tool your business needs to{" "}
+                <span className="italic font-normal text-primary">win online.</span>
+              </h1>
+            </div>
+            <div className="lg:col-span-4 lg:pb-2">
+              <p className="text-base text-muted-foreground leading-relaxed border-l border-primary/40 pl-4">
+                One integrated growth engine — websites, SEO, marketing, social, and brand — built and run for you.
+              </p>
+            </div>
+          </div>
+
+          {/* Stat strip — uses site card pattern */}
+          <div className="mt-12 grid grid-cols-3 divide-x divide-border border border-border rounded-2xl overflow-hidden bg-card shadow-sm">
+            {[
+              { label: "Services", value: "6" },
+              { label: "Industries served", value: "12+" },
+              { label: "Clients grown", value: "40+" },
+            ].map((s) => (
+              <div key={s.label} className="px-6 py-5">
+                <p className="text-2xl md:text-3xl font-semibold text-foreground tracking-tight">{s.value}</p>
+                <p className="text-xs text-muted-foreground uppercase tracking-widest mt-1">{s.label}</p>
+              </div>
+            ))}
           </div>
         </section>
 
-        {/* Bento Grid */}
-        <section className="pb-24 md:pb-32">
-          <div className="max-w-7xl mx-auto px-6 md:px-8">
-            <BentoGrid className="lg:grid-rows-3">
-              {services.map((service) => (
-                <BentoCard key={service.name} {...service} />
-              ))}
-            </BentoGrid>
+        {/* ─── SERVICE CARDS ─────────────────────────────────────── */}
+        <section className="pb-24 md:pb-32 px-6 md:px-8 max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+            {services.map((service) => (
+              <div
+                key={service.name}
+                className={[
+                  "group relative flex flex-col bg-card border border-border rounded-2xl",
+                  "shadow-sm hover:shadow-[0_8px_30px_rgba(43,158,220,0.12)] dark:hover:shadow-[0_8px_30px_rgba(43,158,220,0.18)]",
+                  "hover:border-primary/40 motion-safe:hover:-translate-y-1",
+                  "transition-[transform,box-shadow,border-color] duration-500",
+                  service.span,
+                ].join(" ")}
+              >
+                {/* Subtle top accent line */}
+                <div className={`h-px w-full ${service.accent ? "bg-gradient-to-r from-primary/60 via-primary/20 to-transparent" : "bg-border"}`} />
+
+                <div className="p-7 md:p-8 flex flex-col gap-5 flex-1">
+                  {/* Header row: icon + number */}
+                  <div className="flex items-start justify-between">
+                    <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+                      <service.Icon size={20} className="text-primary" strokeWidth={1.8} />
+                    </div>
+                    <span className="font-mono text-[11px] text-muted-foreground/60 tracking-widest pt-1">
+                      {service.number}
+                    </span>
+                  </div>
+
+                  {/* Text */}
+                  <div className="flex-1">
+                    <h2 className="font-sans text-xl font-semibold text-foreground tracking-tight mb-2 leading-snug">
+                      {service.name}
+                    </h2>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      {service.description}
+                    </p>
+                  </div>
+
+                  {/* CTA */}
+                  <Link
+                    href={service.href}
+                    className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary hover:gap-2.5 transition-all duration-300 mt-auto pt-2 border-t border-border"
+                  >
+                    Explore service
+                    <ArrowUpRight size={13} strokeWidth={2.5} />
+                  </Link>
+                </div>
+              </div>
+            ))}
           </div>
         </section>
 
-        {/* Bottom CTA */}
-        <section className="py-20 bg-[#E8E5DD] border-t border-[#A0AD91]/15">
-          <div className="max-w-3xl mx-auto px-6 md:px-8 text-center">
-            <h2 className="font-sans text-3xl md:text-5xl font-medium tracking-tight text-[#20211D] mb-5">
-              Ready to grow your digital presence?
-            </h2>
-            <a href="/contact" className="inline-flex items-center gap-2 bg-[#20211D] text-[#F3F1EB] px-8 py-4 rounded-full text-base font-medium hover:bg-[#7E8E71] transition-all duration-300 group">
-              Build Your Digital Brand
-              <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
-            </a>
+        {/* ─── BOTTOM CTA ────────────────────────────────────────── */}
+        <section className="border-t border-border bg-muted/30">
+          <div className="max-w-7xl mx-auto px-6 md:px-8 py-24 md:py-32">
+            <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+              <div className="max-w-xl">
+                <span className="text-[11px] font-bold tracking-[0.2em] text-primary uppercase block mb-4">
+                  Ready to start?
+                </span>
+                <h2 className="font-sans text-3xl md:text-5xl font-medium tracking-tight text-foreground leading-tight">
+                  Let's grow your{" "}
+                  <span className="italic font-normal text-primary">digital presence.</span>
+                </h2>
+              </div>
+
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-3 bg-primary text-primary-foreground px-7 py-3.5 rounded-full text-sm font-medium shadow-sm hover:shadow-[0_0_20px_rgba(255,165,0,0.4)] dark:hover:shadow-[0_0_20px_rgba(255,165,0,0.6)] motion-safe:hover:-translate-y-1 transition-[transform,box-shadow] duration-500 group shrink-0"
+              >
+                Build Your Digital Brand
+                <ArrowRight size={16} strokeWidth={2} className="transition-transform duration-300 group-hover:translate-x-1" />
+              </Link>
+            </div>
           </div>
         </section>
 

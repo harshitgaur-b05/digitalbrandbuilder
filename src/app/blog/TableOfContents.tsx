@@ -42,10 +42,10 @@ export default function TableOfContents({ items }: { items: TocItem[] }) {
   if (items.length === 0) return null;
 
   return (
-    <div className="bg-white border border-[#20211D]/6 rounded-2xl shadow-xs overflow-hidden">
+    <div className="bg-card border border-foreground/6 rounded-2xl shadow-xs overflow-hidden">
       {/* Header */}
-      <div className="px-5 pt-5 pb-3 border-b border-[#20211D]/6">
-        <p className="text-[10px] font-bold tracking-widest text-[#20211D] uppercase">
+      <div className="px-5 pt-5 pb-3 border-b border-foreground/6">
+        <p className="text-[10px] font-bold tracking-widest text-foreground uppercase">
           On this page
         </p>
       </div>
@@ -67,15 +67,15 @@ export default function TableOfContents({ items }: { items: TocItem[] }) {
                 ${item.type === "subheading" ? "pl-5" : ""}
                 ${
                   isActive
-                    ? "bg-[#A0AD91]/10 text-[#20211D] font-semibold"
-                    : "text-[#5A5D55] hover:text-[#20211D] hover:bg-[#F3F1EB]"
+                    ? "bg-primary/20/10 text-foreground font-semibold"
+                    : "text-muted-foreground hover:text-foreground hover:bg-background"
                 }
               `}
             >
               {/* Active indicator bar */}
               <span
                 className={`mt-[0.35rem] shrink-0 w-[2px] h-[0.85rem] rounded-full transition-all duration-200 ${
-                  isActive ? "bg-[#7E8E71]" : "bg-transparent group-hover:bg-[#A0AD91]/40"
+                  isActive ? "bg-primary" : "bg-transparent group-hover:bg-primary/20/40"
                 }`}
               />
               {item.label}
@@ -86,3 +86,4 @@ export default function TableOfContents({ items }: { items: TocItem[] }) {
     </div>
   );
 }
+

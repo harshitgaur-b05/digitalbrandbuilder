@@ -78,18 +78,18 @@ export default function LeadsManagerClient({ initialLeads }: LeadsManagerClientP
     });
 
   return (
-    <div className="min-h-screen bg-[#F3F1EB] p-4 md:p-8 font-sans selection:bg-[#A0AD91]/30">
-      <div className="max-w-7xl mx-auto bg-white/80 border border-[#E8E5DD] rounded-2xl p-6 md:p-8 shadow-xl shadow-[#20211D]/5">
+    <div className="min-h-screen bg-background p-4 md:p-8 font-sans selection:bg-primary/20/30">
+      <div className="max-w-7xl mx-auto bg-card/80 border border-muted rounded-2xl p-6 md:p-8 shadow-xl shadow-foreground/5">
         
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-8 pb-6 border-b border-[#E8E5DD] gap-4">
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-8 pb-6 border-b border-muted gap-4">
           <div>
-            <h1 className="text-3xl font-bold text-[#20211D]">Lead Management</h1>
-            <p className="text-sm text-[#5A5D55] mt-1">Review and manage contact submissions from your website.</p>
+            <h1 className="text-3xl font-bold text-foreground">Lead Management</h1>
+            <p className="text-sm text-muted-foreground mt-1">Review and manage contact submissions from your website.</p>
           </div>
           <a
             href="/admin"
-            className="inline-flex items-center px-4 py-2 border border-[#E8E5DD] rounded-xl text-sm font-semibold text-[#5A5D55] hover:bg-[#F3F1EB] transition-smooth cursor-pointer w-fit"
+            className="inline-flex items-center px-4 py-2 border border-muted rounded-xl text-sm font-semibold text-muted-foreground hover:bg-background transition-smooth cursor-pointer w-fit"
           >
             &larr; Back to Dashboard
           </a>
@@ -104,8 +104,8 @@ export default function LeadsManagerClient({ initialLeads }: LeadsManagerClientP
                 onClick={() => setFilter(status)}
                 className={`px-4 py-2 rounded-xl text-sm font-semibold capitalize transition-smooth cursor-pointer ${
                   filter === status
-                    ? 'bg-[#7E8E71] text-white'
-                    : 'bg-[#F3F1EB] text-[#5A5D55] hover:bg-[#E8E5DD]'
+                    ? 'bg-primary text-white'
+                    : 'bg-background text-muted-foreground hover:bg-muted'
                 }`}
               >
                 {status}
@@ -119,7 +119,7 @@ export default function LeadsManagerClient({ initialLeads }: LeadsManagerClientP
               placeholder="Search leads..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full px-4 py-2 bg-[#F3F1EB]/40 border border-[#E8E5DD] rounded-xl text-[#20211D] placeholder-[#5A5D55]/50 focus:outline-none focus:ring-2 focus:ring-[#A0AD91] focus:border-[#7E8E71] transition-smooth text-sm"
+              className="w-full px-4 py-2 bg-background/40 border border-muted rounded-xl text-foreground placeholder-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-smooth text-sm"
             />
           </div>
         </div>
@@ -130,8 +130,8 @@ export default function LeadsManagerClient({ initialLeads }: LeadsManagerClientP
           {/* Leads List */}
           <div className="lg:col-span-2 space-y-4">
             {filteredLeads.length === 0 ? (
-              <div className="text-center py-12 bg-[#F3F1EB]/20 border border-[#E8E5DD] rounded-2xl">
-                <p className="text-[#5A5D55]">No leads found matching your filters.</p>
+              <div className="text-center py-12 bg-background/20 border border-muted rounded-2xl">
+                <p className="text-muted-foreground">No leads found matching your filters.</p>
               </div>
             ) : (
               filteredLeads.map((lead) => (
@@ -140,16 +140,16 @@ export default function LeadsManagerClient({ initialLeads }: LeadsManagerClientP
                   onClick={() => setSelectedLead(lead)}
                   className={`p-5 border rounded-2xl transition-smooth cursor-pointer ${
                     selectedLead?.id === lead.id
-                      ? 'border-[#7E8E71] bg-[#7E8E71]/5 shadow-sm'
-                      : 'border-[#E8E5DD] bg-white hover:border-[#A0AD91]'
+                      ? 'border-primary bg-primary/5 shadow-sm'
+                      : 'border-muted bg-card hover:border-primary/20'
                   }`}
                 >
                   <div className="flex justify-between items-start gap-4">
                     <div>
-                      <h4 className="font-bold text-[#20211D]">{lead.name}</h4>
-                      <p className="text-sm text-[#5A5D55]">{lead.email}</p>
+                      <h4 className="font-bold text-foreground">{lead.name}</h4>
+                      <p className="text-sm text-muted-foreground">{lead.email}</p>
                       {lead.service && (
-                        <span className="inline-block mt-2 text-xs bg-[#E8E5DD] text-[#20211D] px-2.5 py-1 rounded-lg font-medium">
+                        <span className="inline-block mt-2 text-xs bg-muted text-foreground px-2.5 py-1 rounded-lg font-medium">
                           Service: {lead.service}
                         </span>
                       )}
@@ -165,7 +165,7 @@ export default function LeadsManagerClient({ initialLeads }: LeadsManagerClientP
                       }`}>
                         {lead.status}
                       </span>
-                      <span className="text-xs text-[#5A5D55]/60">
+                      <span className="text-xs text-muted-foreground/60">
                         {new Date(lead.createdAt).toLocaleDateString('en-US', {
                           month: 'short',
                           day: 'numeric',
@@ -183,15 +183,15 @@ export default function LeadsManagerClient({ initialLeads }: LeadsManagerClientP
           {/* Lead Detail Panel */}
           <div className="lg:col-span-1">
             {selectedLead ? (
-              <div className="bg-[#F3F1EB]/40 border border-[#E8E5DD] rounded-2xl p-6 sticky top-6">
+              <div className="bg-background/40 border border-muted rounded-2xl p-6 sticky top-6">
                 <div className="flex justify-between items-start mb-6">
                   <div>
-                    <h3 className="text-xl font-bold text-[#20211D]">{selectedLead.name}</h3>
-                    <p className="text-sm text-[#5A5D55]/80 mt-1">Submitted details</p>
+                    <h3 className="text-xl font-bold text-foreground">{selectedLead.name}</h3>
+                    <p className="text-sm text-muted-foreground/80 mt-1">Submitted details</p>
                   </div>
                   <button
                     onClick={() => deleteLead(selectedLead.id)}
-                    className="p-2 text-[#5A5D55] hover:text-red-600 hover:bg-red-50 rounded-lg transition-smooth cursor-pointer"
+                    className="p-2 text-muted-foreground hover:text-red-600 hover:bg-red-50 rounded-lg transition-smooth cursor-pointer"
                     title="Delete Lead"
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
@@ -202,29 +202,29 @@ export default function LeadsManagerClient({ initialLeads }: LeadsManagerClientP
 
                 <div className="space-y-4 mb-6">
                   <div>
-                    <label className="text-[10px] font-bold text-[#5A5D55] uppercase tracking-wider">Email</label>
-                    <p className="text-sm font-semibold text-[#20211D]">{selectedLead.email}</p>
+                    <label className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider">Email</label>
+                    <p className="text-sm font-semibold text-foreground">{selectedLead.email}</p>
                   </div>
                   <div>
-                    <label className="text-[10px] font-bold text-[#5A5D55] uppercase tracking-wider">Phone</label>
-                    <p className="text-sm font-semibold text-[#20211D]">{selectedLead.phone || 'N/A'}</p>
+                    <label className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider">Phone</label>
+                    <p className="text-sm font-semibold text-foreground">{selectedLead.phone || 'N/A'}</p>
                   </div>
                   {selectedLead.service && (
                     <div>
-                      <label className="text-[10px] font-bold text-[#5A5D55] uppercase tracking-wider">Interested Service</label>
-                      <p className="text-sm font-semibold text-[#20211D]">{selectedLead.service}</p>
+                      <label className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider">Interested Service</label>
+                      <p className="text-sm font-semibold text-foreground">{selectedLead.service}</p>
                     </div>
                   )}
                   <div>
-                    <label className="text-[10px] font-bold text-[#5A5D55] uppercase tracking-wider">Message</label>
-                    <div className="mt-1 bg-white border border-[#E8E5DD] p-4 rounded-xl text-sm text-[#20211D] whitespace-pre-wrap leading-relaxed max-h-60 overflow-y-auto">
+                    <label className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider">Message</label>
+                    <div className="mt-1 bg-card border border-muted p-4 rounded-xl text-sm text-foreground whitespace-pre-wrap leading-relaxed max-h-60 overflow-y-auto">
                       {selectedLead.message}
                     </div>
                   </div>
                 </div>
 
-                <div className="border-t border-[#E8E5DD] pt-4">
-                  <label className="block text-[10px] font-bold text-[#5A5D55] uppercase tracking-wider mb-2">Update Status</label>
+                <div className="border-t border-muted pt-4">
+                  <label className="block text-[10px] font-bold text-muted-foreground uppercase tracking-wider mb-2">Update Status</label>
                   <div className="flex gap-2">
                     {(['unread', 'contacted', 'archived'] as const).map((status) => (
                       <button
@@ -233,8 +233,8 @@ export default function LeadsManagerClient({ initialLeads }: LeadsManagerClientP
                         onClick={() => updateStatus(selectedLead.id, status)}
                         className={`flex-1 py-2 px-3 border rounded-xl text-xs font-semibold capitalize transition-smooth cursor-pointer ${
                           selectedLead.status === status
-                            ? 'bg-[#7E8E71] text-white border-[#7E8E71]'
-                            : 'bg-white text-[#5A5D55] border-[#E8E5DD] hover:bg-[#F3F1EB]'
+                            ? 'bg-primary text-white border-primary'
+                            : 'bg-card text-muted-foreground border-muted hover:bg-background'
                         }`}
                       >
                         {status}
@@ -244,7 +244,7 @@ export default function LeadsManagerClient({ initialLeads }: LeadsManagerClientP
                 </div>
               </div>
             ) : (
-              <div className="hidden lg:flex flex-col items-center justify-center h-80 border-2 border-dashed border-[#E8E5DD] rounded-2xl p-6 text-center text-[#5A5D55]">
+              <div className="hidden lg:flex flex-col items-center justify-center h-80 border-2 border-dashed border-muted rounded-2xl p-6 text-center text-muted-foreground">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8 mb-2 opacity-50">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h3.75M9 15h3.375c.621 0 1.125-.504 1.125-1.125V14.25c0-.621-.504-1.125-1.125-1.125H9.75M8.25 21h8.25A2.25 2.25 0 0 0 18.75 18.75V5.25A2.25 2.25 0 0 0 16.5 3H8.25A2.25 2.25 0 0 0 6 5.25v13.5A2.25 2.25 0 0 0 8.25 21Zm0 0V12m0 0h1.5" />
                 </svg>
@@ -258,3 +258,4 @@ export default function LeadsManagerClient({ initialLeads }: LeadsManagerClientP
     </div>
   );
 }
+

@@ -6,43 +6,43 @@ export default function ProcessSection() {
       num: "01",
       title: "Tell us about your business",
       desc: "Share your target customers, competitors, and products. We analyze what drives demand in your specific industry.",
-      icon: <MessageSquare className="text-sage-deep w-6 h-6" />,
+      icon: <MessageSquare className="text-primary w-6 h-6" />,
     },
     {
       num: "02",
       title: "Build your digital foundation",
       desc: "We build your premium, high-speed custom website and load the initial branding, layout, and visual presence.",
-      icon: <Hammer className="text-sage-deep w-6 h-6" />,
+      icon: <Hammer className="text-primary w-6 h-6" />,
     },
     {
       num: "03",
       title: "Get discovered",
       desc: "We configure structural SEO parameters, claim local citations, and set up Google Search Maps directories.",
-      icon: <Search className="text-sage-deep w-6 h-6" />,
+      icon: <Search className="text-primary w-6 h-6" />,
     },
     {
       num: "04",
       title: "Turn attention into customers",
       desc: "We deploy hyper-targeted ads and strategic organic content campaigns that turn searchers into buying customers.",
-      icon: <Users className="text-sage-deep w-6 h-6" />,
+      icon: <Users className="text-primary w-6 h-6" />,
     },
     {
       num: "05",
       title: "Keep improving",
       desc: "We optimize conversions, analyze analytics, and adapt content maps so your digital engine keeps driving client flow.",
-      icon: <RotateCw className="text-sage-deep w-6 h-6" />,
+      icon: <RotateCw className="text-primary w-6 h-6" />,
     },
   ];
 
   return (
-    <section className="bg-brand-bg py-24 md:py-32 relative overflow-hidden" id="how-it-works">
+    <section className="bg-background py-24 md:py-32 relative overflow-hidden transition-colors duration-500" id="how-it-works">
       <div className="max-w-7xl mx-auto px-6 md:px-8">
 
         <div className="mb-20">
-          <span className="text-xs font-semibold tracking-[0.15em] text-sage-deep mb-3 uppercase block">
+          <span className="text-xs font-semibold tracking-[0.15em] text-primary mb-3 uppercase block">
             THE PROCESS
           </span>
-          <h2 className="font-sans text-4xl md:text-5xl font-medium leading-[1.15] tracking-tight text-brand-text max-w-xl">
+          <h2 className="font-sans text-4xl md:text-5xl font-medium leading-[1.15] tracking-tight text-foreground max-w-xl">
             From idea to digital growth, without the complexity.
           </h2>
         </div>
@@ -51,21 +51,21 @@ export default function ProcessSection() {
           {steps.map((step, idx) => (
             <div
               key={idx}
-              className="flex flex-col md:flex-row items-start gap-6 md:gap-12 bg-white border border-brand-text/5 rounded-2xl p-6 md:p-8 hover:border-sage-soft transition-all duration-300 hover:shadow-xs group"
+              className="flex flex-col md:flex-row items-start gap-6 md:gap-12 bg-card border border-border rounded-2xl p-6 md:p-8 hover:border-primary/50 transition-[transform,box-shadow,border-color] duration-300 hover:shadow-md dark:shadow-[0_4px_20px_rgba(43,158,220,0.08)] motion-safe:hover:-translate-y-1 group"
             >
               <div className="flex items-center gap-4 shrink-0">
-                <span className="font-sans text-3xl font-light text-sage-soft group-hover:text-sage-deep transition-colors duration-300">
+                <span className="font-sans text-3xl font-light text-primary/70 group-hover:text-primary transition-colors duration-300">
                   {step.num}
                 </span>
-                <div className="w-12 h-12 rounded-xl bg-sage-soft/10 flex items-center justify-center">
+                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
                   {step.icon}
                 </div>
               </div>
               <div className="flex-grow">
-                <h3 className="text-lg md:text-xl font-bold text-brand-text mb-2 tracking-tight group-hover:text-sage-deep transition-colors duration-300">
+                <h3 className="text-lg md:text-xl font-bold text-foreground mb-2 tracking-tight group-hover:text-primary transition-colors duration-300">
                   {step.title}
                 </h3>
-                <p className="text-sm md:text-base text-brand-muted leading-relaxed max-w-3xl">
+                <p className="text-sm md:text-base text-muted-foreground leading-relaxed max-w-3xl">
                   {step.desc}
                 </p>
               </div>

@@ -8,7 +8,7 @@ export default function CaseStudies() {
       challenge: "Offline retail store struggling with flat local foot traffic and no direct digital sales channel to reach buyers outside the city.",
       solution: "Developed an editorial ecommerce platform, optimized keyword relevance for regional search intent, and ran localized creative social campaigns.",
       result: "[Placeholder: Pending live validation. Real metrics and traffic increases will populate here post launch.]",
-      icon: <Sparkles className="w-5 h-5 text-sage-deep" />,
+      icon: <Sparkles className="w-5 h-5 text-primary" />,
     },
     {
       industry: "Local Manufacturing & Engineering",
@@ -16,22 +16,22 @@ export default function CaseStudies() {
       challenge: "A legacy B2B operation with zero online presence, losing contract bidding opportunities to competitors with polished sites.",
       solution: "Designed a clean, modern digital presence displaying machines, credentials, and projects, coupled with localized search-optimization for corporate buyers.",
       result: "[Placeholder: Pending client authorization. Verified contract inquiry rates will be published here.]",
-      icon: <TrendingUp className="w-5 h-5 text-sage-deep" />,
+      icon: <TrendingUp className="w-5 h-5 text-primary" />,
     },
   ];
 
   return (
-    <section className="bg-brand-secondary py-24 md:py-32 relative overflow-hidden border-y border-sage-soft/10" id="results">
+    <section className="bg-muted py-24 md:py-32 relative overflow-hidden border-y border-border transition-colors duration-500" id="results">
       <div className="max-w-7xl mx-auto px-6 md:px-8">
 
         <div className="mb-20 text-center">
-          <span className="text-xs font-semibold tracking-[0.15em] text-sage-deep mb-3 uppercase block">
+          <span className="text-xs font-semibold tracking-[0.15em] text-primary mb-3 uppercase block">
             PROOF & PERFORMANCE
           </span>
-          <h2 className="font-sans text-4xl md:text-5xl font-medium leading-[1.15] tracking-tight text-brand-text mb-4">
+          <h2 className="font-sans text-4xl md:text-5xl font-medium leading-[1.15] tracking-tight text-foreground mb-4">
             How we partner with brands.
           </h2>
-          <p className="text-base md:text-lg text-brand-muted max-w-xl mx-auto leading-relaxed">
+          <p className="text-base md:text-lg text-muted-foreground max-w-xl mx-auto leading-relaxed">
             We hold ourselves to a strict standard of truth. Here is the framework of our results, waiting for your data to tell the story.
           </p>
         </div>
@@ -40,43 +40,43 @@ export default function CaseStudies() {
           {cases.map((cs, i) => (
             <div
               key={i}
-              className="bg-white border border-brand-text/5 rounded-2xl p-8 flex flex-col justify-between hover:shadow-xs hover:border-sage-soft transition-all duration-300"
+              className="bg-card border border-border rounded-2xl p-8 flex flex-col justify-between hover:shadow-md dark:shadow-[0_4px_20px_rgba(43,158,220,0.08)] hover:border-primary/50 transition-[box-shadow,border-color,transform] duration-300 motion-safe:hover:-translate-y-1"
             >
               <div>
                 <div className="flex justify-between items-center mb-6">
-                  <span className="text-xs font-bold tracking-widest text-sage-deep bg-sage-soft/10 px-3 py-1 rounded-full uppercase">
+                  <span className="text-xs font-bold tracking-widest text-primary bg-primary/10 px-3 py-1 rounded-full uppercase">
                     {cs.label}
                   </span>
-                  <div className="w-9 h-9 rounded-lg bg-sage-soft/10 flex items-center justify-center">
+                  <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center">
                     {cs.icon}
                   </div>
                 </div>
 
-                <h3 className="text-2xl font-bold text-brand-text mb-8 tracking-tight">{cs.industry}</h3>
+                <h3 className="text-2xl font-bold text-foreground mb-8 tracking-tight">{cs.industry}</h3>
 
                 <div className="space-y-6">
-                  <div className="border-l-2 border-sage-soft/20 pl-4">
-                    <h4 className="text-xs font-semibold tracking-wider text-sage-deep uppercase mb-1">Challenge</h4>
-                    <p className="text-sm text-brand-muted leading-relaxed">{cs.challenge}</p>
+                  <div className="border-l-2 border-primary/20 pl-4">
+                    <h4 className="text-xs font-semibold tracking-wider text-primary uppercase mb-1">Challenge</h4>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{cs.challenge}</p>
                   </div>
-                  <div className="border-l-2 border-sage-soft/20 pl-4">
-                    <h4 className="text-xs font-semibold tracking-wider text-sage-deep uppercase mb-1">Solution</h4>
-                    <p className="text-sm text-brand-muted leading-relaxed">{cs.solution}</p>
+                  <div className="border-l-2 border-primary/20 pl-4">
+                    <h4 className="text-xs font-semibold tracking-wider text-primary uppercase mb-1">Solution</h4>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{cs.solution}</p>
                   </div>
-                  <div className="border-l-2 border-sage-soft/40 pl-4">
-                    <h4 className="text-xs font-bold tracking-wider text-brand-text uppercase mb-1">Result</h4>
-                    <p className="text-sm text-brand-text font-medium leading-relaxed italic bg-brand-secondary/30 p-3 rounded-lg border border-brand-text/5">
+                  <div className="border-l-2 border-primary/40 pl-4">
+                    <h4 className="text-xs font-bold tracking-wider text-foreground uppercase mb-1">Result</h4>
+                    <p className="text-sm text-foreground font-medium leading-relaxed italic bg-muted/50 p-3 rounded-lg border border-border">
                       {cs.result}
                     </p>
                   </div>
                 </div>
               </div>
 
-              <div className="mt-8 pt-6 border-t border-brand-text/5 flex items-center justify-between">
-                <span className="text-xs font-medium text-brand-muted flex items-center gap-1.5">
+              <div className="mt-8 pt-6 border-t border-border flex items-center justify-between">
+                <span className="text-xs font-medium text-muted-foreground flex items-center gap-1.5">
                   <Eye size={14} /> Future Audit Ready
                 </span>
-                <a href="#cta" className="inline-flex items-center gap-1 text-sm font-semibold text-sage-deep hover:text-brand-text transition-colors">
+                <a href="#cta" className="inline-flex items-center gap-1 text-sm font-semibold text-primary hover:text-foreground transition-colors">
                   Plan Yours <ArrowRight size={14} />
                 </a>
               </div>

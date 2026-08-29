@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X, ArrowRight } from "lucide-react";
+import { AnimatedThemeToggler } from "@/components/ui/animated-theme-toggler";
+import GooeyNav from "@/components/layout/GooeyNav";
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -18,13 +20,19 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
 
+  // Derive active index from current route; default to 0 (Home) if no match
+  const activeIndex = Math.max(
+    navLinks.findIndex((l) => l.href === pathname),
+    0
+  );
+
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close menu on route change
+  // Close mobile drawer on route change
   useEffect(() => {
     setMobileMenuOpen(false);
   }, [pathname]);
@@ -33,7 +41,7 @@ export default function Navbar() {
     <header
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
         isScrolled
-          ? "py-3.5 bg-[#F3F1EB]/90 backdrop-blur-md border-b border-sage-soft/15 shadow-xs"
+          ? "py-3.5 bg-background/90 backdrop-blur-md border-b border-border shadow-xs dark:shadow-[0_4px_30px_rgba(43,158,220,0.15)]"
           : "py-6 bg-transparent border-b border-transparent"
       }`}
     >
@@ -41,45 +49,39 @@ export default function Navbar() {
 
         {/* Logo */}
         <Link href="/" className="flex items-center z-50" aria-label="digitalbrandbuilder homepage">
-          <span className="font-sans text-xl font-bold tracking-tight text-brand-text lowercase">
+          <span className="font-sans text-xl font-bold tracking-tight text-foreground lowercase">
             digital
-            <span className="font-normal text-sage-deep">brand</span>
-            <span className="font-light text-brand-muted">builder</span>
+            <span className="font-normal text-primary">brand</span>
+            <span className="font-light text-muted-foreground">builder</span>
           </span>
         </Link>
 
-        {/* Desktop Nav Links */}
-        <nav className="hidden lg:flex items-center gap-8" aria-label="Main Navigation">
-          {navLinks.map(({ label, href }) => (
-            <Link
-              key={href}
-              href={href}
-              className={`text-sm font-medium transition-colors relative py-1 
-                after:absolute after:bottom-0 after:left-0 after:h-[1.5px] after:bg-brand-text after:transition-all after:duration-300
-                ${pathname === href
-                  ? "text-brand-text after:w-full"
-                  : "text-brand-muted hover:text-brand-text after:w-0 hover:after:w-full"
-                }`}
-            >
-              {label}
-            </Link>
-          ))}
-        </nav>
+        {/* Desktop Nav — GooeyNav */}
+        <div className="hidden lg:flex items-center">
+          <GooeyNav
+            items={navLinks}
+            initialActiveIndex={activeIndex}
+            animationTime={600}
+            particleCount={15}
+            particleR={80}
+          />
+        </div>
 
-        {/* Desktop CTA */}
-        <div className="hidden lg:flex items-center gap-5">
+        {/* Desktop Right: Theme Toggler + CTA */}
+        <div className="hidden lg:flex items-center gap-4">
+          <AnimatedThemeToggler variant="star" />
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 bg-brand-text text-[#F3F1EB] px-6 py-3 rounded-full text-sm font-medium hover:bg-sage-deep hover:-translate-y-px transition-all duration-300 group"
+            className="inline-flex items-center gap-2 bg-foreground text-background px-6 py-2.5 rounded-full text-sm font-medium hover:opacity-80 hover:-translate-y-px transition-all duration-300 group"
           >
-            Build My Digital Brand
+            Build My Brand
             <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
           </Link>
         </div>
 
         {/* Mobile Toggle */}
         <button
-          className="block lg:hidden bg-transparent border-none cursor-pointer text-brand-text z-50 p-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sage-deep rounded-lg"
+          className="block lg:hidden bg-transparent border-none cursor-pointer text-foreground z-50 p-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-lg"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           aria-expanded={mobileMenuOpen}
           aria-label="Toggle menu"
@@ -90,7 +92,7 @@ export default function Navbar() {
 
       {/* Mobile Drawer */}
       <div
-        className={`fixed top-0 left-0 w-full h-screen bg-[#F3F1EB] z-40 flex items-center justify-center transition-all duration-500 ease-in-out ${
+        className={`fixed top-0 left-0 w-full h-screen bg-background z-40 flex items-center justify-center transition-all duration-500 ease-in-out ${
           mobileMenuOpen ? "opacity-100 visible" : "opacity-0 invisible pointer-events-none"
         }`}
       >
@@ -100,18 +102,21 @@ export default function Navbar() {
               key={href}
               href={href}
               className={`text-3xl font-normal transition-colors ${
-                pathname === href ? "text-sage-deep" : "text-brand-text hover:text-sage-deep"
+                pathname === href ? "text-primary" : "text-foreground hover:text-primary"
               }`}
             >
               {label}
             </Link>
           ))}
-          <div className="mt-8">
+          <div className="mt-4">
+            <AnimatedThemeToggler variant="star" />
+          </div>
+          <div className="mt-4">
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 bg-brand-text text-[#F3F1EB] px-8 py-4 rounded-full text-base font-medium"
+              className="inline-flex items-center gap-2 bg-foreground text-background px-8 py-4 rounded-full text-base font-medium"
             >
-              Build My Digital Brand
+              Build My Brand
               <ArrowRight size={18} />
             </Link>
           </div>

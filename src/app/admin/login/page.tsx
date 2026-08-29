@@ -87,27 +87,27 @@ export default function AdminLogin() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[#F3F1EB]">
-        <div className="w-12 h-12 border-4 border-[#7E8E71]/20 border-t-[#7E8E71] rounded-full animate-spin"></div>
+      <div className="min-h-screen flex items-center justify-center bg-background">
+        <div className="w-12 h-12 border-4 border-primary/20 border-t-primary rounded-full animate-spin"></div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#F3F1EB] p-4 font-sans selection:bg-[#A0AD91]/30">
-      <div className="max-w-md w-full bg-white/80 backdrop-blur-md border border-[#E8E5DD] p-8 rounded-2xl shadow-xl shadow-[#20211D]/5 transition-smooth">
+    <div className="min-h-screen flex items-center justify-center bg-background p-4 font-sans selection:bg-primary/20/30">
+      <div className="max-w-md w-full bg-card/80 backdrop-blur-md border border-muted p-8 rounded-2xl shadow-xl shadow-foreground/5 transition-smooth">
         
         {/* Header */}
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-[#7E8E71]/10 text-[#7E8E71] mb-4">
+          <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-primary/10 text-primary mb-4">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6">
               <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" />
             </svg>
           </div>
-          <h2 className="text-2xl font-bold text-[#20211D]">
+          <h2 className="text-2xl font-bold text-foreground">
             {isSetup ? 'Create Admin Account' : 'Admin Portal'}
           </h2>
-          <p className="text-sm text-[#5A5D55] mt-2">
+          <p className="text-sm text-muted-foreground mt-2">
             {isSetup 
               ? 'Set up the initial administrator account for your website.' 
               : 'Sign in to manage your blogs, services, and leads.'}
@@ -130,7 +130,7 @@ export default function AdminLogin() {
         {/* Form */}
         <form onSubmit={handleSubmit} className="space-y-5">
           <div>
-            <label className="block text-xs font-semibold uppercase tracking-wider text-[#5A5D55] mb-2">
+            <label className="block text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">
               Email Address
             </label>
             <input
@@ -138,13 +138,13 @@ export default function AdminLogin() {
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-4 py-3 bg-[#F3F1EB]/40 border border-[#E8E5DD] rounded-xl text-[#20211D] placeholder-[#5A5D55]/50 focus:outline-none focus:ring-2 focus:ring-[#A0AD91] focus:border-[#7E8E71] transition-smooth text-sm"
+              className="w-full px-4 py-3 bg-background/40 border border-muted rounded-xl text-foreground placeholder-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-smooth text-sm"
               placeholder="admin@yourbrand.com"
             />
           </div>
 
           <div>
-            <label className="block text-xs font-semibold uppercase tracking-wider text-[#5A5D55] mb-2">
+            <label className="block text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">
               Password
             </label>
             <input
@@ -152,14 +152,14 @@ export default function AdminLogin() {
               required
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-4 py-3 bg-[#F3F1EB]/40 border border-[#E8E5DD] rounded-xl text-[#20211D] placeholder-[#5A5D55]/50 focus:outline-none focus:ring-2 focus:ring-[#A0AD91] focus:border-[#7E8E71] transition-smooth text-sm"
+              className="w-full px-4 py-3 bg-background/40 border border-muted rounded-xl text-foreground placeholder-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-smooth text-sm"
               placeholder="••••••••"
             />
           </div>
 
           {isSetup && (
             <div>
-              <label className="block text-xs font-semibold uppercase tracking-wider text-[#5A5D55] mb-2">
+              <label className="block text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">
                 Confirm Password
               </label>
               <input
@@ -167,7 +167,7 @@ export default function AdminLogin() {
                 required
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
-                className="w-full px-4 py-3 bg-[#F3F1EB]/40 border border-[#E8E5DD] rounded-xl text-[#20211D] placeholder-[#5A5D55]/50 focus:outline-none focus:ring-2 focus:ring-[#A0AD91] focus:border-[#7E8E71] transition-smooth text-sm"
+                className="w-full px-4 py-3 bg-background/40 border border-muted rounded-xl text-foreground placeholder-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-smooth text-sm"
                 placeholder="••••••••"
               />
             </div>
@@ -176,7 +176,7 @@ export default function AdminLogin() {
           <button
             type="submit"
             disabled={submitting}
-            className="w-full py-3 px-4 bg-[#7E8E71] text-white hover:bg-[#7E8E71]/90 focus:outline-none focus:ring-2 focus:ring-[#A0AD91] focus:ring-offset-2 disabled:bg-[#7E8E71]/60 font-semibold rounded-xl text-sm transition-smooth shadow-lg shadow-[#7E8E71]/20 cursor-pointer flex items-center justify-center"
+            className="w-full py-3 px-4 bg-primary text-white hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:ring-offset-2 disabled:bg-primary/60 font-semibold rounded-xl text-sm transition-smooth shadow-lg shadow-primary/20 cursor-pointer flex items-center justify-center"
           >
             {submitting ? (
               <span className="w-5 h-5 border-2 border-white/20 border-t-white rounded-full animate-spin"></span>
@@ -189,3 +189,4 @@ export default function AdminLogin() {
     </div>
   );
 }
+

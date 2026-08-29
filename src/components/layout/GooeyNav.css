@@ -1,0 +1,133 @@
+.gooey-nav-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gooey-nav-container nav ul {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  z-index: 2;
+}
+
+.gooey-nav-container nav ul li {
+  position: relative;
+}
+
+.gooey-nav-container nav ul li a {
+  display: block;
+  padding: 0.45rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--foreground);
+  text-decoration: none;
+  border-radius: 9999px;
+  transition: color 0.3s ease;
+  position: relative;
+  z-index: 3;
+  opacity: 0.65;
+}
+
+.gooey-nav-container nav ul li.active a {
+  opacity: 0;
+}
+
+.gooey-nav-container nav ul li a:hover {
+  opacity: 0.9;
+}
+
+/* Effect spans (filter blob + text clone) */
+.gooey-nav-container .effect {
+  position: absolute;
+  border-radius: 9999px;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+  transition:
+    left 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    top 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    width 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    height 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.gooey-nav-container .effect.filter {
+  background: var(--foreground);
+  filter: url(#gooey-filter) blur(0px);
+  /* gooey particle colors */
+  --color-1: #2b9edc;
+  --color-2: #ffa500;
+  --color-3: #5bc4f5;
+  --color-4: #ff7a00;
+}
+
+.dark .gooey-nav-container .effect.filter {
+  background: var(--foreground);
+  --color-1: #60c4f5;
+  --color-2: #ffb347;
+  --color-3: #93daff;
+  --color-4: #ffd580;
+}
+
+.gooey-nav-container .effect.text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--background);
+  z-index: 4;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.gooey-nav-container .effect.text.active {
+  opacity: 1;
+}
+
+/* Particles */
+.gooey-nav-container .particle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color, white);
+  pointer-events: none;
+  animation: particle-anim var(--time, 800ms) ease-out forwards;
+  transform-origin: center;
+}
+
+.gooey-nav-container .particle .point {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: inherit;
+  transform: scale(var(--scale, 1)) rotate(var(--rotate, 0deg));
+}
+
+@keyframes particle-anim {
+  0% {
+    transform: translate(
+        calc(var(--start-x, 0px) - 50%),
+        calc(var(--start-y, 0px) - 50%)
+      )
+      scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(
+        calc(var(--end-x, 0px) - 50%),
+        calc(var(--end-y, 0px) - 50%)
+      )
+      scale(0);
+    opacity: 0;
+  }
+}

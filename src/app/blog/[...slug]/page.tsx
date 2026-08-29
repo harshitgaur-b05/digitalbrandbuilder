@@ -20,7 +20,7 @@ function renderSection(section: BlogSection, index: number) {
         <h2
           key={index}
           id={slugify(section.content)}
-          className="text-2xl md:text-[1.65rem] font-bold text-[#20211D] mt-14 mb-5 tracking-tight leading-snug scroll-mt-28"
+          className="text-2xl md:text-[1.65rem] font-bold text-foreground mt-14 mb-5 tracking-tight leading-snug scroll-mt-28"
         >
           {section.content}
         </h2>
@@ -30,21 +30,21 @@ function renderSection(section: BlogSection, index: number) {
         <h3
           key={index}
           id={slugify(section.content)}
-          className="text-lg md:text-xl font-semibold text-[#20211D] mt-9 mb-3 tracking-tight scroll-mt-28"
+          className="text-lg md:text-xl font-semibold text-foreground mt-9 mb-3 tracking-tight scroll-mt-28"
         >
           {section.content}
         </h3>
       );
     case "paragraph":
       return (
-        <p key={index} className="text-[#5A5D55] text-base md:text-[1.05rem] leading-[1.85] mb-5">
+        <p key={index} className="text-muted-foreground text-base md:text-[1.05rem] leading-[1.85] mb-5">
           {section.content}
         </p>
       );
     case "quote":
       return (
-        <blockquote key={index} className="my-9 pl-6 border-l-4 border-[#A0AD91] bg-[#A0AD91]/5 py-4 pr-4 rounded-r-lg">
-          <p className="text-[#20211D] text-lg italic font-medium leading-relaxed">
+        <blockquote key={index} className="my-9 pl-6 border-l-4 border-primary/20 bg-primary/20/5 py-4 pr-4 rounded-r-lg">
+          <p className="text-foreground text-lg italic font-medium leading-relaxed">
             {section.content}
           </p>
         </blockquote>
@@ -53,8 +53,8 @@ function renderSection(section: BlogSection, index: number) {
       return (
         <ul key={index} className="my-5 space-y-3 pl-1">
           {section.items?.map((item, i) => (
-            <li key={i} className="flex items-start gap-3 text-[#5A5D55] text-base md:text-[1.05rem] leading-[1.8]">
-              <span className="mt-[0.6rem] shrink-0 w-1.5 h-1.5 rounded-full bg-[#A0AD91]" />
+            <li key={i} className="flex items-start gap-3 text-muted-foreground text-base md:text-[1.05rem] leading-[1.8]">
+              <span className="mt-[0.6rem] shrink-0 w-1.5 h-1.5 rounded-full bg-primary/20" />
               {item}
             </li>
           ))}
@@ -83,18 +83,18 @@ export default async function Page(props: { params: Promise<{ slug: string[] }> 
     }));
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#F3F1EB] text-[#20211D] antialiased">
+    <div className="min-h-screen flex flex-col bg-background text-foreground antialiased">
       <Navbar />
       <main className="flex-grow pt-28 pb-24">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
 
           {/* ── Breadcrumbs ── */}
-          <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-sm text-[#5A5D55] mb-8 flex-wrap">
-            <Link href="/" className="hover:text-[#20211D] transition-colors">Home</Link>
-            <ChevronRight size={13} className="text-[#A0AD91] shrink-0" />
-            <Link href="/blog" className="hover:text-[#20211D] transition-colors">Blog</Link>
-            <ChevronRight size={13} className="text-[#A0AD91] shrink-0" />
-            <span className="text-[#20211D] font-medium truncate max-w-xs">{post.title}</span>
+          <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-sm text-muted-foreground mb-8 flex-wrap">
+            <Link href="/" className="hover:text-foreground transition-colors">Home</Link>
+            <ChevronRight size={13} className="text-primary/70 shrink-0" />
+            <Link href="/blog" className="hover:text-foreground transition-colors">Blog</Link>
+            <ChevronRight size={13} className="text-primary/70 shrink-0" />
+            <span className="text-foreground font-medium truncate max-w-xs">{post.title}</span>
           </nav>
 
           {/* ── Two-column layout ── */}
@@ -105,43 +105,43 @@ export default async function Page(props: { params: Promise<{ slug: string[] }> 
 
               {/* Badges */}
               <div className="flex items-center gap-3 mb-6">
-                <span className="text-[10px] font-bold tracking-widest text-[#7E8E71] bg-[#A0AD91]/15 px-3 py-1.5 rounded-full uppercase">
+                <span className="text-[10px] font-bold tracking-widest text-primary bg-primary/20/15 px-3 py-1.5 rounded-full uppercase">
                   {post.category}
                 </span>
-                <span className="text-[10px] font-semibold text-[#A0AD91] bg-[#A0AD91]/10 px-3 py-1.5 rounded-full">
+                <span className="text-[10px] font-semibold text-primary/70 bg-primary/20/10 px-3 py-1.5 rounded-full">
                   {post.tag}
                 </span>
               </div>
 
               {/* Title */}
-              <h1 className="font-sans text-3xl md:text-[2.6rem] font-bold leading-[1.1] tracking-tight text-[#20211D] mb-6">
+              <h1 className="font-sans text-3xl md:text-[2.6rem] font-bold leading-[1.1] tracking-tight text-foreground mb-6">
                 {post.title}
               </h1>
 
               {/* Lead */}
-              <p className="text-lg md:text-xl text-[#7E8E71] leading-relaxed mb-8 font-medium">
+              <p className="text-lg md:text-xl text-primary leading-relaxed mb-8 font-medium">
                 {post.description}
               </p>
 
               {/* Meta row */}
-              <div className="flex flex-wrap items-center gap-5 pb-8 mb-10 border-b border-[#20211D]/8">
+              <div className="flex flex-wrap items-center gap-5 pb-8 mb-10 border-b border-foreground/8">
                 {post.author && (
-                  <div className="flex items-center gap-2 text-sm text-[#5A5D55]">
-                    <span className="w-7 h-7 rounded-full bg-[#A0AD91]/20 flex items-center justify-center">
-                      <User size={13} className="text-[#7E8E71]" />
+                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                    <span className="w-7 h-7 rounded-full bg-primary/20/20 flex items-center justify-center">
+                      <User size={13} className="text-primary" />
                     </span>
-                    <span className="font-semibold text-[#20211D]">{post.author}</span>
+                    <span className="font-semibold text-foreground">{post.author}</span>
                   </div>
                 )}
-                <div className="flex items-center gap-1.5 text-sm text-[#5A5D55]">
+                <div className="flex items-center gap-1.5 text-sm text-muted-foreground">
                   <Clock size={13} />
                   <span>{post.readTime}</span>
                 </div>
-                <span className="text-sm text-[#5A5D55]">{post.date}</span>
+                <span className="text-sm text-muted-foreground">{post.date}</span>
               </div>
 
               {/* Cover Image */}
-              <div className="mb-10 w-full aspect-[16/7] rounded-2xl overflow-hidden border border-[#20211D]/6">
+              <div className="mb-10 w-full aspect-[16/7] rounded-2xl overflow-hidden border border-foreground/6">
                 {post.image ? (
                   <Image
                     src={post.image}
@@ -150,9 +150,9 @@ export default async function Page(props: { params: Promise<{ slug: string[] }> 
                     className="object-cover"
                   />
                 ) : (
-                  <div className="w-full h-full bg-[#E8E5DD] flex flex-col items-center justify-center gap-3">
-                    <ImageIcon size={36} className="text-[#A0AD91]" strokeWidth={1.5} />
-                    <p className="text-xs font-semibold text-[#A0AD91] tracking-widest uppercase">
+                  <div className="w-full h-full bg-muted flex flex-col items-center justify-center gap-3">
+                    <ImageIcon size={36} className="text-primary/70" strokeWidth={1.5} />
+                    <p className="text-xs font-semibold text-primary/70 tracking-widest uppercase">
                       Cover Image
                     </p>
                   </div>
@@ -165,19 +165,19 @@ export default async function Page(props: { params: Promise<{ slug: string[] }> 
               </div>
 
               {/* Bottom CTA */}
-              <div className="mt-16 bg-white border border-[#20211D]/5 rounded-2xl p-8">
-                <p className="text-xs font-bold tracking-widest text-[#7E8E71] uppercase mb-3">
+              <div className="mt-16 bg-card border border-foreground/5 rounded-2xl p-8">
+                <p className="text-xs font-bold tracking-widest text-primary uppercase mb-3">
                   Want results like these?
                 </p>
-                <p className="text-[#20211D] text-xl font-semibold mb-2 leading-snug">
+                <p className="text-foreground text-xl font-semibold mb-2 leading-snug">
                   Let&apos;s build your digital presence the right way.
                 </p>
-                <p className="text-[#5A5D55] text-sm leading-relaxed mb-5">
+                <p className="text-muted-foreground text-sm leading-relaxed mb-5">
                   No templates, no guesswork — just a focused strategy built around your business and your customers.
                 </p>
                 <Link
                   href="/contact"
-                  className="inline-flex items-center gap-2 bg-[#20211D] text-[#F3F1EB] text-sm font-semibold px-6 py-3 rounded-full hover:bg-[#7E8E71] transition-colors duration-200"
+                  className="inline-flex items-center gap-2 bg-foreground text-background text-sm font-semibold px-6 py-3 rounded-full hover:bg-primary transition-colors duration-200"
                 >
                   Get in Touch <ArrowRight size={14} />
                 </Link>
@@ -186,7 +186,7 @@ export default async function Page(props: { params: Promise<{ slug: string[] }> 
               {/* Back link */}
               <Link
                 href="/blog"
-                className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-[#7E8E71] hover:text-[#20211D] transition-colors"
+                className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-foreground transition-colors"
               >
                 <ArrowLeft size={15} /> Back to all articles
               </Link>
@@ -200,19 +200,19 @@ export default async function Page(props: { params: Promise<{ slug: string[] }> 
               <TableOfContents items={tocItems} />
 
               {/* CTA Card */}
-              <div className="bg-[#20211D] rounded-2xl p-6 text-[#F3F1EB]">
-                <p className="text-[10px] font-bold tracking-widest text-[#A0AD91] uppercase mb-3">
+              <div className="bg-foreground rounded-2xl p-6 text-background">
+                <p className="text-[10px] font-bold tracking-widest text-primary/70 uppercase mb-3">
                   Work with us
                 </p>
                 <p className="text-base font-semibold leading-snug mb-3">
                   Ready to build a brand that grows?
                 </p>
-                <p className="text-[#A0AD91] text-xs leading-relaxed mb-5">
+                <p className="text-primary/70 text-xs leading-relaxed mb-5">
                   We help Indian businesses get more visibility, more trust, and more customers online.
                 </p>
                 <Link
                   href="/contact"
-                  className="inline-flex items-center gap-2 bg-[#A0AD91] text-[#20211D] text-xs font-bold px-4 py-2.5 rounded-full hover:bg-[#F3F1EB] transition-colors duration-200 w-full justify-center"
+                  className="inline-flex items-center gap-2 bg-primary/20 text-foreground text-xs font-bold px-4 py-2.5 rounded-full hover:bg-background transition-colors duration-200 w-full justify-center"
                 >
                   Get in Touch <ArrowRight size={13} />
                 </Link>

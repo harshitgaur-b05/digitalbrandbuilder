@@ -66,19 +66,19 @@ export default function BlogsManagerClient({ initialBlogs }: BlogsManagerClientP
   });
 
   return (
-    <div className="min-h-screen bg-[#F3F1EB] p-4 md:p-8 font-sans selection:bg-[#A0AD91]/30">
-      <div className="max-w-7xl mx-auto bg-white/80 border border-[#E8E5DD] rounded-2xl p-6 md:p-8 shadow-xl shadow-[#20211D]/5">
+    <div className="min-h-screen bg-background p-4 md:p-8 font-sans selection:bg-primary/20/30">
+      <div className="max-w-7xl mx-auto bg-card/80 border border-muted rounded-2xl p-6 md:p-8 shadow-xl shadow-foreground/5">
         
         {/* Header */}
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-8 pb-6 border-b border-[#E8E5DD] gap-4">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-8 pb-6 border-b border-muted gap-4">
           <div>
-            <h1 className="text-3xl font-bold text-[#20211D]">Blog Posting</h1>
-            <p className="text-sm text-[#5A5D55] mt-1">Manage articles, case studies, and updates published on your blog.</p>
+            <h1 className="text-3xl font-bold text-foreground">Blog Posting</h1>
+            <p className="text-sm text-muted-foreground mt-1">Manage articles, case studies, and updates published on your blog.</p>
           </div>
           <div className="flex gap-2">
             <Link
               href="/admin/blogs/new"
-              className="px-4 py-2 bg-[#7E8E71] text-white font-semibold rounded-xl text-sm hover:bg-[#7E8E71]/90 shadow-md shadow-[#7E8E71]/15 transition-smooth flex items-center gap-2 cursor-pointer"
+              className="px-4 py-2 bg-primary text-white font-semibold rounded-xl text-sm hover:bg-primary/90 shadow-md shadow-primary/15 transition-smooth flex items-center gap-2 cursor-pointer"
             >
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
@@ -87,7 +87,7 @@ export default function BlogsManagerClient({ initialBlogs }: BlogsManagerClientP
             </Link>
             <a
               href="/admin"
-              className="px-4 py-2 border border-[#E8E5DD] rounded-xl text-sm font-semibold text-[#5A5D55] hover:bg-[#F3F1EB] transition-smooth cursor-pointer"
+              className="px-4 py-2 border border-muted rounded-xl text-sm font-semibold text-muted-foreground hover:bg-background transition-smooth cursor-pointer"
             >
               Back
             </a>
@@ -101,15 +101,15 @@ export default function BlogsManagerClient({ initialBlogs }: BlogsManagerClientP
             placeholder="Search articles by title or category..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full px-4 py-2 bg-[#F3F1EB]/40 border border-[#E8E5DD] rounded-xl text-[#20211D] placeholder-[#5A5D55]/50 focus:outline-none focus:ring-2 focus:ring-[#A0AD91] focus:border-[#7E8E71] transition-smooth text-sm"
+            className="w-full px-4 py-2 bg-background/40 border border-muted rounded-xl text-foreground placeholder-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-smooth text-sm"
           />
         </div>
 
         {/* Table / List */}
-        <div className="overflow-x-auto border border-[#E8E5DD] rounded-2xl bg-white">
+        <div className="overflow-x-auto border border-muted rounded-2xl bg-card">
           <table className="w-full border-collapse text-left text-sm">
             <thead>
-              <tr className="border-b border-[#E8E5DD] bg-[#F3F1EB]/40 font-semibold text-[#5A5D55]">
+              <tr className="border-b border-muted bg-background/40 font-semibold text-muted-foreground">
                 <th className="px-6 py-4">Title</th>
                 <th className="px-6 py-4">Category</th>
                 <th className="px-6 py-4">Publish Date</th>
@@ -117,32 +117,32 @@ export default function BlogsManagerClient({ initialBlogs }: BlogsManagerClientP
                 <th className="px-6 py-4 text-right">Actions</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-[#E8E5DD]">
+            <tbody className="divide-y divide-muted">
               {filteredBlogs.length === 0 ? (
                 <tr>
-                  <td colSpan={5} className="px-6 py-12 text-center text-[#5A5D55]">
+                  <td colSpan={5} className="px-6 py-12 text-center text-muted-foreground">
                     No articles found. Click "Add New Blog" to write your first post!
                   </td>
                 </tr>
               ) : (
                 filteredBlogs.map(blog => (
-                  <tr key={blog.id} className="hover:bg-[#F3F1EB]/20 transition-smooth">
-                    <td className="px-6 py-4 font-bold text-[#20211D]">
+                  <tr key={blog.id} className="hover:bg-background/20 transition-smooth">
+                    <td className="px-6 py-4 font-bold text-foreground">
                       <div className="flex flex-col">
                         <span>{blog.title}</span>
-                        <span className="text-xs font-normal text-[#5A5D55]/60 mt-0.5">/{blog.slug}</span>
+                        <span className="text-xs font-normal text-muted-foreground/60 mt-0.5">/{blog.slug}</span>
                       </div>
                     </td>
-                    <td className="px-6 py-4 text-[#5A5D55]">
+                    <td className="px-6 py-4 text-muted-foreground">
                       {blog.category ? (
-                        <span className="bg-[#F3F1EB] text-[#20211D] px-2.5 py-1 rounded-lg text-xs font-medium border border-[#E8E5DD]/60">
+                        <span className="bg-background text-foreground px-2.5 py-1 rounded-lg text-xs font-medium border border-muted/60">
                           {blog.category}
                         </span>
                       ) : (
-                        <span className="text-xs text-[#5A5D55]/40 italic">None</span>
+                        <span className="text-xs text-muted-foreground/40 italic">None</span>
                       )}
                     </td>
-                    <td className="px-6 py-4 text-[#5A5D55]">
+                    <td className="px-6 py-4 text-muted-foreground">
                       {blog.date || new Date(blog.createdAt).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
                     </td>
                     <td className="px-6 py-4">
@@ -163,7 +163,7 @@ export default function BlogsManagerClient({ initialBlogs }: BlogsManagerClientP
                       <div className="flex justify-end gap-2">
                         <Link
                           href={`/admin/blogs/edit/${blog.id}`}
-                          className="p-2 text-[#5A5D55] hover:text-[#7E8E71] hover:bg-[#F3F1EB] rounded-lg transition-smooth"
+                          className="p-2 text-muted-foreground hover:text-primary hover:bg-background rounded-lg transition-smooth"
                           title="Edit Post"
                         >
                           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
@@ -172,7 +172,7 @@ export default function BlogsManagerClient({ initialBlogs }: BlogsManagerClientP
                         </Link>
                         <button
                           onClick={() => deleteBlog(blog.id)}
-                          className="p-2 text-[#5A5D55] hover:text-red-600 hover:bg-red-50 rounded-lg transition-smooth cursor-pointer"
+                          className="p-2 text-muted-foreground hover:text-red-600 hover:bg-red-50 rounded-lg transition-smooth cursor-pointer"
                           title="Delete Post"
                         >
                           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
@@ -192,3 +192,4 @@ export default function BlogsManagerClient({ initialBlogs }: BlogsManagerClientP
     </div>
   );
 }
+
