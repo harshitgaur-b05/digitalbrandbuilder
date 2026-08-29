@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { ArrowRight, Globe, Search, Target, Share2, ShoppingCart, Award } from "lucide-react";
+import { ArrowRight, Globe, Search, Target, Share2, ShoppingCart, Award, FileText, MessageSquare } from "lucide-react";
 import gsap from "gsap";
 import { AnimatedBeam } from "@/components/ui/AnimatedBeam";
 import { cn } from "@/lib/utils";
@@ -22,7 +22,7 @@ function ServiceNode({
     <div
       ref={nodeRef}
       className={cn(
-        "flex flex-col items-center justify-center gap-1.5 bg-card border border-border rounded-2xl px-4 py-3 shadow-md text-center w-28 h-20 select-none transition-[transform,opacity,border-color,box-shadow] duration-500 hover:shadow-[0_8px_30px_rgb(255,165,0,0.2)] dark:hover:shadow-[0_8px_30px_rgb(43,158,220,0.2)] hover:border-primary/50 motion-safe:hover:-translate-y-1.5",
+        "flex flex-col items-center justify-center gap-1.5 bg-card border border-border rounded-2xl px-4 py-3 shadow-md text-center w-28 h-20 select-none transition-[transform,opacity,border-color,box-shadow] duration-500 hover:shadow-[0_8px_30px_rgb(255,165,0,0.2)] dark:hover:shadow-[0_8px_30px_rgb(43,158,220,0.2)] hover:border-primary/50 motion-safe:hover:-translate-y-1.5 relative z-10",
         className
       )}
     >
@@ -77,6 +77,8 @@ export default function Hero() {
   const socialRef = useRef<HTMLDivElement>(null);
   const ecomRef = useRef<HTMLDivElement>(null);
   const brandRef = useRef<HTMLDivElement>(null);
+  const blogRef = useRef<HTMLDivElement>(null);
+  const testimonialRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -186,9 +188,9 @@ export default function Hero() {
               <ServiceNode nodeRef={marketingRef} icon={<Target size={16} className="text-primary" />} label="Marketing" />
 
               {/* Row 2 — Hub takes full width of middle col */}
-              <div /> {/* spacer */}
+              <ServiceNode nodeRef={blogRef} icon={<FileText size={16} className="text-primary" />} label="Blog" />
               <CenterHub hubRef={hubRef} />
-              <div /> {/* spacer */}
+              <ServiceNode nodeRef={testimonialRef} icon={<MessageSquare size={16} className="text-primary" />} label="Reviews" />
 
               {/* Row 3 */}
               <ServiceNode nodeRef={ecomRef} icon={<ShoppingCart size={16} className="text-primary" />} label="Ecommerce" />
@@ -200,6 +202,10 @@ export default function Hero() {
             <AnimatedBeam containerRef={containerRef} fromRef={websiteRef} toRef={hubRef} curvature={30}  delay={0}   duration={4} pathColor={beamColor} gradientStartColor={beamGradStart} gradientStopColor={beamGradStop} pathOpacity={0.25} />
             <AnimatedBeam containerRef={containerRef} fromRef={seoRef}     toRef={hubRef} curvature={0}   delay={0.6} duration={4} pathColor={beamColor} gradientStartColor={beamGradStart} gradientStopColor={beamGradStop} pathOpacity={0.25} />
             <AnimatedBeam containerRef={containerRef} fromRef={marketingRef} toRef={hubRef} curvature={-30} delay={1.2} duration={4} pathColor={beamColor} gradientStartColor={beamGradStart} gradientStopColor={beamGradStop} pathOpacity={0.25} />
+            
+            <AnimatedBeam containerRef={containerRef} fromRef={blogRef}    toRef={hubRef} curvature={20}  delay={0.4} duration={4} pathColor={beamColor} gradientStartColor={beamGradStart} gradientStopColor={beamGradStop} pathOpacity={0.25} />
+            <AnimatedBeam containerRef={containerRef} fromRef={testimonialRef} toRef={hubRef} curvature={-20} delay={1.0} duration={4} pathColor={beamColor} gradientStartColor={beamGradStart} gradientStopColor={beamGradStop} pathOpacity={0.25} reverse />
+
             <AnimatedBeam containerRef={containerRef} fromRef={ecomRef}    toRef={hubRef} curvature={-30} delay={0.3} duration={4} pathColor={beamColor} gradientStartColor={beamGradStart} gradientStopColor={beamGradStop} pathOpacity={0.25} reverse />
             <AnimatedBeam containerRef={containerRef} fromRef={brandRef}   toRef={hubRef} curvature={0}   delay={0.9} duration={4} pathColor={beamColor} gradientStartColor={beamGradStart} gradientStopColor={beamGradStop} pathOpacity={0.25} reverse />
             <AnimatedBeam containerRef={containerRef} fromRef={socialRef}  toRef={hubRef} curvature={30}  delay={1.5} duration={4} pathColor={beamColor} gradientStartColor={beamGradStart} gradientStopColor={beamGradStop} pathOpacity={0.25} reverse />

@@ -33,6 +33,16 @@ export default async function AdminDashboard() {
     createdAt: l.createdAt.toISOString(),
   }));
 
+  const recentBlogDocs = await Blog.find({}).sort({ createdAt: -1 }).limit(5).lean();
+  const recentBlogs = recentBlogDocs.map((b: any) => ({
+    id: b._id.toString(),
+    title: b.title,
+    slug: b.slug,
+    category: b.category || '',
+    isActive: b.isActive,
+    createdAt: new Date(b.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
+  }));
+
   return (
     <div className="min-h-screen bg-background p-4 md:p-8 font-sans selection:bg-primary/20/30">
       <div className="max-w-7xl mx-auto space-y-6">
@@ -135,6 +145,77 @@ export default async function AdminDashboard() {
                   <span className="text-xs text-muted-foreground/60">
                     {new Date(lead.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
                   </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Recent Blog Posts */}
+        {recentBlogs.length > 0 && (
+          <div className="bg-card/80 border border-muted rounded-2xl p-6 md:p-8 shadow-sm">
+            <div className="flex justify-between items-center mb-5">
+              <h2 className="font-bold text-foreground text-lg">Recent Blog Posts</h2>
+              <div className="flex items-center gap-3">
+                <a
+                  href="/blog"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-emerald-600 font-semibold hover:underline flex items-center gap-1"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-3.5 h-3.5">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                  </svg>
+                  View Blog
+                </a>
+                <a href="/admin/blogs" className="text-sm text-primary font-semibold hover:underline">Manage All &rarr;</a>
+              </div>
+            </div>
+            <div className="divide-y divide-muted">
+              {recentBlogs.map((blog) => (
+                <div key={blog.id} className="py-3 flex items-center justify-between gap-4">
+                  <div className="flex items-center gap-3 min-w-0">
+                    {/* Status dot */}
+                    <span className={`shrink-0 w-2 h-2 rounded-full ${blog.isActive ? 'bg-green-500' : 'bg-yellow-400'}`} title={blog.isActive ? 'Published' : 'Draft'} />
+                    <div className="min-w-0">
+                      <p className="font-semibold text-foreground text-sm truncate">{blog.title}</p>
+                      <p className="text-xs text-muted-foreground mt-0.5">
+                        {blog.category && <span className="mr-2 bg-background border border-muted/60 px-1.5 py-0.5 rounded text-[10px] font-medium">{blog.category}</span>}
+                        {blog.createdAt}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2 shrink-0">
+                    <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full border ${
+                      blog.isActive
+                        ? 'bg-green-50 text-green-700 border-green-100'
+                        : 'bg-yellow-50 text-yellow-700 border-yellow-100'
+                    }`}>
+                      {blog.isActive ? 'Published' : 'Draft'}
+                    </span>
+                    <a
+                      href={`/blog/${blog.slug}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-1.5 text-muted-foreground hover:text-emerald-600 hover:bg-emerald-50 rounded-lg transition-all"
+                      title="View on site"
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                      </svg>
+                    </a>
+                    <a
+                      href={`/admin/blogs/edit/${blog.id}`}
+                      className="p-1.5 text-muted-foreground hover:text-primary hover:bg-primary/10 rounded-lg transition-all"
+                      title="Edit"
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125" />
+                      </svg>
+                    </a>
+                  </div>
                 </div>
               ))}
             </div>

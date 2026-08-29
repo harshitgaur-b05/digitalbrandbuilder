@@ -94,14 +94,36 @@ export default async function Page(props: { params: Promise<{ slug: string[] }> 
 
   if (!post || !post.published) notFound();
 
-  // Build TOC items for the client component
-  const tocItems = (post.body ?? [])
-    .filter((s) => s.type === 'heading' || s.type === 'subheading')
-    .map((s) => ({
-      id: slugify(s.content),
-      label: s.content,
-      type: s.type as "heading" | "subheading",
-    }));
+  // Build TOC items and parse content for IDs if needed
+  let parsedContent = post.content || '';
+  let tocItems: { id: string, label: string, type: "heading" | "subheading" }[] = [];
+
+  if (post.body && post.body.length > 0) {
+    tocItems = post.body
+      .filter((s) => s.type === 'heading' || s.type === 'subheading')
+      .map((s) => ({
+        id: slugify(s.content),
+        label: s.content,
+        type: s.type as "heading" | "subheading",
+      }));
+  } else if (post.content) {
+    // Inject IDs into the HTML headings and build TOC items
+    const headingRegex = /<(h[23])([^>]*)>(.*?)<\/\1>/gi;
+    parsedContent = post.content.replace(headingRegex, (match, tag, attrs, content) => {
+      const label = content.replace(/<[^>]*>/g, '').trim();
+      const id = slugify(label);
+      tocItems.push({
+        id,
+        label,
+        type: tag.toLowerCase() === 'h2' ? 'heading' : 'subheading',
+      });
+      // Add id attribute to the tag if it doesn't have one
+      if (!attrs.includes('id=')) {
+        return `<${tag}${attrs} id="${id}">${content}</${tag}>`;
+      }
+      return match;
+    });
+  }
 
   // ── FAQ JSON-LD (FAQPage schema) ──────────────────────────────────────────
   const faqSchema =
@@ -223,7 +245,7 @@ export default async function Page(props: { params: Promise<{ slug: string[] }> 
 
               {/* Body — rich HTML from Tiptap editor, or legacy sections */}
               <div>
-                {post.content ? (
+                {parsedContent ? (
                   <div
                     className="prose prose-neutral dark:prose-invert max-w-none
                       prose-headings:font-bold prose-headings:tracking-tight prose-headings:text-foreground
@@ -231,8 +253,9 @@ export default async function Page(props: { params: Promise<{ slug: string[] }> 
                       prose-a:text-primary prose-a:no-underline hover:prose-a:underline
                       prose-blockquote:border-l-primary prose-blockquote:text-muted-foreground
                       prose-code:text-primary prose-strong:text-foreground
-                      prose-img:rounded-xl prose-img:border prose-img:border-foreground/8"
-                    dangerouslySetInnerHTML={{ __html: post.content }}
+                      prose-img:rounded-xl prose-img:border prose-img:border-foreground/8
+                      scroll-mt-28 prose-headings:scroll-mt-28"
+                    dangerouslySetInnerHTML={{ __html: parsedContent }}
                   />
                 ) : (
                   post.body?.map((section, i) => renderSection(section, i))
@@ -289,7 +312,7 @@ export default async function Page(props: { params: Promise<{ slug: string[] }> 
               )}
 
               {/* Bottom CTA */}
-              <div className="mt-16 bg-card border border-foreground/5 rounded-2xl p-8">
+              <div className="mt-16 bg-primary/5 dark:bg-primary/10 border border-primary/20 rounded-2xl p-8">
                 <p className="text-xs font-bold tracking-widest text-primary uppercase mb-3">
                   Want results like these?
                 </p>
@@ -301,7 +324,7 @@ export default async function Page(props: { params: Promise<{ slug: string[] }> 
                 </p>
                 <Link
                   href="/contact"
-                  className="inline-flex items-center gap-2 bg-foreground text-background text-sm font-semibold px-6 py-3 rounded-full hover:bg-primary transition-colors duration-200"
+                  className="inline-flex items-center gap-2 bg-primary text-primary-foreground text-sm font-semibold px-6 py-3 rounded-full hover:bg-primary/90 transition-colors duration-200"
                 >
                   Get in Touch <ArrowRight size={14} />
                 </Link>
@@ -324,19 +347,19 @@ export default async function Page(props: { params: Promise<{ slug: string[] }> 
               <TableOfContents items={tocItems} />
 
               {/* CTA Card */}
-              <div className="bg-foreground rounded-2xl p-6 text-background">
-                <p className="text-[10px] font-bold tracking-widest text-primary/70 uppercase mb-3">
+              <div className="bg-primary/5 dark:bg-primary/10 border border-primary/20 rounded-2xl p-6 text-foreground">
+                <p className="text-[10px] font-bold tracking-widest text-primary uppercase mb-3">
                   Work with us
                 </p>
                 <p className="text-base font-semibold leading-snug mb-3">
                   Ready to build a brand that grows?
                 </p>
-                <p className="text-primary/70 text-xs leading-relaxed mb-5">
+                <p className="text-muted-foreground text-xs leading-relaxed mb-5">
                   We help Indian businesses get more visibility, more trust, and more customers online.
                 </p>
                 <Link
                   href="/contact"
-                  className="inline-flex items-center gap-2 bg-primary/20 text-foreground text-xs font-bold px-4 py-2.5 rounded-full hover:bg-background transition-colors duration-200 w-full justify-center"
+                  className="inline-flex items-center gap-2 bg-primary text-primary-foreground text-xs font-bold px-4 py-2.5 rounded-full hover:bg-primary/90 transition-colors duration-200 w-full justify-center"
                 >
                   Get in Touch <ArrowRight size={13} />
                 </Link>

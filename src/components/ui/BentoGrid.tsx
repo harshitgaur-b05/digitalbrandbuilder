@@ -53,8 +53,8 @@ const BentoCard = ({
     )}
     {...props}
   >
-    {/* Decorative background — clipped to card shape */}
-    <div className="absolute inset-0 pointer-events-none overflow-hidden rounded-2xl">
+    {/* Decorative background — clipped to card shape, always behind content */}
+    <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden rounded-2xl">
       {background}
     </div>
 
