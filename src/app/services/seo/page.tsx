@@ -9,8 +9,8 @@ export const metadata: Metadata = {
 export default function SeoServicePage() {
   const seoData = {
     heroSection: {
-      tag: "SEO Service",
-      heading: "Drive More Traffic, Leads & Revenue with Advanced SEO, AEO & GEO Strategies",
+      tag: "SEO, AEO & GEO",
+      heading: "Drive more traffic, leads & revenue with advanced SEO, AEO & GEO strategies",
       subtitle: "Search is evolving faster than ever. Traditional rankings remain important, but today's customers also discover businesses through AI-powered search experiences. We combine SEO, AEO, and GEO to help businesses increase online visibility and generate sustainable growth.",
       primaryCta: { text: "Get Your Free SEO Strategy Consultation", href: "#lead-form" },
       secondaryCta: { text: "Explore Our Approach", href: "#approach" }

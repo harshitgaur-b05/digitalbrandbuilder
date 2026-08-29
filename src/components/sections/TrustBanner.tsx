@@ -13,7 +13,7 @@ export default function TrustBanner() {
     <section className="bg-muted border-y border-border py-6 overflow-hidden relative z-20 transition-colors duration-500" id="industries">
       <div className="max-w-7xl mx-auto px-6 md:px-8 flex flex-col lg:flex-row items-center justify-between gap-6 lg:gap-8">
         <span className="text-sm font-semibold text-primary shrink-0 uppercase tracking-wider">
-          Built for businesses that are ready to grow.
+          Built for businesses ready to grow, compete, and build a stronger digital presence.
         </span>
         <div className="flex flex-wrap items-center justify-center lg:justify-end gap-x-6 gap-y-3">
           {industries.map((industry, index) => (

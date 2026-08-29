@@ -29,6 +29,11 @@ export const metadata: Metadata = {
     title: "digitalbrandbuilder | Premium Digital Growth Partner",
     description: "We turn local businesses and growing brands into digital brands that get found, trusted, and chosen online.",
   },
+  icons: {
+    icon: "/logo.png",
+    shortcut: "/logo.png",
+    apple: "/logo.png",
+  },
   robots: {
     index: true,
     follow: true,

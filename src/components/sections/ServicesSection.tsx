@@ -117,8 +117,8 @@ const features = [
     Icon: Laptop,
     name: "Websites",
     description:
-      "Speed-optimized, high-converting digital storefronts. Fully customized design, polished transitions, and flawless mobile experience.",
-    href: "/services#websites",
+      "Fast, responsive, and conversion-focused websites built around your business goals. From business websites and landing pages to ecommerce stores, we create digital experiences designed for performance, usability, and growth.",
+    href: "/services/websites",
     cta: "Learn more",
     background: <WebsiteBg />,
     className: "lg:col-span-2",
@@ -127,8 +127,8 @@ const features = [
     Icon: Search,
     name: "SEO",
     description:
-      "Local mapping and keyword authority that puts you where local buyers look — optimized citations, keywords, and code structure.",
-    href: "/services#seo",
+      "Build long-term search visibility with technical SEO, on-page optimization, keyword research, content strategy, local SEO, and Google Business Profile optimization.",
+    href: "/services/seo",
     cta: "Learn more",
     background: <SeoBg />,
     className: "lg:col-span-1",
@@ -137,8 +137,8 @@ const features = [
     Icon: Megaphone,
     name: "Performance Marketing",
     description:
-      "Paid search and social campaigns that target buying intent, not vanity stats. Maximize acquisition with high-converting funnels.",
-    href: "/services#marketing",
+      "Reach high-intent customers through strategic Google Ads and paid social campaigns. We focus on the right audiences, compelling campaigns, optimized landing pages, and measurable conversions.",
+    href: "/services/marketing",
     cta: "Learn more",
     background: <MarketingBg />,
     className: "lg:col-span-1",
@@ -147,8 +147,8 @@ const features = [
     Icon: Share2,
     name: "Social Media",
     description:
-      "An organic content engine that elevates your brand character — design templates, editorial copy, and video to grow your community.",
-    href: "/services#social",
+      "Build a recognizable brand through strategic social media management, content planning, creative design, copywriting, and engaging campaigns that strengthen your digital community.",
+    href: "/services/social-media",
     cta: "Learn more",
     background: <SocialBg />,
     className: "lg:col-span-2",
@@ -157,7 +157,7 @@ const features = [
     Icon: ShoppingCart,
     name: "Ecommerce",
     description:
-      "Sophisticated Shopify or custom storefronts built to remove friction — product filtering, cart optimization, and checkout tuning.",
+      "Create ecommerce experiences that make shopping simple and intuitive. From Shopify stores to custom ecommerce websites, we optimize product pages, navigation, user experience, and conversion journeys.",
     href: "/services#ecommerce",
     cta: "Learn more",
     background: <EcomBg />,
@@ -167,8 +167,8 @@ const features = [
     Icon: Award,
     name: "Brand Presence",
     description:
-      "Complete visual frameworks — logos, color palettes, and typographic guides that make your offline legacy look expensive online.",
-    href: "/services#brand",
+      "Create a consistent and professional identity across your digital channels with brand strategy, visual direction, logo design, typography, messaging, and digital brand guidelines.",
+    href: "/services/brand-presence",
     cta: "Learn more",
     background: <BrandBg />,
     className: "lg:col-span-1",
@@ -190,7 +190,7 @@ export default function ServicesSection() {
             Everything your business needs to grow online.
           </h2>
           <p className="text-base md:text-lg text-muted-foreground max-w-xl mx-auto leading-relaxed">
-            One integrated growth engine — no juggling multiple agencies.
+            One integrated digital growth system—designed to simplify your marketing, strengthen your online presence, and help you generate more qualified leads and sales.
           </p>
         </div>
 

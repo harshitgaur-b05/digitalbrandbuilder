@@ -6,26 +6,26 @@ export default function ProblemSection() {
   const problems = [
     {
       num: "01",
-      title: "Outdated website",
-      desc: "Slow loading speeds and poor mobile design frustrate visitors, causing them to leave before exploring what you offer.",
+      title: "Outdated Website",
+      desc: "A slow, outdated, or poorly designed website can make visitors leave before they understand what your business offers. We create fast, responsive, user-friendly websites designed around your customers and business goals.",
       icon: <AlertCircle className="text-primary w-6 h-6" />,
     },
     {
       num: "02",
-      title: "Low search visibility",
-      desc: "If your business doesn't appear on the first page of Google searches, local customers will go straight to your competitors.",
+      title: "Low Search Visibility",
+      desc: "If your business isn't visible when potential customers search for your products or services, you're missing valuable opportunities. Our SEO strategies improve your visibility across Google Search, Google Maps, and relevant search results.",
       icon: <EyeOff className="text-primary w-6 h-6" />,
     },
     {
       num: "03",
-      title: "Inconsistent online presence",
-      desc: "Mismatched branding across social media, maps, and directories destroys professional credibility and trust.",
+      title: "Inconsistent Online Presence",
+      desc: "Your website, Google Business Profile, social media, and other digital channels should communicate one consistent brand. We align your messaging, visuals, and information to create a professional and trustworthy online presence.",
       icon: <Shuffle className="text-primary w-6 h-6" />,
     },
     {
       num: "04",
-      title: "Marketing without a clear system",
-      desc: "Spending money on ads and posts without a unified strategy leads to high costs and unpredictable results.",
+      title: "Marketing Without a Clear System",
+      desc: "Running ads or posting on social media without a clear strategy can waste time and budget. We connect SEO, paid advertising, content, social media, and conversion-focused experiences into one measurable digital growth strategy.",
       icon: <TrendingDown className="text-primary w-6 h-6" />,
     },
   ];
@@ -45,7 +45,7 @@ export default function ProblemSection() {
               <span className="text-primary italic font-normal">Can they find you?</span>
             </h2>
             <p className="text-base md:text-lg text-muted-foreground max-w-md leading-relaxed mb-8">
-              Most local businesses lose up to 70% of potential leads simply because their digital elements don&apos;t work together. We fix that misalignment.
+              Your customers are searching on Google, checking reviews, visiting websites, and comparing businesses before making a decision. If your website, SEO, social media, and advertising are not working together, valuable opportunities can easily go to your competitors.
             </p>
             <div className="flex items-center gap-2 mt-6">
               <div className="w-16 h-[1px] bg-primary/30"></div>

@@ -5,31 +5,31 @@ export default function ProcessSection() {
     {
       num: "01",
       title: "Tell us about your business",
-      desc: "Share your target customers, competitors, and products. We analyze what drives demand in your specific industry.",
+      desc: "We learn about your business, target audience, competitors, products, services, and growth goals to identify the biggest digital opportunities.",
       icon: <MessageSquare className="text-primary w-6 h-6" />,
     },
     {
       num: "02",
       title: "Build your digital foundation",
-      desc: "We build your premium, high-speed custom website and load the initial branding, layout, and visual presence.",
+      desc: "We create or improve your website, brand presence, analytics, tracking, and core digital assets to establish a strong foundation for growth.",
       icon: <Hammer className="text-primary w-6 h-6" />,
     },
     {
       num: "03",
       title: "Get discovered",
-      desc: "We configure structural SEO parameters, claim local citations, and set up Google Search Maps directories.",
+      desc: "We optimize your website for search engines, improve your local visibility, strengthen your Google Business Profile, and create content aligned with what your customers are searching for.",
       icon: <Search className="text-primary w-6 h-6" />,
     },
     {
       num: "04",
       title: "Turn attention into customers",
-      desc: "We deploy hyper-targeted ads and strategic organic content campaigns that turn searchers into buying customers.",
+      desc: "We combine SEO, Google Ads, social media, content, and conversion-focused strategies to turn relevant traffic into enquiries, leads, and sales.",
       icon: <Users className="text-primary w-6 h-6" />,
     },
     {
       num: "05",
       title: "Keep improving",
-      desc: "We optimize conversions, analyze analytics, and adapt content maps so your digital engine keeps driving client flow.",
+      desc: "We monitor performance, analyze user behavior, measure conversions, and continuously optimize your digital strategy to improve visibility, engagement, and business results.",
       icon: <RotateCw className="text-primary w-6 h-6" />,
     },
   ];

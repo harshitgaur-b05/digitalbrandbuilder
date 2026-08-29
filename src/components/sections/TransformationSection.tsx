@@ -4,27 +4,27 @@ export default function TransformationSection() {
   const stages = [
     {
       title: "Business",
-      desc: "A local, offline operation with a limited reach and untapped potential.",
+      desc: "Your existing business, products, services, and expertise become the foundation for a focused digital growth strategy.",
       icon: <Store className="text-primary w-7 h-7" />,
     },
     {
       title: "Website",
-      desc: "Your digital flagship store. Fast, premium, and designed to convert visitors.",
+      desc: "A fast, professional, mobile-friendly website that communicates your value and gives visitors a clear reason to take action.",
       icon: <Globe className="text-primary w-7 h-7" />,
     },
     {
       title: "Visibility",
-      desc: "Ranked high on Google and Maps. Getting found when local buyers search.",
+      desc: "Strategic SEO helps your business appear in front of people actively searching for your products and services across Google Search and Maps.",
       icon: <Search className="text-primary w-7 h-7" />,
     },
     {
       title: "Trust",
-      desc: "Social proof, consistent brand design, and stellar reviews. Chosen over others.",
+      desc: "Consistent branding, useful content, customer reviews, and a professional online presence help turn visitors into confident customers.",
       icon: <ShieldCheck className="text-primary w-7 h-7" />,
     },
     {
       title: "Growth",
-      desc: "A scalable digital brand with a recurring flow of customers and sales.",
+      desc: "A connected digital marketing system that continuously attracts, engages, and converts potential customers.",
       icon: <TrendingUp className="text-primary w-7 h-7" />,
     },
   ];
@@ -41,8 +41,7 @@ export default function TransformationSection() {
             From local business to digital brand.
           </h2>
           <p className="text-base md:text-lg text-muted-foreground max-w-xl mx-auto leading-relaxed">
-            We build the complete bridge that takes your physical business online and transforms
-            it into a premium, recognizable market leader.
+            Digital Brand Builder builds the complete digital foundation your business needs to move from simply being online to becoming a recognizable, trusted, and growth-focused brand.
           </p>
         </div>
 

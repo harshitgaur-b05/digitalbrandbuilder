@@ -10,7 +10,8 @@ export default function Footer() {
           
           {/* Logo & About Info (Column span 5) */}
           <div className="lg:col-span-5 flex flex-col items-start">
-            <Link href="/" className="mb-6 inline-block">
+            <Link href="/" className="mb-6 inline-flex items-center gap-2">
+              <img src="/logo.png" alt="Digital Brand Builder Logo" className="w-8 h-8 rounded-lg" />
               <span className="font-sans text-xl font-bold tracking-tight text-foreground lowercase">
                 digital<span className="font-normal text-primary">brand<span className="font-light text-muted-foreground">builder</span></span>
               </span>

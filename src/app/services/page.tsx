@@ -26,7 +26,7 @@ const services = [
     name: "Websites",
     description:
       "Speed-optimized, high-converting digital storefronts with flawless mobile experience and polished transitions that lock in trust from the first visit.",
-    href: "#websites",
+    href: "/services/websites",
     span: "lg:col-span-2",
     accent: true,
   },
@@ -46,7 +46,7 @@ const services = [
     name: "Performance Marketing",
     description:
       "Paid search and social campaigns targeting buying intent. Google Ads, Meta Ads, retargeting — maximizing acquisition through proven funnels.",
-    href: "#marketing",
+    href: "/services/marketing",
     span: "lg:col-span-1",
     accent: false,
   },
@@ -56,7 +56,7 @@ const services = [
     name: "Social Media",
     description:
       "An organic content engine elevating your brand character. Design templates, editorial copy, and reels to build a loyal community.",
-    href: "#social",
+    href: "/services/social-media",
     span: "lg:col-span-2",
     accent: true,
   },
@@ -66,7 +66,7 @@ const services = [
     name: "Content Writing",
     description:
       "SEO-driven blogs, landing pages, and brand copy that attract, educate, and convert — written by humans who understand your industry and your audience.",
-    href: "#content",
+    href: "/services/content-writing",
     span: "lg:col-span-2",
     accent: false,
   },
@@ -76,7 +76,7 @@ const services = [
     name: "Brand Presence",
     description:
       "Complete visual frameworks — logos, color palettes, and typographic guides so your offline legacy looks premium online.",
-    href: "#brand",
+    href: "/services/brand-presence",
     span: "lg:col-span-1",
     accent: true,
   },

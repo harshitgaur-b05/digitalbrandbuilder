@@ -130,28 +130,34 @@ export default function SeoServiceClient({ initialData }: SeoServiceClientProps)
             <motion.span
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
-              className="inline-block px-3 py-1 rounded-full bg-surface-container-low border border-outline-variant text-brand-accent font-display font-bold text-[10px] uppercase tracking-widest mb-6 shadow-sm"
+              className="inline-block px-3 py-1 rounded-xl bg-surface-container-low border border-outline-variant text-brand-accent font-display font-bold text-[10px] uppercase tracking-widest mb-6 shadow-sm"
             >
-              {heroSection.tag}
+              Service
             </motion.span>
 
             <motion.h1
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="font-display text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight text-on-surface mb-8 max-w-5xl leading-tight"
+              className="font-display text-5xl sm:text-6xl md:text-8xl font-extrabold tracking-tight text-on-surface mb-6 max-w-4xl leading-[0.95] text-wrap-balance"
             >
-              {heroSection.heading.split(" ").slice(0, -3).join(" ")}{" "}
-              <span className="text-brand-accent">
-                {heroSection.heading.split(" ").slice(-3).join(" ")}
-              </span>
+              {heroSection.tag}
             </motion.h1>
 
             <motion.p
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="font-body text-lg sm:text-xl text-on-surface-variant max-w-3xl leading-relaxed mb-10"
+              className="font-display text-lg sm:text-xl font-medium text-on-surface-variant max-w-2xl leading-relaxed mb-3"
+            >
+              {heroSection.heading}
+            </motion.p>
+
+            <motion.p
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.25 }}
+              className="font-body text-base text-on-surface-variant/70 max-w-2xl leading-relaxed mb-10"
             >
               {heroSection.subtitle}
             </motion.p>
@@ -164,13 +170,13 @@ export default function SeoServiceClient({ initialData }: SeoServiceClientProps)
             >
               <a
                 href={heroSection.primaryCta.href}
-                className="inline-flex items-center justify-center font-display font-bold uppercase tracking-wider text-brand-bg bg-brand-accent px-8 py-4 rounded-full text-xs sm:text-sm transition-all duration-300 hover:shadow-[0_8px_20px_rgba(126,142,113,0.3)] hover:-translate-y-0.5"
+                className="inline-flex items-center justify-center font-display font-bold uppercase tracking-wider text-brand-bg bg-brand-accent px-8 py-4 rounded-full text-xs sm:text-sm transition-all duration-300 hover:shadow-[0_8px_20px_rgba(126,142,113,0.3)] hover:-translate-y-0.5 active:scale-[0.98]"
               >
                 {heroSection.primaryCta.text}
               </a>
               <a
                 href={heroSection.secondaryCta.href}
-                className="inline-flex items-center justify-center font-display font-bold uppercase tracking-wider text-on-surface bg-surface-container-low border border-outline-variant px-8 py-4 rounded-full text-xs sm:text-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-surface-container-high hover:shadow-sm"
+                className="inline-flex items-center justify-center font-display font-bold uppercase tracking-wider text-on-surface bg-surface-container-low border border-outline-variant px-8 py-4 rounded-full text-xs sm:text-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-surface-container-high hover:shadow-sm active:scale-[0.98]"
               >
                 {heroSection.secondaryCta.text}
               </a>
@@ -237,27 +243,34 @@ export default function SeoServiceClient({ initialData }: SeoServiceClientProps)
               </motion.p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {whyMattersSection.points.map((point: any, idx: number) => (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: idx * 0.05 }}
-                  className="bg-surface-container-low p-8 rounded-2xl border border-outline-variant shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300"
-                >
-                  <div className="w-10 h-10 rounded-full bg-background border border-outline-variant flex items-center justify-center mb-6 text-brand-accent">
-                    <Check size={18} strokeWidth={2.5} />
-                  </div>
-                  <h3 className="font-display text-lg font-bold text-on-surface mb-3">
-                    {point.title}
-                  </h3>
-                  <p className="font-body text-sm text-on-surface-variant leading-relaxed">
-                    {point.desc}
-                  </p>
-                </motion.div>
-              ))}
+            <div className="space-y-6">
+              {whyMattersSection.points.map((point: any, idx: number) => {
+                const isRight = idx % 2 !== 0;
+                return (
+                  <motion.div
+                    key={idx}
+                    initial={{ opacity: 0, x: isRight ? 20 : -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: idx * 0.05 }}
+                    className={`flex flex-col sm:flex-row gap-6 items-start bg-surface-container-low p-6 sm:p-8 rounded-2xl border border-outline-variant shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 ${
+                      isRight ? "sm:flex-row-reverse" : ""
+                    }`}
+                  >
+                    <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-brand-accent/10 border border-brand-accent/20 flex items-center justify-center font-display font-extrabold text-brand-accent text-base">
+                      {String(idx + 1).padStart(2, "0")}
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="font-display text-base sm:text-lg font-bold text-on-surface mb-2">
+                        {point.title}
+                      </h3>
+                      <p className="font-body text-sm text-on-surface-variant leading-relaxed">
+                        {point.desc}
+                      </p>
+                    </div>
+                  </motion.div>
+                );
+              })}
             </div>
           </section>
         )}
@@ -704,7 +717,7 @@ export default function SeoServiceClient({ initialData }: SeoServiceClientProps)
                             type="text"
                             name="name"
                             required
-                            placeholder="John Doe"
+                            placeholder="Rahul Sharma"
                             value={formData.name}
                             onChange={handleInputChange}
                             className="w-full bg-surface-container-low/50 border border-outline-variant rounded-full py-3 pl-12 pr-6 text-sm focus:outline-none focus:border-brand-accent transition-colors"

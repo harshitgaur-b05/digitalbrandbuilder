@@ -135,9 +135,7 @@ export default function Hero() {
             ref={textRef}
             className="text-base md:text-lg leading-relaxed text-muted-foreground max-w-xl mb-8"
           >
-            We bring your digital presence together—from high-performing websites and SEO to
-            performance marketing and social media—so your business doesn&apos;t just exist online.
-            It grows there.
+            Digital Brand Builder brings your digital presence together—from high-performing websites and SEO to Google Ads, social media, and ecommerce. We help businesses build a stronger online presence, reach the right customers, and turn digital visibility into sustainable growth.
           </p>
 
           <div ref={ctaGroupRef} className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto mb-10">

@@ -48,8 +48,9 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-6 md:px-8 flex items-center justify-between">
 
         {/* Logo */}
-        <Link href="/" className="flex items-center z-50" aria-label="digitalbrandbuilder homepage">
-          <span className="font-sans text-xl font-bold tracking-tight text-foreground lowercase">
+        <Link href="/" className="flex items-center gap-2 z-50" aria-label="digitalbrandbuilder homepage">
+          <img src="/logo.png" alt="Digital Brand Builder Logo" className="w-8 h-8 rounded-lg" />
+          <span className="font-sans text-xl font-bold tracking-tight text-foreground lowercase hidden sm:inline-block">
             digital
             <span className="font-normal text-primary">brand</span>
             <span className="font-light text-muted-foreground">builder</span>

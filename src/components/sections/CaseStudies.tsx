@@ -5,17 +5,17 @@ export default function CaseStudies() {
     {
       industry: "D2C Fashion Brand",
       label: "CASE STUDY 01",
-      challenge: "Offline retail store struggling with flat local foot traffic and no direct digital sales channel to reach buyers outside the city.",
-      solution: "Developed an editorial ecommerce platform, optimized keyword relevance for regional search intent, and ran localized creative social campaigns.",
-      result: "[Placeholder: Pending live validation. Real metrics and traffic increases will populate here post launch.]",
+      challenge: "An offline fashion business had limited local visibility and no strong ecommerce channel to reach customers beyond its physical location.",
+      solution: "We developed a conversion-focused ecommerce website, optimized category and product pages for relevant search intent, and created a localized social media and content strategy to strengthen brand visibility.",
+      result: "The new digital storefront created a stronger online buying journey, improved the brand's presence across search and social channels, and provided a scalable platform to reach customers beyond the local market.",
       icon: <Sparkles className="w-5 h-5 text-primary" />,
     },
     {
       industry: "Local Manufacturing & Engineering",
       label: "CASE STUDY 02",
-      challenge: "A legacy B2B operation with zero online presence, losing contract bidding opportunities to competitors with polished sites.",
-      solution: "Designed a clean, modern digital presence displaying machines, credentials, and projects, coupled with localized search-optimization for corporate buyers.",
-      result: "[Placeholder: Pending client authorization. Verified contract inquiry rates will be published here.]",
+      challenge: "A traditional B2B manufacturing business had limited online visibility and was losing potential opportunities to competitors with stronger digital presentations.",
+      solution: "We created a professional website showcasing products, machinery, capabilities, certifications, and projects, supported by SEO focused on relevant commercial and local search terms.",
+      result: "The new website established a stronger professional digital presence, improved the brand's visibility for relevant B2B searches, and created a more effective channel for generating qualified business enquiries.",
       icon: <TrendingUp className="w-5 h-5 text-primary" />,
     },
   ];
@@ -32,7 +32,7 @@ export default function CaseStudies() {
             How we partner with brands.
           </h2>
           <p className="text-base md:text-lg text-muted-foreground max-w-xl mx-auto leading-relaxed">
-            We hold ourselves to a strict standard of truth. Here is the framework of our results, waiting for your data to tell the story.
+            At Digital Brand Builder, we believe digital marketing should be built on strategy, transparency, and measurable outcomes. Every project starts with understanding the business, identifying opportunities, building the right digital foundation, and continuously improving what works.
           </p>
         </div>
 

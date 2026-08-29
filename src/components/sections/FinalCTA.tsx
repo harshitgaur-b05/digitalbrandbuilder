@@ -18,11 +18,11 @@ export default function FinalCTA() {
           </span>
 
           <h2 className="font-sans text-3xl md:text-5xl lg:text-6xl font-medium leading-[1.1] tracking-tight text-foreground max-w-3xl mx-auto mb-6">
-            Your business is ready for its digital next chapter.
+            Your business has the potential. Let&apos;s build the digital brand to match.
           </h2>
 
           <p className="text-base md:text-lg text-muted-foreground max-w-xl mx-auto leading-relaxed mb-10">
-            Let&apos;s build a digital presence that reflects the true value of your work. Turn search visibility, professional web design, and digital brand authority into permanent growth.
+            Whether you&apos;re launching a new business, improving an existing website, or ready to take your digital marketing seriously, Digital Brand Builder can help you create a stronger online foundation and a clear path toward growth.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
