@@ -24,6 +24,8 @@ export interface IService extends Document {
   processSection?: any;
   whyUsSection?: any;
   resultsSection?: any;
+  whatsappMessage?: string;
+  faqSection?: any;
   isActive: boolean;
   order: number;
   imageUrl?: string;
@@ -66,6 +68,11 @@ const ServiceSchema: Schema = new Schema(
     whyUsSection: Schema.Types.Mixed,
     resultsSection: Schema.Types.Mixed,
     
+    // WhatsApp prefilled message
+    whatsappMessage: String,
+    // FAQ section heading (items stored in faq[])
+    faqSection: Schema.Types.Mixed,
+
     // Admin / SEO
     isActive: { type: Boolean, default: true },
     order: { type: Number, default: 0 },
