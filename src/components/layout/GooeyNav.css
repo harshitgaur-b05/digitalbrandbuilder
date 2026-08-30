@@ -20,7 +20,7 @@
   position: relative;
 }
 
-.gooey-nav-container nav ul li a {
+.gooey-nav-container nav ul li > a {
   display: block;
   padding: 0.45rem 1rem;
   font-size: 0.875rem;
@@ -34,12 +34,22 @@
   opacity: 0.65;
 }
 
-.gooey-nav-container nav ul li.active a {
+.gooey-nav-container nav ul li.active > a {
   opacity: 0;
 }
 
-.gooey-nav-container nav ul li a:hover {
+.gooey-nav-container nav ul li > a:hover {
   opacity: 0.9;
+}
+
+/* Dropdown links — full opacity, white in dark mode, dark in light mode */
+.gooey-nav-container nav ul li .dropdown-link {
+  opacity: 1 !important;
+  color: var(--foreground) !important;
+}
+
+.gooey-nav-container nav ul li .dropdown-link:hover {
+  opacity: 1 !important;
 }
 
 /* Effect spans (filter blob + text clone) */

@@ -226,12 +226,12 @@ const GooeyNav: React.FC<GooeyNavProps> = ({
                   </a>
                   {isServices && (
                     <div className="absolute top-[80%] left-1/2 -translate-x-1/2 mt-3 w-56 bg-card border border-border rounded-2xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 p-2 space-y-1">
-                      <Link href="/services/websites" className="block px-4 py-2 text-xs font-semibold text-foreground hover:bg-primary/10 rounded-xl transition-colors">Websites</Link>
-                      <Link href="/services/seo" className="block px-4 py-2 text-xs font-semibold text-foreground hover:bg-primary/10 rounded-xl transition-colors">SEO + AEO + GEO</Link>
-                      <Link href="/services/marketing" className="block px-4 py-2 text-xs font-semibold text-foreground hover:bg-primary/10 rounded-xl transition-colors">Performance Marketing</Link>
-                      <Link href="/services/social-media" className="block px-4 py-2 text-xs font-semibold text-foreground hover:bg-primary/10 rounded-xl transition-colors">Social Media</Link>
-                      <Link href="/services/content-writing" className="block px-4 py-2 text-xs font-semibold text-foreground hover:bg-primary/10 rounded-xl transition-colors">Content Writing</Link>
-                      <Link href="/services/brand-presence" className="block px-4 py-2 text-xs font-semibold text-foreground hover:bg-primary/10 rounded-xl transition-colors">Brand Presence</Link>
+                      <Link href="/services/websites" className="dropdown-link block px-4 py-2 text-xs font-semibold text-foreground hover:bg-primary/10 rounded-xl transition-colors">Websites</Link>
+                      <Link href="/services/seo" className="dropdown-link block px-4 py-2 text-xs font-semibold text-foreground hover:bg-primary/10 rounded-xl transition-colors">SEO + AEO + GEO</Link>
+                      <Link href="/services/marketing" className="dropdown-link block px-4 py-2 text-xs font-semibold text-foreground hover:bg-primary/10 rounded-xl transition-colors">Performance Marketing</Link>
+                      <Link href="/services/social-media" className="dropdown-link block px-4 py-2 text-xs font-semibold text-foreground hover:bg-primary/10 rounded-xl transition-colors">Social Media</Link>
+                      <Link href="/services/content-writing" className="dropdown-link block px-4 py-2 text-xs font-semibold text-foreground hover:bg-primary/10 rounded-xl transition-colors">Content Writing</Link>
+                      <Link href="/services/brand-presence" className="dropdown-link block px-4 py-2 text-xs font-semibold text-foreground hover:bg-primary/10 rounded-xl transition-colors">Brand Presence</Link>
                     </div>
                   )}
                 </li>
