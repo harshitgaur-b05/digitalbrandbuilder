@@ -55,8 +55,8 @@ export async function POST(request: NextRequest) {
   await connectDB();
   const record = await Service.findOneAndUpdate(
     { slug },
-    { slug, ...data },
-    { new: true, upsert: true, runValidators: true }
+    { $set: { slug, ...data } },
+    { new: true, upsert: true, runValidators: false }
   );
 
   return NextResponse.json({ success: true, record }, { status: 200 });

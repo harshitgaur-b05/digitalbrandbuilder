@@ -181,6 +181,7 @@ export default function ServiceEditorClient({ slug, initial }: { slug: string; i
         whyUsSection: { heading: data.whyUsHeading, items: data.whyUsItems },
         inactionSection: { heading: data.costHeading, items: data.costItems },
         faq: data.faqItems.map(f => ({ q: f.question, a: f.answer })),
+        faqSection: { heading: data.faqHeading },
         leadFormSection: {
           heading: data.leadFormHeading, subtitle: data.leadFormSubtitle,
           highlights: data.leadFormHighlights, ctaLabel: data.leadFormCtaLabel,
