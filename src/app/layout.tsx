@@ -38,7 +38,10 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
-  }
+  },
+  verification: {
+    google: "qe_Mfhklg0S2Jv-pc2yS34C0H9qEgTKUdKq-A7fKYCg",
+  },
 };
 
 interface LayoutProps {
