@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { ArrowRight, Sparkles } from "lucide-react";
 
 export default function FinalCTA() {
@@ -26,13 +27,13 @@ export default function FinalCTA() {
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a
-              href="#contact"
+            <Link
+              href="/contact"
               className="inline-flex items-center gap-3 bg-foreground text-background px-8 py-4 rounded-full text-base font-medium shadow-sm hover:bg-primary/80 motion-safe:hover:-translate-y-px transition-[transform,background-color] duration-300 group"
             >
               Build Your Digital Brand
               <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
-            </a>
+            </Link>
           </div>
 
           <span className="text-[10px] sm:text-xs text-muted-foreground mt-6 sm:mt-8 block">
