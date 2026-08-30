@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Mail, Phone, MapPin } from "lucide-react";
+import { Phone, MapPin } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -21,12 +21,8 @@ export default function Footer() {
             </p>
             <div className="flex flex-col gap-2.5 text-xs text-muted-foreground font-medium">
               <div className="flex items-center gap-2">
-                <Mail size={14} className="text-primary" />
-                <a href="mailto:hello@digitalbrandbuilder.in" className="hover:text-foreground transition-colors">hello@digitalbrandbuilder.in</a>
-              </div>
-              <div className="flex items-center gap-2">
                 <Phone size={14} className="text-primary" />
-                <a href="tel:+919876543210" className="hover:text-foreground transition-colors">+91 98765 43210</a>
+                <a href="tel:+918285321936" className="hover:text-foreground transition-colors">+91 82853 21936</a>
               </div>
               <div className="flex items-center gap-2">
                 <MapPin size={14} className="text-primary" />
@@ -57,16 +53,6 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Quick Links: Company (Column span 2) */}
-          <div className="lg:col-span-2 flex flex-col items-start">
-            <h4 className="text-xs font-bold tracking-widest text-foreground uppercase mb-4">Platform</h4>
-            <ul className="space-y-2.5 text-sm text-muted-foreground">
-              <li><a href="#how-it-works" className="hover:text-foreground transition-colors">How It Works</a></li>
-              <li><a href="#results" className="hover:text-foreground transition-colors">Case Studies</a></li>
-              <li><a href="#login" className="hover:text-foreground transition-colors">Portal Login</a></li>
-              <li><a href="#cta" className="hover:text-foreground transition-colors font-medium text-primary">Start Journey</a></li>
-            </ul>
-          </div>
 
         </div>
 

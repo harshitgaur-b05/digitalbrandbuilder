@@ -974,7 +974,7 @@ export default function SeoServiceClient({ initialData }: SeoServiceClientProps)
 
       {/* Floating Elements — Custom Floating WhatsApp component */}
       <a
-        href="https://wa.me/919999999999?text=Hello%20digitalbrandbuilder,%20I'm%20interested%20in%20your%20SEO%20Services!"
+        href="https://wa.me/918285321936?text=Hello%20digitalbrandbuilder,%20I'm%20interested%20in%20your%20SEO%20Services!"
         target="_blank"
         rel="noopener noreferrer"
         className="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white p-4 rounded-full shadow-lg hover:shadow-xl hover:scale-110 active:scale-95 transition-all duration-300 group flex items-center gap-2"
