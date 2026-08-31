@@ -4,7 +4,6 @@ import SeoServiceClient from "./SeoServiceClient"; // Client component
 export const metadata: Metadata = {
   title: "SEO Service Agency | SEO, AEO & GEO Experts",
   description: "Grow your business with our SEO Service. Improve rankings, visibility, traffic, and AI search presence with SEO, AEO & GEO strategies.",
-  alternates: { canonical: "https://digitalbrandbuilder.in/services/seo" },
 };
 
 export default function SeoServicePage() {

@@ -7,7 +7,6 @@ import BlogClient from "./BlogClient";
 export const metadata: Metadata = {
   title: "Blog | digitalbrandbuilder",
   description: "Insights, guides, and growth strategies for Indian businesses building their digital presence.",
-  alternates: { canonical: "https://digitalbrandbuilder.in/blog" },
 };
 
 export default async function BlogPage() {

@@ -13,7 +13,6 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: db?.metaTitle || "SEO Content Writing & Copywriting Services | digitalbrandbuilder",
     description: db?.metaDescription || "High-quality, human-written content that ranks on search engines and builds brand trust. Blog posts, landing pages, and email copy.",
-    alternates: { canonical: "https://digitalbrandbuilder.in/services/content-writing" },
   };
 }
 

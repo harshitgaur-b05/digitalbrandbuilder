@@ -6,7 +6,6 @@ import Footer from "@/components/layout/Footer";
 export const metadata: Metadata = {
   title: "About Us | digitalbrandbuilder",
   description: "We are a digital growth partner for Indian local businesses and D2C brands — turning offline businesses into digital market leaders.",
-  alternates: { canonical: "https://digitalbrandbuilder.in/about" },
 };
 
 const values = [

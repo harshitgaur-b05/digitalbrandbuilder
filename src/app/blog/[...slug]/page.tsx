@@ -78,7 +78,6 @@ export async function generateMetadata(
   return {
     title: `${post.title} | digitalbrandbuilder`,
     description: post.description,
-    alternates: { canonical: `https://digitalbrandbuilder.in/blog/${slug.join('/')}` },
     openGraph: {
       title: post.title,
       description: post.description,
