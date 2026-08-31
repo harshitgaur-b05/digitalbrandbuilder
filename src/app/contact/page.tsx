@@ -111,8 +111,8 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <p className="font-semibold text-foreground mb-0.5">Phone</p>
-                      <a href="tel:+919876543210" className="hover:text-foreground transition-colors">
-                        +91 98765 43210
+                      <a href="tel:+918285321936" className="hover:text-foreground transition-colors">
+                        +91 82853 21936
                       </a>
                     </div>
                   </div>
@@ -164,7 +164,7 @@ export default function ContactPage() {
                       <input
                         id="name" name="name" type="text" required
                         value={formData.name} onChange={handleChange}
-                        placeholder="Harshit Gaur"
+                        placeholder="Enter your name"
                         className="w-full px-4 py-3 rounded-xl border border-foreground/10 bg-background/60 text-foreground text-sm placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors"
                       />
                     </div>
