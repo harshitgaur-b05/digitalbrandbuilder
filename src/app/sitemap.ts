@@ -21,6 +21,42 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: 'https://digitalbrandbuilder.in/services/websites',
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.85,
+    },
+    {
+      url: 'https://digitalbrandbuilder.in/services/seo',
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.85,
+    },
+    {
+      url: 'https://digitalbrandbuilder.in/services/marketing',
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.85,
+    },
+    {
+      url: 'https://digitalbrandbuilder.in/services/social-media',
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.85,
+    },
+    {
+      url: 'https://digitalbrandbuilder.in/services/content-writing',
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.85,
+    },
+    {
+      url: 'https://digitalbrandbuilder.in/services/brand-presence',
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.85,
+    },
+    {
       url: 'https://digitalbrandbuilder.in/blog',
       lastModified: new Date(),
       changeFrequency: 'weekly',
@@ -37,6 +73,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.9,
-    }
+    },
   ];
 }
