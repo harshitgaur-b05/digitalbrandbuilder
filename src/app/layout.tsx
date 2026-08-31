@@ -31,9 +31,17 @@ export const metadata: Metadata = {
     description: "We turn local businesses and growing brands into digital brands that get found, trusted, and chosen online.",
   },
   icons: {
-    icon: "/logo.png",
-    shortcut: "/logo.png",
-    apple: "/logo.png",
+    icon: [
+      { url: "/favicon.png", type: "image/png", sizes: "1024x1024" },
+      { url: "/logo.png",    type: "image/png", sizes: "32x32" },
+    ],
+    shortcut: "/favicon.png",
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+    other: [
+      { rel: "apple-touch-icon-precomposed", url: "/apple-touch-icon.png" },
+    ],
   },
   robots: {
     index: true,
