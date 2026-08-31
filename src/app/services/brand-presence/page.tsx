@@ -13,6 +13,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: db?.metaTitle || "Brand Strategy & Identity Services | digitalbrandbuilder",
     description: db?.metaDescription || "Create a consistent and memorable brand identity. Brand strategy, logo design, visual style guides, and typography systems.",
+    alternates: { canonical: "https://digitalbrandbuilder.in/services/brand-presence" },
   };
 }
 

@@ -13,6 +13,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: db?.metaTitle || "Social Media Marketing Services | digitalbrandbuilder",
     description: db?.metaDescription || "Build brand awareness, engage your audience, and drive conversions. Custom content planning, design, writing, and platform management.",
+    alternates: { canonical: "https://digitalbrandbuilder.in/services/social-media" },
   };
 }
 

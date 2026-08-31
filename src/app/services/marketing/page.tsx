@@ -13,6 +13,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: db?.metaTitle || "Performance Marketing & Paid Ads Services | digitalbrandbuilder",
     description: db?.metaDescription || "Drive targeted leads and sales with data-driven paid advertising. Google Ads, Meta Ads (Facebook & Instagram), and LinkedIn campaign management.",
+    alternates: { canonical: "https://digitalbrandbuilder.in/services/marketing" },
   };
 }
 
