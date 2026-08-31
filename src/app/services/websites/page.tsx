@@ -13,6 +13,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: db?.metaTitle || "Website Design & Development Services | digitalbrandbuilder",
     description: db?.metaDescription || "Build a high-performing, speed-optimized website with digitalbrandbuilder. Custom business websites, e-commerce stores, and conversion-focused landing pages.",
+    alternates: { canonical: "https://digitalbrandbuilder.in/services/websites" },
   };
 }
 

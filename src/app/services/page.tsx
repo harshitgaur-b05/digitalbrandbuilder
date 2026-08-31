@@ -17,6 +17,7 @@ export const metadata: Metadata = {
   title: "Services | digitalbrandbuilder",
   description:
     "Explore our full suite of digital growth services — websites, SEO, performance marketing, social media, ecommerce, and brand presence for Indian businesses.",
+  alternates: { canonical: "https://digitalbrandbuilder.in/services" },
 };
 
 const services = [

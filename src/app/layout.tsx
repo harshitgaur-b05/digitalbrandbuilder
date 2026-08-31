@@ -14,12 +14,15 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "digitalbrandbuilder | Premium Digital Growth Partner for Growing Brands",
-  description: "We don't just build websites. We turn local businesses and growing brands into digital brands that get found, trusted, and chosen online. Websites, SEO, Performance Marketing, and Social Media.",
+  title: "Digital Marketing Agency in Delhi | Digital Brand Builder",
+  description: "Digital Brand Builder is a Delhi-based digital marketing agency helping local businesses grow with web design, SEO, ads & social media.",
   metadataBase: new URL("https://digitalbrandbuilder.in"),
+  alternates: {
+    canonical: "https://digitalbrandbuilder.in",
+  },
   openGraph: {
-    title: "digitalbrandbuilder | Turn Your Business Into A Digital Brand",
-    description: "Premium digital presence for local businesses and D2C brands. Websites, SEO, performance marketing, and social media integrated into one powerful growth engine.",
+    title: "Digital Marketing Agency in Delhi | Digital Brand Builder",
+    description: "Digital Brand Builder is a Delhi-based digital marketing agency helping local businesses grow with web design, SEO, ads & social media.",
     url: "https://digitalbrandbuilder.in",
     siteName: "digitalbrandbuilder",
     locale: "en_IN",
@@ -27,8 +30,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "digitalbrandbuilder | Premium Digital Growth Partner",
-    description: "We turn local businesses and growing brands into digital brands that get found, trusted, and chosen online.",
+    title: "Digital Marketing Agency in Delhi | Digital Brand Builder",
+    description: "Digital Brand Builder is a Delhi-based digital marketing agency helping local businesses grow with web design, SEO, ads & social media.",
   },
   icons: {
     icon: [
