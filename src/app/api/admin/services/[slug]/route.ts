@@ -43,8 +43,9 @@ export async function PUT(
   );
 
   // Bust the Next.js cache for the public service page immediately
-  revalidatePath(`/services/${slug}`);
-  revalidatePath("/services");
+  // "layout" type ensures generateMetadata is also re-run, not just the page render
+  revalidatePath(`/services/${slug}`, "layout");
+  revalidatePath("/services", "layout");
 
   return NextResponse.json({ success: true, record });
 }
@@ -59,8 +60,8 @@ export async function DELETE(
   await connectDB();
   await Service.deleteOne({ slug });
 
-  revalidatePath(`/services/${slug}`);
-  revalidatePath("/services");
+  revalidatePath(`/services/${slug}`, "layout");
+  revalidatePath("/services", "layout");
 
   return NextResponse.json({ success: true, message: "Reset to defaults" });
 }
