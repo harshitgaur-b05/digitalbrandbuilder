@@ -3,7 +3,7 @@ import type { ServicePageData } from "@/app/services/_components/ServicePageShel
 // ─── Websites ────────────────────────────────────────────────────────────────
 const websites: ServicePageData = {
   hero: {
-    name: "Websites",
+    name: "Website Design & Development",
     tagline: "Build a high-performing website designed to generate results.",
     subtitle: "We build websites that do more than look professional. We combine fast load times, responsive code, conversion strategy, and SEO-friendly foundations to turn visitors into customers.",
     primaryCta: { text: "Start My Project", href: "#lead-form" },
@@ -102,7 +102,7 @@ const websites: ServicePageData = {
 // ─── Marketing ───────────────────────────────────────────────────────────────
 const marketing: ServicePageData = {
   hero: {
-    name: "Performance Marketing",
+    name: "Performance Marketing & Paid Advertising",
     tagline: "Scale your business with data-driven paid media strategies.",
     subtitle: "Drive qualified traffic, generate more leads and sales, improve conversion rates, and make every advertising investment more measurable with results-focused paid media campaigns.",
     primaryCta: { text: "Start My Marketing Strategy", href: "#lead-form" },
@@ -202,7 +202,7 @@ const marketing: ServicePageData = {
 // ─── Social Media ────────────────────────────────────────────────────────────
 const socialMedia: ServicePageData = {
   hero: {
-    name: "Social Media",
+    name: "Social Media Marketing & Management",
     tagline: "Build a brand people remember across platforms.",
     subtitle: "Build a stronger brand, engage the right audience, generate qualified leads, and drive business growth with social media marketing. We combine strategy, creative content, community engagement, and paid social advertising to help your business grow across the platforms that matter.",
     primaryCta: { text: "Get Free Social Media Audit", href: "#lead-form" },
@@ -302,7 +302,7 @@ const socialMedia: ServicePageData = {
 // ─── Content Writing ─────────────────────────────────────────────────────────
 const contentWriting: ServicePageData = {
   hero: {
-    name: "Content Writing",
+    name: "SEO Content Writing & Copywriting",
     tagline: "SEO-driven copy that engages, educates, and converts.",
     subtitle: "We write clear, compelling, human-written content for your business. From blog posts and landing pages to email newsletters and brand copywriting, we help you communicate your value and turn readers into customers.",
     primaryCta: { text: "Get Free Content Consultation", href: "#lead-form" },
@@ -401,7 +401,7 @@ const contentWriting: ServicePageData = {
 // ─── Brand Presence ───────────────────────────────────────────────────────────
 const brandPresence: ServicePageData = {
   hero: {
-    name: "Brand Presence",
+    name: "Brand Strategy & Identity Design",
     tagline: "Build a memorable and consistent brand identity.",
     subtitle: "Create a professional identity, strengthen brand recognition, build customer trust, and make your business stand out across every digital touchpoint with brand presence services.",
     primaryCta: { text: "Get Free Brand Consultation", href: "#lead-form" },

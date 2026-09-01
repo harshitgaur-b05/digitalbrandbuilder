@@ -5,6 +5,12 @@
  */
 import type { ServicePageData } from "@/app/services/_components/ServicePageShell";
 
+/** Strip accidental trailing " services" or " service" from hero names saved by older admin versions */
+function cleanHeroName(name: string | undefined, fallback: string): string {
+  if (!name) return fallback;
+  return name.replace(/\s+services?$/i, '').trim() || fallback;
+}
+
 export function mergeServiceData(
   defaults: ServicePageData,
   db: Record<string, any> | null
@@ -14,7 +20,7 @@ export function mergeServiceData(
   return {
     hero: db.heroSection
       ? {
-          name: db.heroSection.name ?? defaults.hero.name,
+          name: cleanHeroName(db.heroSection.name, defaults.hero.name),
           tagline: db.heroSection.tagline ?? defaults.hero.tagline,
           subtitle: db.heroSection.subtitle ?? defaults.hero.subtitle,
           primaryCta: db.heroSection.primaryCta ?? defaults.hero.primaryCta,

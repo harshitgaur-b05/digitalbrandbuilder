@@ -184,11 +184,12 @@ export default function ServicePageShell({ data }: Props) {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             className="inline-block px-3 py-1 rounded-xl bg-surface-container-low border border-outline-variant text-brand-accent font-display font-bold text-[10px] uppercase tracking-widest mb-6 shadow-sm"
+            aria-hidden="true"
           >
             Service
           </motion.span>
 
-          {/* Giant service name as h1 */}
+          {/* Giant service name as h1 — tagline included for SEO context */}
           <motion.h1
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
@@ -196,7 +197,7 @@ export default function ServicePageShell({ data }: Props) {
             className="font-display text-5xl sm:text-6xl md:text-8xl font-extrabold tracking-tight text-on-surface mb-6 max-w-4xl leading-[0.95]"
             style={{ textWrap: "balance" } as React.CSSProperties}
           >
-            {hero.name}
+            {hero.name.replace(/\s+services?$/i, '').trim()}
           </motion.h1>
 
           {/* Tagline */}
