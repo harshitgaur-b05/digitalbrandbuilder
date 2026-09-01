@@ -1,16 +1,63 @@
 # Digital Brand Builder
-Website: https://digitalbrandbuilder.in
-Description: We turn local businesses and growing brands into digital brands that get found, trusted, and chosen online. Services include Websites, SEO, Performance Marketing, and Social Media.
+> Digital Brand Builder is a digital marketing agency based in New Delhi, India. We help local businesses and D2C brands build a stronger online presence through website design, SEO, performance marketing, social media management, content writing, and brand identity services.
 
-## About Us
-Digital Brand Builder brings your digital presence together—from high-performing websites and SEO to Google Ads, social media, and ecommerce. We help businesses build a stronger online presence, reach the right customers, and turn digital visibility into sustainable growth.
+## Company
+- Full name: Digital Brand Builder
+- Location: New Delhi, Delhi, India
+- Website: https://digitalbrandbuilder.in
+- Email: hello@digitalbrandbuilder.in
+- Phone: +91 82853 21936
+- Type: Digital Marketing Agency
+- Service area: India (primary focus: Delhi NCR)
+
+## What We Do
+Digital Brand Builder provides end-to-end digital growth services for local businesses and growing D2C brands in India. We combine website development, search engine optimisation (SEO), paid advertising, social media, and brand strategy into a unified digital growth system.
+
+We help businesses:
+- Get found on Google Search, Google Maps, and AI-powered search platforms
+- Build professional, fast, mobile-optimised websites
+- Run data-driven paid advertising campaigns on Google and Meta
+- Grow their social media presence with strategic content
+- Establish a consistent, trustworthy brand identity online
 
 ## Services
-- Custom Websites
-- Search Engine Optimization (SEO)
-- Performance Marketing
-- Social Media Management
-- Ecommerce Solutions
+- Website Design & Development: https://digitalbrandbuilder.in/services/websites
+- SEO, AEO & GEO (Search Engine Optimisation, Answer Engine Optimisation, Generative Engine Optimisation): https://digitalbrandbuilder.in/services/seo
+- Performance Marketing (Google Ads, Meta Ads, LinkedIn Ads): https://digitalbrandbuilder.in/services/marketing
+- Social Media Marketing & Management: https://digitalbrandbuilder.in/services/social-media
+- Content Writing & Copywriting: https://digitalbrandbuilder.in/services/content-writing
+- Brand Presence & Identity: https://digitalbrandbuilder.in/services/brand-presence
+
+## Who We Serve
+- Local businesses in Delhi and across India
+- D2C (Direct-to-Consumer) brands
+- Manufacturing and B2B businesses
+- Fashion, beauty, furniture, events, ecommerce, and local service businesses
+
+## Expertise
+- Digital marketing strategy
+- Local SEO and Google Business Profile optimisation
+- Technical SEO and website performance
+- Answer Engine Optimisation (AEO) for featured snippets and voice search
+- Generative Engine Optimisation (GEO) for ChatGPT, Gemini, and AI Overviews
+- Google Ads and Meta Ads campaign management
+- Social media content strategy and management
+- Brand identity and visual design systems
+- Conversion rate optimisation
+
+## Free Offer
+Free digital marketing audit available at: https://digitalbrandbuilder.in/free-audit
+
+## Blog
+Guides and insights on digital growth for Indian businesses: https://digitalbrandbuilder.in/blog
+
+## Key Pages
+- Homepage: https://digitalbrandbuilder.in
+- About: https://digitalbrandbuilder.in/about
+- All Services: https://digitalbrandbuilder.in/services
+- Contact: https://digitalbrandbuilder.in/contact
 
 ## Contact
-Book a free audit at https://digitalbrandbuilder.in/free-audit
+- Enquiry form: https://digitalbrandbuilder.in/contact
+- Email: hello@digitalbrandbuilder.in
+- WhatsApp: +91 82853 21936

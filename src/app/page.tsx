@@ -12,50 +12,195 @@ import AuditSection from "@/components/sections/AuditSection";
 import FinalCTA from "@/components/sections/FinalCTA";
 import Footer from "@/components/layout/Footer";
 
+// ── JSON-LD: Organization + LocalBusiness ────────────────────────────────────
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": ["Organization", "LocalBusiness", "ProfessionalService"],
+  "@id": "https://digitalbrandbuilder.in/#organization",
+  name: "Digital Brand Builder",
+  url: "https://digitalbrandbuilder.in",
+  logo: {
+    "@type": "ImageObject",
+    url: "https://digitalbrandbuilder.in/logo.png",
+    width: 200,
+    height: 200,
+  },
+  description:
+    "Digital Brand Builder is a digital marketing agency in New Delhi, India, providing website design, SEO, performance marketing, social media management, content writing, and brand identity services to local businesses and D2C brands.",
+  telephone: "+918285321936",
+  email: "hello@digitalbrandbuilder.in",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "New Delhi",
+    addressRegion: "Delhi",
+    addressCountry: "IN",
+  },
+  areaServed: {
+    "@type": "Country",
+    name: "India",
+  },
+  serviceArea: {
+    "@type": "City",
+    name: "New Delhi",
+  },
+  foundingLocation: {
+    "@type": "Place",
+    name: "New Delhi, India",
+  },
+  knowsAbout: [
+    "Digital Marketing",
+    "Search Engine Optimization",
+    "Website Design",
+    "Performance Marketing",
+    "Social Media Marketing",
+    "Content Writing",
+    "Brand Identity",
+    "Google Ads",
+    "Meta Ads",
+    "Local SEO",
+    "Answer Engine Optimization",
+    "Generative Engine Optimization",
+  ],
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Digital Marketing Services",
+    itemListElement: [
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Website Design & Development",
+          url: "https://digitalbrandbuilder.in/services/websites",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "SEO, AEO & GEO",
+          url: "https://digitalbrandbuilder.in/services/seo",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Performance Marketing",
+          url: "https://digitalbrandbuilder.in/services/marketing",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Social Media Marketing",
+          url: "https://digitalbrandbuilder.in/services/social-media",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Content Writing",
+          url: "https://digitalbrandbuilder.in/services/content-writing",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Brand Presence & Identity",
+          url: "https://digitalbrandbuilder.in/services/brand-presence",
+        },
+      },
+    ],
+  },
+  // Add your real social profiles here when available:
+  sameAs: [
+    // "https://www.instagram.com/digitalbrandbuilder",
+    // "https://www.linkedin.com/company/digitalbrandbuilder",
+    // "https://twitter.com/digitalbrandbuilder",
+  ],
+};
+
+// ── JSON-LD: WebSite ─────────────────────────────────────────────────────────
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://digitalbrandbuilder.in/#website",
+  url: "https://digitalbrandbuilder.in",
+  name: "Digital Brand Builder",
+  description:
+    "Digital marketing agency in New Delhi helping local businesses and D2C brands build stronger digital brands.",
+  publisher: { "@id": "https://digitalbrandbuilder.in/#organization" },
+  inLanguage: "en-IN",
+  potentialAction: {
+    "@type": "SearchAction",
+    target: {
+      "@type": "EntryPoint",
+      urlTemplate:
+        "https://digitalbrandbuilder.in/blog?q={search_term_string}",
+    },
+    "query-input": "required name=search_term_string",
+  },
+};
+
 export default function Home() {
   return (
-    <div className="min-h-screen flex flex-col bg-background text-foreground transition-colors duration-500 antialiased">
-      {/* Navigation */}
-      <Navbar />
+    <>
+      {/* Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+      />
 
-      {/* Main Contents */}
-      <main className="flex-grow">
-        {/* SECTION 1 - HERO */}
-        <Hero />
+      <div className="min-h-screen flex flex-col bg-background text-foreground transition-colors duration-500 antialiased">
+        {/* Navigation */}
+        <Navbar />
 
-        {/* SECTION 2 - TRUST / RELEVANCE */}
-        <TrustBanner />
+        {/* Main Contents */}
+        <main className="flex-grow">
+          {/* SECTION 1 - HERO */}
+          <Hero />
 
-        {/* SECTION 3 - THE PROBLEM */}
-        <ProblemSection />
+          {/* SECTION 2 - TRUST / RELEVANCE */}
+          <TrustBanner />
 
-        {/* SECTION 4 - TRANSFORMATION */}
-        <TransformationSection />
+          {/* SECTION 3 - THE PROBLEM */}
+          <ProblemSection />
 
-        {/* SECTION 5 - SERVICES */}
-        <ServicesSection />
+          {/* SECTION 4 - TRANSFORMATION */}
+          <TransformationSection />
 
-        {/* SECTION 6 - HOW IT WORKS */}
-        <ProcessSection />
+          {/* SECTION 5 - SERVICES */}
+          <ServicesSection />
 
-        {/* SECTION 7 - PROOF / CASE STUDIES */}
-        <CaseStudies />
+          {/* SECTION 6 - HOW IT WORKS */}
+          <ProcessSection />
 
-        {/* SECTION 8 - TESTIMONIALS */}
-        <TestimonialSection />
+          {/* SECTION 7 - PROOF / CASE STUDIES */}
+          <CaseStudies />
 
-        {/* SECTION 9 - BLOG */}
-        <BlogSection />
+          {/* SECTION 8 - TESTIMONIALS */}
+          <TestimonialSection />
 
-        {/* SECTION 10 - FREE AUDIT */}
-        <AuditSection />
+          {/* SECTION 9 - BLOG */}
+          <BlogSection />
 
-        {/* SECTION 11 - FINAL CTA */}
-        <FinalCTA />
-      </main>
+          {/* SECTION 10 - FREE AUDIT */}
+          <AuditSection />
 
-      {/* Footer */}
-      <Footer />
-    </div>
+          {/* SECTION 11 - FINAL CTA */}
+          <FinalCTA />
+        </main>
+
+        {/* Footer */}
+        <Footer />
+      </div>
+    </>
   );
 }

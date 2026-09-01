@@ -5,9 +5,23 @@ import { getBlogPosts } from "@/lib/source";
 import BlogClient from "./BlogClient";
 
 export const metadata: Metadata = {
-  title: "Blog | digitalbrandbuilder",
-  description: "Insights, guides, and growth strategies for Indian businesses building their digital presence.",
+  title: "Blog — Digital Growth Insights for Indian Businesses",
+  description:
+    "Tactical guides, real frameworks, and honest perspectives on digital marketing, SEO, website design, and brand building for Indian businesses.",
   alternates: { canonical: "https://digitalbrandbuilder.in/blog" },
+  openGraph: {
+    title: "Blog — Digital Growth Insights | Digital Brand Builder",
+    description:
+      "In-depth guides on SEO, website design, performance marketing, and social media for Indian businesses.",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Digital Brand Builder Blog",
+      },
+    ],
+  },
 };
 
 export default async function BlogPage() {

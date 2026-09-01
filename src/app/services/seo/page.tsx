@@ -2,9 +2,23 @@ import { Metadata } from "next";
 import SeoServiceClient from "./SeoServiceClient"; // Client component
 
 export const metadata: Metadata = {
-  title: "SEO Service Agency | SEO, AEO & GEO Experts",
-  description: "Grow your business with our SEO Service. Improve rankings, visibility, traffic, and AI search presence with SEO, AEO & GEO strategies.",
+  title: "SEO, AEO & GEO Services in Delhi | Digital Brand Builder",
+  description:
+    "Grow your business with expert SEO, Answer Engine Optimisation (AEO), and Generative Engine Optimisation (GEO). Improve rankings, visibility, and AI search presence.",
   alternates: { canonical: "https://digitalbrandbuilder.in/services/seo" },
+  openGraph: {
+    title: "SEO, AEO & GEO Services | Digital Brand Builder",
+    description:
+      "SEO, AEO, and GEO strategies that improve rankings, traffic, and visibility across Google Search, AI Overviews, ChatGPT, and Perplexity.",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "SEO, AEO & GEO Services — Digital Brand Builder",
+      },
+    ],
+  },
 };
 
 export default function SeoServicePage() {

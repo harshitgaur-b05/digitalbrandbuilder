@@ -4,9 +4,23 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 
 export const metadata: Metadata = {
-  title: "About Us | digitalbrandbuilder",
-  description: "We are a digital growth partner for Indian local businesses and D2C brands — turning offline businesses into digital market leaders.",
+  title: "About Digital Brand Builder — Delhi Digital Marketing Agency",
+  description:
+    "Digital Brand Builder is a New Delhi digital marketing agency helping local businesses and D2C brands build a stronger online presence through websites, SEO, ads, and brand strategy.",
   alternates: { canonical: "https://digitalbrandbuilder.in/about" },
+  openGraph: {
+    title: "About Digital Brand Builder — Delhi Digital Marketing Agency",
+    description:
+      "We are a digital growth partner for Indian local businesses and D2C brands — combining website design, SEO, performance marketing, and brand strategy.",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "About Digital Brand Builder",
+      },
+    ],
+  },
 };
 
 const values = [

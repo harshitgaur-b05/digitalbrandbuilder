@@ -147,12 +147,71 @@ export default async function Page(props: { params: Promise<{ slug: string[] }> 
   const articleSchema = {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
+    '@id': `https://digitalbrandbuilder.in/blog/${post.slug}#article`,
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `https://digitalbrandbuilder.in/blog/${post.slug}`,
+    },
     headline: post.title,
     description: post.description,
-    author: { '@type': 'Person', name: post.author ?? 'digitalbrandbuilder' },
+    author: {
+      '@type': 'Person',
+      name: post.author ?? 'Digital Brand Builder',
+      url: 'https://digitalbrandbuilder.in/about',
+    },
+    publisher: {
+      '@type': 'Organization',
+      '@id': 'https://digitalbrandbuilder.in/#organization',
+      name: 'Digital Brand Builder',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://digitalbrandbuilder.in/logo.png',
+      },
+    },
     datePublished: post.date,
-    image: post.image ?? undefined,
+    dateModified: post.date,
+    image: post.image
+      ? {
+          '@type': 'ImageObject',
+          url: post.image,
+          description: post.title,
+        }
+      : undefined,
     url: `https://digitalbrandbuilder.in/blog/${post.slug}`,
+    inLanguage: 'en-IN',
+    keywords: [post.category, post.tag].filter(Boolean).join(', '),
+    isPartOf: {
+      '@type': 'Blog',
+      '@id': 'https://digitalbrandbuilder.in/blog',
+      name: 'Digital Brand Builder Blog',
+      publisher: { '@id': 'https://digitalbrandbuilder.in/#organization' },
+    },
+  };
+
+  // ── BreadcrumbList JSON-LD ────────────────────────────────────────────────
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: 'https://digitalbrandbuilder.in',
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Blog',
+        item: 'https://digitalbrandbuilder.in/blog',
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: post.title,
+        item: `https://digitalbrandbuilder.in/blog/${post.slug}`,
+      },
+    ],
   };
 
   return (
@@ -161,6 +220,10 @@ export default async function Page(props: { params: Promise<{ slug: string[] }> 
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
       {faqSchema && (
         <script

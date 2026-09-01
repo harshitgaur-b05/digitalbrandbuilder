@@ -14,10 +14,23 @@ import Footer from "@/components/layout/Footer";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Services | digitalbrandbuilder",
+  title: "Digital Marketing Services in Delhi — Websites, SEO, Ads & More",
   description:
-    "Explore our full suite of digital growth services — websites, SEO, performance marketing, social media, ecommerce, and brand presence for Indian businesses.",
+    "Explore Digital Brand Builder's full suite of digital marketing services: website design, SEO, performance marketing, social media, content writing, and brand identity for Indian businesses.",
   alternates: { canonical: "https://digitalbrandbuilder.in/services" },
+  openGraph: {
+    title: "Digital Marketing Services in Delhi | Digital Brand Builder",
+    description:
+      "One integrated growth engine — websites, SEO, marketing, social, and brand — built and run for Indian businesses.",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Digital Marketing Services — Digital Brand Builder",
+      },
+    ],
+  },
 };
 
 const services = [

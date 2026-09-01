@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Menu, X, ArrowRight } from "lucide-react";
 import { AnimatedThemeToggler } from "@/components/ui/animated-theme-toggler";
@@ -49,7 +50,14 @@ export default function Navbar() {
 
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 z-50" aria-label="digitalbrandbuilder homepage">
-          <img src="/logo.png" alt="Digital Brand Builder Logo" className="w-8 h-8 rounded-lg" />
+          <Image
+            src="/logo.png"
+            alt="Digital Brand Builder Logo"
+            width={32}
+            height={32}
+            className="rounded-lg"
+            priority
+          />
           <span className="font-sans text-xl font-bold tracking-tight text-foreground lowercase hidden sm:inline-block">
             digital
             <span className="font-normal text-primary">brand</span>
