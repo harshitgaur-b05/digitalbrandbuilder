@@ -21,7 +21,7 @@ export async function generateMetadata(): Promise<Metadata> {
       db?.metaDescription ||
       "Create a consistent and memorable brand identity. Brand strategy, logo design, visual style guides, colour palettes, and typography systems for Indian businesses.",
     alternates: {
-      canonical: "https://digitalbrandbuilder.in/services/brand-presence",
+      canonical: "https://www.digitalbrandbuilder.in/services/brand-presence",
     },
     openGraph: {
       title:

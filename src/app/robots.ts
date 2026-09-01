@@ -42,6 +42,6 @@ export default function robots(): MetadataRoute.Robots {
         disallow: '/',
       },
     ],
-    sitemap: 'https://digitalbrandbuilder.in/sitemap.xml',
+    sitemap: 'https://www.digitalbrandbuilder.in/sitemap.xml',
   };
 }

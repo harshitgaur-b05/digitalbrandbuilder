@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   title: "About Digital Brand Builder — Delhi Digital Marketing Agency",
   description:
     "Digital Brand Builder is a New Delhi digital marketing agency helping local businesses and D2C brands build a stronger online presence through websites, SEO, ads, and brand strategy.",
-  alternates: { canonical: "https://digitalbrandbuilder.in/about" },
+  alternates: { canonical: "https://www.digitalbrandbuilder.in/about" },
   openGraph: {
     title: "About Digital Brand Builder — Delhi Digital Marketing Agency",
     description:

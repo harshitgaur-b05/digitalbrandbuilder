@@ -20,7 +20,7 @@ export async function generateMetadata(): Promise<Metadata> {
     description:
       db?.metaDescription ||
       "Drive targeted leads and sales with data-driven paid advertising. Google Ads, Meta Ads (Facebook & Instagram), and LinkedIn campaign management for Indian businesses.",
-    alternates: { canonical: "https://digitalbrandbuilder.in/services/marketing" },
+    alternates: { canonical: "https://www.digitalbrandbuilder.in/services/marketing" },
     openGraph: {
       title:
         db?.metaTitle ||

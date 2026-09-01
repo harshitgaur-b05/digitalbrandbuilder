@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: "Contact Us — Get a Free Strategy Call",
   description:
     "Contact Digital Brand Builder to discuss your website, SEO, digital marketing, or brand strategy needs. Based in New Delhi, serving businesses across India.",
-  alternates: { canonical: "https://digitalbrandbuilder.in/contact" },
+  alternates: { canonical: "https://www.digitalbrandbuilder.in/contact" },
   openGraph: {
     title: "Contact Digital Brand Builder",
     description:

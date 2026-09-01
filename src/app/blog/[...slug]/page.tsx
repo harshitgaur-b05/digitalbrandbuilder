@@ -78,7 +78,7 @@ export async function generateMetadata(
   return {
     title: `${post.title} | digitalbrandbuilder`,
     description: post.description,
-    alternates: { canonical: `https://digitalbrandbuilder.in/blog/${slug.join('/')}` },
+    alternates: { canonical: `https://www.digitalbrandbuilder.in/blog/${slug.join('/')}` },
     openGraph: {
       title: post.title,
       description: post.description,
@@ -147,25 +147,25 @@ export default async function Page(props: { params: Promise<{ slug: string[] }> 
   const articleSchema = {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
-    '@id': `https://digitalbrandbuilder.in/blog/${post.slug}#article`,
+    '@id': `https://www.digitalbrandbuilder.in/blog/${post.slug}#article`,
     mainEntityOfPage: {
       '@type': 'WebPage',
-      '@id': `https://digitalbrandbuilder.in/blog/${post.slug}`,
+      '@id': `https://www.digitalbrandbuilder.in/blog/${post.slug}`,
     },
     headline: post.title,
     description: post.description,
     author: {
       '@type': 'Person',
       name: post.author ?? 'Digital Brand Builder',
-      url: 'https://digitalbrandbuilder.in/about',
+      url: 'https://www.digitalbrandbuilder.in/about',
     },
     publisher: {
       '@type': 'Organization',
-      '@id': 'https://digitalbrandbuilder.in/#organization',
+      '@id': 'https://www.digitalbrandbuilder.in/#organization',
       name: 'Digital Brand Builder',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://digitalbrandbuilder.in/logo.png',
+        url: 'https://www.digitalbrandbuilder.in/logo.png',
       },
     },
     datePublished: post.date,
@@ -177,14 +177,14 @@ export default async function Page(props: { params: Promise<{ slug: string[] }> 
           description: post.title,
         }
       : undefined,
-    url: `https://digitalbrandbuilder.in/blog/${post.slug}`,
+    url: `https://www.digitalbrandbuilder.in/blog/${post.slug}`,
     inLanguage: 'en-IN',
     keywords: [post.category, post.tag].filter(Boolean).join(', '),
     isPartOf: {
       '@type': 'Blog',
-      '@id': 'https://digitalbrandbuilder.in/blog',
+      '@id': 'https://www.digitalbrandbuilder.in/blog',
       name: 'Digital Brand Builder Blog',
-      publisher: { '@id': 'https://digitalbrandbuilder.in/#organization' },
+      publisher: { '@id': 'https://www.digitalbrandbuilder.in/#organization' },
     },
   };
 
@@ -197,19 +197,19 @@ export default async function Page(props: { params: Promise<{ slug: string[] }> 
         '@type': 'ListItem',
         position: 1,
         name: 'Home',
-        item: 'https://digitalbrandbuilder.in',
+        item: 'https://www.digitalbrandbuilder.in',
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: 'Blog',
-        item: 'https://digitalbrandbuilder.in/blog',
+        item: 'https://www.digitalbrandbuilder.in/blog',
       },
       {
         '@type': 'ListItem',
         position: 3,
         name: post.title,
-        item: `https://digitalbrandbuilder.in/blog/${post.slug}`,
+        item: `https://www.digitalbrandbuilder.in/blog/${post.slug}`,
       },
     ],
   };

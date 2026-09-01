@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: "Free Digital Marketing Audit for Your Business",
   description:
     "Get a free, no-obligation review of your website, SEO, and digital presence from Digital Brand Builder. Find out exactly what's holding your growth back.",
-  alternates: { canonical: "https://digitalbrandbuilder.in/free-audit" },
+  alternates: { canonical: "https://www.digitalbrandbuilder.in/free-audit" },
   openGraph: {
     title: "Free Digital Marketing Audit | Digital Brand Builder",
     description:

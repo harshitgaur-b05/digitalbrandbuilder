@@ -20,7 +20,7 @@ export async function generateMetadata(): Promise<Metadata> {
     description:
       db?.metaDescription ||
       "Build brand awareness, engage your audience, and drive conversions with strategic social media management. Custom content planning, design, writing, and platform management.",
-    alternates: { canonical: "https://digitalbrandbuilder.in/services/social-media" },
+    alternates: { canonical: "https://www.digitalbrandbuilder.in/services/social-media" },
     openGraph: {
       title:
         db?.metaTitle ||

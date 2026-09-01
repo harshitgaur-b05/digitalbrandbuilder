@@ -14,7 +14,7 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://digitalbrandbuilder.in"),
+  metadataBase: new URL("https://www.digitalbrandbuilder.in"),
   title: {
     default: "Digital Marketing Agency in Delhi | Digital Brand Builder",
     template: "%s | Digital Brand Builder",
@@ -22,13 +22,13 @@ export const metadata: Metadata = {
   description:
     "Digital Brand Builder is a digital marketing agency in New Delhi, India. We help local businesses and D2C brands with website design, SEO, Google Ads, social media, and brand identity.",
   alternates: {
-    canonical: "https://digitalbrandbuilder.in",
+    canonical: "https://www.digitalbrandbuilder.in",
   },
   openGraph: {
     title: "Digital Marketing Agency in Delhi | Digital Brand Builder",
     description:
       "Digital Brand Builder helps local businesses and D2C brands get found online with website design, SEO, performance marketing, and social media management.",
-    url: "https://digitalbrandbuilder.in",
+    url: "https://www.digitalbrandbuilder.in",
     siteName: "Digital Brand Builder",
     locale: "en_IN",
     type: "website",

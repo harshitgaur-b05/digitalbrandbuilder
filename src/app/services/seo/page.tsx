@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: "SEO, AEO & GEO Services in Delhi | Digital Brand Builder",
   description:
     "Grow your business with expert SEO, Answer Engine Optimisation (AEO), and Generative Engine Optimisation (GEO). Improve rankings, visibility, and AI search presence.",
-  alternates: { canonical: "https://digitalbrandbuilder.in/services/seo" },
+  alternates: { canonical: "https://www.digitalbrandbuilder.in/services/seo" },
   openGraph: {
     title: "SEO, AEO & GEO Services | Digital Brand Builder",
     description:

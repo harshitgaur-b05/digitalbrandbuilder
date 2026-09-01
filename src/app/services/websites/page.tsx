@@ -20,7 +20,7 @@ export async function generateMetadata(): Promise<Metadata> {
     description:
       db?.metaDescription ||
       "Build a high-performing, speed-optimised website with Digital Brand Builder. Custom business websites, e-commerce stores, and conversion-focused landing pages for Indian businesses.",
-    alternates: { canonical: "https://digitalbrandbuilder.in/services/websites" },
+    alternates: { canonical: "https://www.digitalbrandbuilder.in/services/websites" },
     openGraph: {
       title:
         db?.metaTitle ||

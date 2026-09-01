@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   title: "Digital Marketing Services in Delhi — Websites, SEO, Ads & More",
   description:
     "Explore Digital Brand Builder's full suite of digital marketing services: website design, SEO, performance marketing, social media, content writing, and brand identity for Indian businesses.",
-  alternates: { canonical: "https://digitalbrandbuilder.in/services" },
+  alternates: { canonical: "https://www.digitalbrandbuilder.in/services" },
   openGraph: {
     title: "Digital Marketing Services in Delhi | Digital Brand Builder",
     description:

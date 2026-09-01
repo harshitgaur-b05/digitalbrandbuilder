@@ -16,12 +16,12 @@ import Footer from "@/components/layout/Footer";
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": ["Organization", "LocalBusiness", "ProfessionalService"],
-  "@id": "https://digitalbrandbuilder.in/#organization",
+  "@id": "https://www.digitalbrandbuilder.in/#organization",
   name: "Digital Brand Builder",
-  url: "https://digitalbrandbuilder.in",
+  url: "https://www.digitalbrandbuilder.in",
   logo: {
     "@type": "ImageObject",
-    url: "https://digitalbrandbuilder.in/logo.png",
+    url: "https://www.digitalbrandbuilder.in/logo.png",
     width: 200,
     height: 200,
   },
@@ -70,7 +70,7 @@ const organizationSchema = {
         itemOffered: {
           "@type": "Service",
           name: "Website Design & Development",
-          url: "https://digitalbrandbuilder.in/services/websites",
+          url: "https://www.digitalbrandbuilder.in/services/websites",
         },
       },
       {
@@ -78,7 +78,7 @@ const organizationSchema = {
         itemOffered: {
           "@type": "Service",
           name: "SEO, AEO & GEO",
-          url: "https://digitalbrandbuilder.in/services/seo",
+          url: "https://www.digitalbrandbuilder.in/services/seo",
         },
       },
       {
@@ -86,7 +86,7 @@ const organizationSchema = {
         itemOffered: {
           "@type": "Service",
           name: "Performance Marketing",
-          url: "https://digitalbrandbuilder.in/services/marketing",
+          url: "https://www.digitalbrandbuilder.in/services/marketing",
         },
       },
       {
@@ -94,7 +94,7 @@ const organizationSchema = {
         itemOffered: {
           "@type": "Service",
           name: "Social Media Marketing",
-          url: "https://digitalbrandbuilder.in/services/social-media",
+          url: "https://www.digitalbrandbuilder.in/services/social-media",
         },
       },
       {
@@ -102,7 +102,7 @@ const organizationSchema = {
         itemOffered: {
           "@type": "Service",
           name: "Content Writing",
-          url: "https://digitalbrandbuilder.in/services/content-writing",
+          url: "https://www.digitalbrandbuilder.in/services/content-writing",
         },
       },
       {
@@ -110,7 +110,7 @@ const organizationSchema = {
         itemOffered: {
           "@type": "Service",
           name: "Brand Presence & Identity",
-          url: "https://digitalbrandbuilder.in/services/brand-presence",
+          url: "https://www.digitalbrandbuilder.in/services/brand-presence",
         },
       },
     ],
@@ -127,19 +127,19 @@ const organizationSchema = {
 const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  "@id": "https://digitalbrandbuilder.in/#website",
-  url: "https://digitalbrandbuilder.in",
+  "@id": "https://www.digitalbrandbuilder.in/#website",
+  url: "https://www.digitalbrandbuilder.in",
   name: "Digital Brand Builder",
   description:
     "Digital marketing agency in New Delhi helping local businesses and D2C brands build stronger digital brands.",
-  publisher: { "@id": "https://digitalbrandbuilder.in/#organization" },
+  publisher: { "@id": "https://www.digitalbrandbuilder.in/#organization" },
   inLanguage: "en-IN",
   potentialAction: {
     "@type": "SearchAction",
     target: {
       "@type": "EntryPoint",
       urlTemplate:
-        "https://digitalbrandbuilder.in/blog?q={search_term_string}",
+        "https://www.digitalbrandbuilder.in/blog?q={search_term_string}",
     },
     "query-input": "required name=search_term_string",
   },

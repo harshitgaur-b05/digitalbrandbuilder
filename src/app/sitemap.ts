@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next';
 import connectDB from '@/lib/mongodb';
 import Blog from '@/lib/models/Blog';
 
-const BASE = 'https://digitalbrandbuilder.in';
+const BASE = 'https://www.digitalbrandbuilder.in';
 
 // Static pages with real dates — update these when you change a page
 const STATIC_PAGES: MetadataRoute.Sitemap = [

@@ -21,7 +21,7 @@ export async function generateMetadata(): Promise<Metadata> {
       db?.metaDescription ||
       "High-quality, human-written content that ranks on search engines and builds brand trust. Blog posts, landing pages, website copy, and email sequences.",
     alternates: {
-      canonical: "https://digitalbrandbuilder.in/services/content-writing",
+      canonical: "https://www.digitalbrandbuilder.in/services/content-writing",
     },
     openGraph: {
       title:
