@@ -79,13 +79,21 @@ export default function Navbar() {
         {/* Desktop Right: Theme Toggler + CTA */}
         <div className="hidden lg:flex items-center gap-4">
           <AnimatedThemeToggler variant="star" />
-          <Link
-            href="/contact"
-            className="inline-flex items-center gap-2 bg-foreground text-background px-6 py-2.5 rounded-full text-sm font-medium hover:opacity-80 hover:-translate-y-px transition-all duration-300 group"
-          >
-            Build My Brand
-            <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-          </Link>
+          <div className="flex flex-col items-center gap-1">
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-2 bg-foreground text-background px-6 py-2.5 rounded-full text-sm font-medium hover:opacity-80 hover:-translate-y-px transition-all duration-300 group"
+            >
+              Build My Brand
+              <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+            </Link>
+            <a
+              href="tel:+919211074113"
+              className="text-[10px] font-medium text-muted-foreground hover:text-primary transition-colors tracking-wide"
+            >
+              +91 92110 74113
+            </a>
+          </div>
         </div>
 
         {/* Mobile Toggle & Theme */}
