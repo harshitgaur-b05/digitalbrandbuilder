@@ -506,3 +506,100 @@ export const SERVICE_DEFAULTS: Record<string, ServicePageData> = {
   "content-writing": contentWriting,
   "brand-presence": brandPresence,
 };
+
+// ─── Generic fallback for new slugs created via admin ─────────────────────────
+/**
+ * When a slug is created from admin that has no hardcoded defaults,
+ * this builds a minimal but valid ServicePageData so the page renders
+ * without crashing. All fields will be overridden by whatever the admin
+ * has saved to MongoDB.
+ */
+export function buildGenericDefaults(slug: string): ServicePageData {
+  const name = slug
+    .split("-")
+    .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+    .join(" ");
+
+  return {
+    hero: {
+      name,
+      tagline: `Professional ${name} services for your business.`,
+      subtitle: `Digital Brand Builder provides expert ${name.toLowerCase()} services to help local businesses and D2C brands grow their online presence.`,
+      primaryCta: { text: "Get Started", href: "#lead-form" },
+      secondaryCta: { text: "Learn More", href: "#approach" },
+    },
+    whatIs: {
+      heading: name,
+      primary: `${name} is a professional service designed to help businesses achieve their digital growth goals.`,
+      secondary: `At Digital Brand Builder, we deliver results-focused ${name.toLowerCase()} services tailored to your business needs, audience, and objectives.`,
+    },
+    why: {
+      heading: `Why ${name} Matters for Your Business`,
+      intro: `In today's digital landscape, having a strong ${name.toLowerCase()} strategy is essential for standing out and reaching the right customers.`,
+      points: [
+        { title: "Grow Your Business", desc: "Reach more customers and generate more leads with a focused digital strategy." },
+        { title: "Build Brand Authority", desc: "Establish your business as a trusted and credible choice in your industry." },
+        { title: "Drive Measurable Results", desc: "Every decision is backed by data, ensuring your investment generates real business outcomes." },
+      ],
+    },
+    offerings: {
+      heading: `What's Included in Our ${name} Service`,
+      items: [
+        { title: "Strategy & Planning", desc: "We develop a customized strategy aligned with your goals, audience, and competitive landscape." },
+        { title: "Implementation", desc: "Our team executes the plan with precision, attention to detail, and continuous optimization." },
+        { title: "Reporting & Analysis", desc: "Transparent reporting so you always know how your investment is performing." },
+      ],
+    },
+    process: {
+      heading: `Our ${name} Process`,
+      steps: [
+        { title: "Discovery", desc: "We learn about your business, goals, audience, and challenges." },
+        { title: "Strategy", desc: "We build a customized plan tailored to your specific needs." },
+        { title: "Execution", desc: "We implement the strategy with care and expertise." },
+        { title: "Optimization", desc: "We continuously refine the approach based on results." },
+        { title: "Reporting", desc: "We provide clear updates on performance and next steps." },
+      ],
+    },
+    deliverables: [
+      "Custom strategy tailored to your business",
+      "Professional implementation by our team",
+      "Regular performance tracking and reporting",
+      "Ongoing optimization and improvements",
+    ],
+    whyUs: {
+      heading: "Why Choose Digital Brand Builder",
+      items: [
+        { title: "Experienced Team", desc: "Our specialists have deep expertise across all digital marketing disciplines." },
+        { title: "Results-Focused", desc: "We measure success by the business outcomes we generate, not vanity metrics." },
+        { title: "Transparent Communication", desc: "You're always in the loop with clear reporting and honest recommendations." },
+      ],
+    },
+    costOfInaction: {
+      heading: "What Inaction Costs You",
+      items: [
+        { title: "Missed Opportunities", desc: "Every day without a strong digital presence is a day competitors are capturing customers that could be yours." },
+        { title: "Wasted Potential", desc: "Your business has real value to offer — the right digital strategy helps you communicate it effectively." },
+        { title: "Falling Behind", desc: "The digital landscape evolves quickly. Starting now means building an advantage over competitors who wait." },
+      ],
+    },
+    faq: {
+      heading: "Frequently Asked Questions",
+      items: [
+        { question: `What does your ${name} service include?`, answer: `Our ${name} service is fully customised to your business goals. We will outline exactly what is included during your initial consultation.` },
+        { question: "How long does it take to see results?", answer: "Timelines vary by service and goals. We will provide a realistic projection during your strategy session." },
+        { question: "How do I get started?", answer: "Fill in the form below and we will reach out within one business day to discuss your needs." },
+      ],
+    },
+    leadForm: {
+      heading: `Ready to Get Started with ${name}?`,
+      subtitle: "Tell us about your business and we'll come back with a clear plan tailored to your goals.",
+      highlights: [
+        { title: "Custom strategy for your business", desc: "No generic packages — everything is built around your specific goals." },
+        { title: "Expert team, real results", desc: "We focus on outcomes that actually matter to your business." },
+        { title: "Fast, clear communication", desc: "We respond within one business day with a tailored assessment." },
+      ],
+      ctaLabel: `Start My ${name} Project`,
+    },
+    whatsappMessage: `Hello Digital Brand Builder, I'm interested in your ${name} services!`,
+  };
+}

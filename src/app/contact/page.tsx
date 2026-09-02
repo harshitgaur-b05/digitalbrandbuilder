@@ -65,10 +65,10 @@ export default function ContactPage() {
                     <div>
                       <p className="font-semibold text-foreground mb-0.5">Email</p>
                       <a
-                        href="mailto:hello@digitalbrandbuilder.in"
+                        href="mailto:hello.digitalbrandbuilder@gmail.com"
                         className="hover:text-foreground transition-colors"
                       >
-                        hello@digitalbrandbuilder.in
+                        hello.digitalbrandbuilder@gmail.com
                       </a>
                     </div>
                   </div>
@@ -79,10 +79,10 @@ export default function ContactPage() {
                     <div>
                       <p className="font-semibold text-foreground mb-0.5">Phone</p>
                       <a
-                        href="tel:+918285321936"
+                        href="tel:+919211074113"
                         className="hover:text-foreground transition-colors"
                       >
-                        +91 82853 21936
+                        +91 92110 74113
                       </a>
                     </div>
                   </div>

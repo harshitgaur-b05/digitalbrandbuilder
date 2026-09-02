@@ -197,7 +197,7 @@ export default function ServicePageShell({ data }: Props) {
             className="font-display text-5xl sm:text-6xl md:text-8xl font-extrabold tracking-tight text-on-surface mb-6 max-w-4xl leading-[0.95]"
             style={{ textWrap: "balance" } as React.CSSProperties}
           >
-            {hero.name.replace(/\s+services?$/i, '').trim()}
+            {hero.name}
           </motion.h1>
 
           {/* Tagline */}
@@ -755,7 +755,7 @@ export default function ServicePageShell({ data }: Props) {
 
       {/* WhatsApp float */}
       <a
-        href={`https://wa.me/918285321936?text=${encodeURIComponent(whatsappMessage)}`}
+        href={`https://wa.me/919211074113?text=${encodeURIComponent(whatsappMessage)}`}
         target="_blank"
         rel="noopener noreferrer"
         className="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white p-4 rounded-full shadow-lg hover:shadow-xl hover:scale-110 active:scale-95 transition-all duration-300 group flex items-center gap-2"

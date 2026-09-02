@@ -27,8 +27,8 @@ const organizationSchema = {
   },
   description:
     "Digital Brand Builder is a digital marketing agency in New Delhi, India, providing website design, SEO, performance marketing, social media management, content writing, and brand identity services to local businesses and D2C brands.",
-  telephone: "+918285321936",
-  email: "hello@digitalbrandbuilder.in",
+  telephone: "+919211074113",
+  email: "hello.digitalbrandbuilder@gmail.com",
   address: {
     "@type": "PostalAddress",
     addressLocality: "New Delhi",

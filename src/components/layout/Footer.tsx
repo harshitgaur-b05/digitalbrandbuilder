@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Phone, MapPin } from "lucide-react";
+import { Phone, MapPin, Mail } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -32,8 +32,14 @@ export default function Footer() {
             <div className="flex flex-col gap-2.5 text-xs text-muted-foreground font-medium">
               <div className="flex items-center gap-2">
                 <Phone size={14} className="text-primary" />
-                <a href="tel:+918285321936" className="hover:text-foreground transition-colors">
-                  +91 82853 21936
+                <a href="tel:+919211074113" className="hover:text-foreground transition-colors">
+                  +91 92110 74113
+                </a>
+              </div>
+              <div className="flex items-center gap-2">
+                <Mail size={14} className="text-primary" />
+                <a href="mailto:hello@digitalbrandbuilder.in" className="hover:text-foreground transition-colors">
+                  hello@digitalbrandbuilder.in
                 </a>
               </div>
               <div className="flex items-center gap-2">

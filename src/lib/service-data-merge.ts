@@ -5,12 +5,6 @@
  */
 import type { ServicePageData } from "@/app/services/_components/ServicePageShell";
 
-/** Strip accidental trailing " services" or " service" from hero names saved by older admin versions */
-function cleanHeroName(name: string | undefined, fallback: string): string {
-  if (!name) return fallback;
-  return name.replace(/\s+services?$/i, '').trim() || fallback;
-}
-
 export function mergeServiceData(
   defaults: ServicePageData,
   db: Record<string, any> | null
@@ -18,15 +12,22 @@ export function mergeServiceData(
   if (!db) return defaults;
 
   return {
+    // Hero: use heroSection if it was saved via the Hero tab.
+    // If only the SEO & Meta tab was ever saved (no heroSection yet),
+    // fall back to db.title as the H1 name so admin title changes
+    // are immediately visible on the frontend.
     hero: db.heroSection
       ? {
-          name: cleanHeroName(db.heroSection.name, defaults.hero.name),
-          tagline: db.heroSection.tagline ?? defaults.hero.tagline,
-          subtitle: db.heroSection.subtitle ?? defaults.hero.subtitle,
-          primaryCta: db.heroSection.primaryCta ?? defaults.hero.primaryCta,
-          secondaryCta: db.heroSection.secondaryCta ?? defaults.hero.secondaryCta,
+          name:         db.heroSection.name         ?? db.title ?? defaults.hero.name,
+          tagline:      db.heroSection.tagline       ?? defaults.hero.tagline,
+          subtitle:     db.heroSection.subtitle      ?? defaults.hero.subtitle,
+          primaryCta:   db.heroSection.primaryCta    ?? defaults.hero.primaryCta,
+          secondaryCta: db.heroSection.secondaryCta  ?? defaults.hero.secondaryCta,
         }
-      : defaults.hero,
+      : {
+          ...defaults.hero,
+          name: db.title ?? defaults.hero.name,
+        },
 
     whatIs: db.whatIsSection
       ? {

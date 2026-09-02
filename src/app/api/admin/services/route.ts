@@ -4,15 +4,6 @@ import { decryptSession } from "@/lib/auth-utils";
 import connectDB from "@/lib/mongodb";
 import Service from "@/lib/models/Service";
 
-export const SERVICE_SLUGS = [
-  { slug: "websites", title: "Websites" },
-  { slug: "seo", title: "SEO + AEO + GEO" },
-  { slug: "marketing", title: "Performance Marketing" },
-  { slug: "social-media", title: "Social Media" },
-  { slug: "content-writing", title: "Content Writing" },
-  { slug: "brand-presence", title: "Brand Presence" },
-];
-
 async function authenticate() {
   const cookieStore = await cookies();
   const token = cookieStore.get("admin-session")?.value;
@@ -21,43 +12,46 @@ async function authenticate() {
   return session;
 }
 
-export async function GET() {
-  const session = await authenticate();
-  if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-
-  await connectDB();
-  const dbRecords = await Service.find({}).select("slug title metaTitle metaDescription updatedAt").lean();
-  const dbMap = new Map((dbRecords as any[]).map((r) => [r.slug, r]));
-
-  const services = SERVICE_SLUGS.map(({ slug, title }) => {
-    const db = dbMap.get(slug) as any;
-    return {
-      slug,
-      title: db?.title || title,
-      hasDbRecord: !!db,
-      metaTitle: db?.metaTitle || "",
-      metaDescription: db?.metaDescription || "",
-      updatedAt: db?.updatedAt || null,
-    };
-  });
-
-  return NextResponse.json({ services });
-}
-
+/**
+ * POST /api/admin/services
+ * Creates a new service document with the given slug and title.
+ * The full content is filled in afterwards via PUT /api/admin/services/[slug].
+ */
 export async function POST(request: NextRequest) {
   const session = await authenticate();
   if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
   const body = await request.json();
-  const { slug, ...data } = body;
-  if (!slug) return NextResponse.json({ error: "Slug is required" }, { status: 400 });
+  const { slug, title } = body;
+
+  if (!slug || !title) {
+    return NextResponse.json({ error: "slug and title are required" }, { status: 400 });
+  }
+
+  // Validate slug format
+  if (!/^[a-z0-9-]+$/.test(slug)) {
+    return NextResponse.json(
+      { error: "Slug must only contain lowercase letters, numbers, and hyphens." },
+      { status: 400 }
+    );
+  }
 
   await connectDB();
-  const record = await Service.findOneAndUpdate(
-    { slug },
-    { $set: { slug, ...data } },
-    { new: true, upsert: true, runValidators: false }
-  );
 
-  return NextResponse.json({ success: true, record }, { status: 200 });
+  // Check for duplicate
+  const existing = await Service.findOne({ slug }).lean();
+  if (existing) {
+    return NextResponse.json(
+      { error: `A service with slug "${slug}" already exists.` },
+      { status: 409 }
+    );
+  }
+
+  const record = await Service.create({
+    slug,
+    title,
+    isActive: true,
+  });
+
+  return NextResponse.json({ success: true, record }, { status: 201 });
 }
