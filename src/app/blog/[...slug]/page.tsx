@@ -76,7 +76,7 @@ export async function generateMetadata(
   if (!post) return {};
 
   return {
-    title: `${post.title} | digitalbrandbuilder`,
+    title: { absolute: post.seoTitle || post.title },
     description: post.description,
     alternates: { canonical: `https://www.digitalbrandbuilder.in/blog/${slug.join('/')}` },
     openGraph: {

@@ -9,6 +9,7 @@ export interface FAQ {
 }
 
 export interface BlogPost {
+  seoTitle: string;
   id: string;
   slug: string;
   title: string;
@@ -51,6 +52,7 @@ function mapBlog(doc: any): BlogPost {
     id: doc._id?.toString() ?? doc.id,
     slug: doc.slug,
     title: doc.title,
+    seoTitle: doc.seoTitle || doc.title,
     description: doc.excerpt || doc.intro || '',
     date: doc.date || (doc.createdAt
       ? new Date(doc.createdAt).toLocaleDateString('en-US', {

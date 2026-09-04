@@ -6,9 +6,9 @@ import Blog from '@/lib/models/Blog';
 import BlogEditorClient from '../../BlogEditorClient';
 
 interface EditBlogPageProps {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
 
 export default async function EditBlogPage({ params }: EditBlogPageProps) {
@@ -20,8 +20,10 @@ export default async function EditBlogPage({ params }: EditBlogPageProps) {
     redirect('/admin/login');
   }
 
+  const { id } = await params;
+
   await connectDB();
-  const blog = await Blog.findById(params.id);
+  const blog = await Blog.findById(id);
 
   if (!blog) {
     redirect('/admin/blogs');
@@ -32,6 +34,7 @@ export default async function EditBlogPage({ params }: EditBlogPageProps) {
     id: blog._id.toString(),
     title: blog.title,
     slug: blog.slug,
+    content: blog.content || '',
     intro: blog.intro || '',
     excerpt: blog.excerpt || '',
     author: blog.author || '',

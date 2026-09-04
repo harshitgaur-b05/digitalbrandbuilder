@@ -5,7 +5,7 @@ import { getBlogPosts } from "@/lib/source";
 import BlogClient from "./BlogClient";
 
 export const metadata: Metadata = {
-  title: "Blog — Digital Growth Insights for Indian Businesses",
+  title: { absolute: "Blog — Digital Growth Insights for Indian Businesses" },
   description:
     "Tactical guides, real frameworks, and honest perspectives on digital marketing, SEO, website design, and brand building for Indian businesses.",
   alternates: { canonical: "https://www.digitalbrandbuilder.in/blog" },
