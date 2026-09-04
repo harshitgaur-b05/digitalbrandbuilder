@@ -21,11 +21,15 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
 
-  // Derive active index from current route; default to 0 (Home) if no match
-  const activeIndex = Math.max(
-    navLinks.findIndex((l) => l.href === pathname),
-    0
-  );
+  // Derive active index from current route; default to 0 (Home) if no match.
+  // Use startsWith so nested routes like /blog/my-post highlight "Blog".
+  // Keep "/" as exact-only so it doesn't match every path.
+  const activeIndex = (() => {
+    const idx = navLinks.findIndex((l) =>
+      l.href === "/" ? pathname === "/" : pathname.startsWith(l.href)
+    );
+    return idx >= 0 ? idx : 0;
+  })();
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
@@ -124,7 +128,9 @@ export default function Navbar() {
                 <Link
                   href={href}
                   className={`text-2xl font-normal transition-colors ${
-                    pathname === href ? "text-primary" : "text-foreground hover:text-primary"
+                    (href === "/" ? pathname === "/" : pathname.startsWith(href))
+                      ? "text-primary"
+                      : "text-foreground hover:text-primary"
                   }`}
                 >
                   {label}

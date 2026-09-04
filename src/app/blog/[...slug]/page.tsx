@@ -289,12 +289,13 @@ export default async function Page(props: { params: Promise<{ slug: string[] }> 
               </div>
 
               {/* Cover Image */}
-              <div className="mb-10 w-full aspect-[16/7] rounded-2xl overflow-hidden border border-foreground/6">
+              <div className="relative mb-10 w-full aspect-[16/7] rounded-2xl overflow-hidden border border-foreground/6">
                 {post.image ? (
                   <Image
                     src={post.image}
                     alt={post.title}
                     fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 75vw, 900px"
                     className="object-cover"
                   />
                 ) : (
