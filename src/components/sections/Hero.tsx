@@ -173,20 +173,22 @@ export default function Hero() {
       <div className="max-w-7xl mx-auto w-full px-6 md:px-10 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 xl:gap-12 items-center relative z-10">
 
         {/* ──────── LEFT COLUMN ──────── */}
-        <div className="lg:col-span-6 xl:col-span-7 flex flex-col items-start">
+        <div className="lg:col-span-6 xl:col-span-7 flex flex-col items-start text-left">
+
+
           <span
             ref={eyebrowRef}
-            className="text-[10px] sm:text-[11px] font-bold tracking-[0.2em] text-primary mb-4 sm:mb-5 uppercase"
+            className="text-[10px] sm:text-[11px] font-bold tracking-[0.2em] text-primary mb-3 sm:mb-4 uppercase"
           >
             DIGITAL GROWTH FOR MODERN BUSINESSES
           </span>
 
           <h1
             ref={headlineRef}
-            className="font-sans text-4xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-6xl font-medium leading-[1.1] tracking-[-0.02em] text-foreground mb-4 sm:mb-5"
+            className="font-sans text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-6xl font-medium leading-[1.15] tracking-[-0.02em] text-foreground mb-4 sm:mb-5"
           >
             Turn your business into a brand people{" "}
-            <span className="italic font-normal text-primary">find, trust & choose.</span>
+            <span className="italic font-normal text-primary">find, trust &amp; choose.</span>
           </h1>
 
           <p
@@ -196,27 +198,27 @@ export default function Hero() {
             Digital Brand Builder brings your digital presence together—from high-performing websites and SEO to Google Ads, social media, and ecommerce. We help businesses build a stronger online presence, reach the right customers, and turn digital visibility into sustainable growth.
           </p>
 
-          <div ref={ctaGroupRef} className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto mb-10">
+          <div ref={ctaGroupRef} className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 w-full sm:w-auto mb-8 sm:mb-10">
             <a
               href="#cta"
-              className="inline-flex items-center justify-center gap-3 bg-primary text-primary-foreground px-7 py-3.5 rounded-full text-sm font-medium shadow-sm hover:shadow-[0_0_20px_rgba(255,165,0,0.4)] dark:hover:shadow-[0_0_20px_rgba(255,165,0,0.6)] motion-safe:hover:-translate-y-1 transition-[transform,box-shadow,background-color] duration-500 group"
+              className="w-full sm:w-auto min-h-[48px] inline-flex items-center justify-center gap-3 bg-primary text-primary-foreground px-7 py-3.5 rounded-full text-sm font-semibold shadow-sm hover:shadow-[0_0_20px_rgba(255,165,0,0.4)] dark:hover:shadow-[0_0_20px_rgba(255,165,0,0.6)] active:scale-95 transition-[transform,box-shadow,background-color] duration-300 group"
             >
               Build Your Digital Brand
               <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
             </a>
             <a
               href="#how-it-works"
-              className="inline-flex items-center justify-center px-7 py-3.5 rounded-full text-sm font-medium border border-border text-foreground hover:border-primary hover:bg-primary/5 transition-[border-color,background-color] duration-300"
+              className="w-full sm:w-auto min-h-[48px] inline-flex items-center justify-center px-7 py-3.5 rounded-full text-sm font-semibold border border-border text-foreground hover:border-primary hover:bg-primary/5 active:scale-95 transition-[border-color,background-color,transform] duration-300"
             >
               See How It Works
             </a>
           </div>
 
-          <div ref={tagsRef} className="flex items-center gap-3 text-sm font-semibold text-muted-foreground">
+          <div ref={tagsRef} className="flex flex-wrap items-center gap-2.5 sm:gap-3 text-xs sm:text-sm font-semibold text-muted-foreground">
             {["Websites", "SEO", "Marketing", "Social", "Ecommerce"].map((t, i, arr) => (
-              <span key={t} className="inline-flex items-center gap-3 hover:text-primary transition-colors cursor-default">
-                {t}
-                {i < arr.length - 1 && <span className="text-primary font-black">·</span>}
+              <span key={t} className="inline-flex items-center gap-2.5 hover:text-primary transition-colors cursor-default">
+                <span className="bg-muted px-2.5 py-1 rounded-md border border-border/60">{t}</span>
+                {i < arr.length - 1 && <span className="text-primary/50 font-black">·</span>}
               </span>
             ))}
           </div>
@@ -231,13 +233,7 @@ export default function Hero() {
             style={{ minHeight: 440 }}
           >
             {/* ── Grid Layout: 3 cols × 3 rows centred ── */}
-            {/*
-              Layout (desktop):
-              [Website]   [SEO]       [Marketing]
-                          [HUB]
-              [Ecom]   [Brand]    [Social]
-            */}
-            <div className="grid  grid-cols-[auto_auto_auto] gap-y-10 gap-x-4 sm:gap-x-6 items-center justify-items-center w-max mx-auto">
+            <div className="grid grid-cols-[auto_auto_auto] gap-y-10 gap-x-4 sm:gap-x-6 items-center justify-items-center w-max mx-auto">
               {/* Row 1 */}
               <ServiceNode nodeRef={websiteRef} icon={<Globe size={16} className="text-primary" />} label="Website" />
               <ServiceNode nodeRef={seoRef} icon={<Search size={16} className="text-primary" />} label="SEO" />
@@ -268,48 +264,57 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* ──────── PHONE ONLY — Signal Manifold: one hub, eight channels ──────── */}
-        <div className="sm:hidden w-full flex flex-col items-center mt-10">
-          {/* Compact hub */}
+        {/* ──────── PHONE ONLY — Mobile Service Hub Card & Touch Matrix ──────── */}
+        <div className="sm:hidden w-full flex flex-col items-center mt-8">
+          {/* Mobile Center Hub */}
           <div
             ref={mobileHubRef}
-            className="relative flex flex-col items-center justify-center bg-card border border-border rounded-2xl px-5 py-3.5 shadow-[0_8px_30px_rgb(43,158,220,0.12)] dark:shadow-[0_8px_30px_rgb(255,165,0,0.12)] text-center z-10"
+            className="w-full bg-card border border-border/90 rounded-2xl p-5 shadow-sm text-center relative overflow-hidden"
           >
-            <span className="absolute inset-[-4px] rounded-[1.15rem] border border-primary/20 pointer-events-none" />
-            <span className="inline-block text-[8px] font-bold tracking-widest uppercase bg-primary/10 text-primary px-2 py-0.5 rounded-full mb-1.5">
-              Digital Profile
+            <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-primary/5 pointer-events-none" />
+            <span className="inline-block text-[9px] font-bold tracking-widest uppercase bg-primary/10 text-primary px-3 py-1 rounded-full mb-2">
+              DIGITAL SYSTEM
             </span>
-            <h3 className="text-[13px] font-bold text-card-foreground tracking-tight leading-tight">YOUR BUSINESS</h3>
-            <div className="inline-flex items-center gap-1 text-[9px] font-semibold text-primary mt-1">
-              <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse inline-block" />
-              Active Growth
+            <h3 className="text-base font-bold text-card-foreground tracking-tight">YOUR BUSINESS BRAND</h3>
+            <p className="text-xs text-muted-foreground mt-1 mb-3">All digital channels connected for growth</p>
+
+            <div className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary bg-primary/10 px-3 py-1 rounded-full">
+              <span className="w-2 h-2 rounded-full bg-primary animate-pulse inline-block" />
+              Active Growth Strategy
             </div>
           </div>
 
-          {/* Trunk line down from hub to the distribution bus */}
-          <div ref={mobileTrunkRef} className="w-px h-6 bg-gradient-to-b from-primary/40 to-primary/15" />
+          {/* Connected Trunk Line */}
+          <div ref={mobileTrunkRef} className="w-px h-5 bg-gradient-to-b from-primary/50 to-primary/20 my-1" />
 
-          {/* Distribution bus — one line feeding eight channels */}
-          <div className="relative w-full max-w-[300px]">
-            <div className="h-px w-full bg-primary/15" />
+          {/* 4-column Channel Touch Grid */}
+          <div className="w-full">
             <div
               ref={mobileChipsRef}
-              className="grid grid-cols-4 gap-x-2 gap-y-5 pt-4"
+              className="grid grid-cols-4 gap-2 w-full"
             >
               {[
-                { icon: <Globe size={16} className="text-primary" />, label: "Website" },
-                { icon: <Search size={16} className="text-primary" />, label: "SEO" },
-                { icon: <Target size={16} className="text-primary" />, label: "Marketing" },
-                { icon: <FileText size={16} className="text-primary" />, label: "Blog" },
-                { icon: <ShoppingCart size={16} className="text-primary" />, label: "Ecommerce" },
-                { icon: <Award size={16} className="text-primary" />, label: "Brand" },
-                { icon: <Share2 size={16} className="text-primary" />, label: "Social" },
-                { icon: <MessageSquare size={16} className="text-primary" />, label: "Reviews" },
+                { icon: <Globe size={18} className="text-primary" />, label: "Website", href: "/services/websites" },
+                { icon: <Search size={18} className="text-primary" />, label: "SEO", href: "/services/seo" },
+                { icon: <Target size={18} className="text-primary" />, label: "Ads", href: "/services/marketing" },
+                { icon: <FileText size={18} className="text-primary" />, label: "Blog", href: "/blog" },
+                { icon: <ShoppingCart size={18} className="text-primary" />, label: "Ecom", href: "/services" },
+                { icon: <Award size={18} className="text-primary" />, label: "Brand", href: "/services/brand-presence" },
+                { icon: <Share2 size={18} className="text-primary" />, label: "Social", href: "/services/social-media" },
+                { icon: <MessageSquare size={18} className="text-primary" />, label: "Reviews", href: "#results" },
               ].map((item) => (
-                <div key={item.label} className="relative flex flex-col items-center">
-                  <span className="absolute -top-4 w-px h-4 bg-primary/15" />
-                  <SignalChip icon={item.icon} label={item.label} />
-                </div>
+                <a
+                  key={item.label}
+                  href={item.href}
+                  className="flex flex-col items-center justify-center p-3 rounded-xl bg-card border border-border/80 shadow-xs hover:border-primary/50 active:scale-95 transition-all text-center min-h-[72px]"
+                >
+                  <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center mb-1">
+                    {item.icon}
+                  </div>
+                  <span className="text-[11px] font-semibold text-foreground tracking-tight leading-none">
+                    {item.label}
+                  </span>
+                </a>
               ))}
             </div>
           </div>

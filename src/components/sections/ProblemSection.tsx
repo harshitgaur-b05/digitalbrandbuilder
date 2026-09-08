@@ -2,8 +2,15 @@
 
 import { AlertCircle, EyeOff, Shuffle, TrendingDown } from "lucide-react";
 
+interface ProblemItem {
+  num: string;
+  title: string;
+  desc: string;
+  icon: React.ReactNode;
+}
+
 export default function ProblemSection() {
-  const problems = [
+  const problems: ProblemItem[] = [
     {
       num: "01",
       title: "Outdated Website",
@@ -53,25 +60,35 @@ export default function ProblemSection() {
             </div>
           </div>
 
-          {/* Right Column */}
-          <div className="lg:col-span-7 flex overflow-x-auto lg:overflow-visible snap-x snap-mandatory pb-8 lg:pb-0 -mx-6 px-6 lg:mx-0 lg:px-0 lg:flex-col gap-6 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
-            {problems.map((prob, i) => (
-              <div
-                key={i}
-                className={`flex-none w-[85vw] sm:w-[350px] lg:w-auto snap-center bg-card border border-border rounded-2xl p-6 md:p-8 shadow-sm hover:shadow-md dark:shadow-[0_4px_20px_rgba(43,158,220,0.08)] hover:border-primary/50 transition-[transform,box-shadow,border-color] duration-500 motion-safe:hover:-translate-y-1 ${
-                  i % 2 === 0 ? "lg:mr-8" : "lg:ml-8"
-                }`}
-              >
-                <div className="flex justify-between items-center mb-6">
-                  <span className="font-sans text-3xl font-light text-primary/60">{prob.num}</span>
-                  <div className="w-11 h-11 rounded-full bg-primary/10 flex items-center justify-center">
-                    {prob.icon}
+          {/* Right Column — Mobile Scrollable Cards / Desktop Vertical List */}
+          <div className="lg:col-span-7 flex flex-col gap-4">
+            <div className="flex overflow-x-auto lg:overflow-visible snap-x snap-mandatory pb-4 lg:pb-0 -mx-6 px-6 lg:mx-0 lg:px-0 lg:flex-col gap-5 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+              {problems.map((prob, i) => (
+                <div
+                  key={i}
+                  className={`flex-none w-[88vw] sm:w-[350px] lg:w-auto snap-center bg-card border border-border/80 rounded-2xl p-6 md:p-8 shadow-xs hover:shadow-md dark:shadow-[0_4px_20px_rgba(43,158,220,0.08)] hover:border-primary/50 transition-[transform,box-shadow,border-color] duration-500 motion-safe:hover:-translate-y-1 ${
+                    i % 2 === 0 ? "lg:mr-8" : "lg:ml-8"
+                  }`}
+                >
+                  <div className="flex justify-between items-center mb-5">
+                    <span className="font-mono text-2xl font-bold text-primary">{prob.num}</span>
+                    <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+                      {prob.icon}
+                    </div>
                   </div>
+                  <h3 className="text-lg md:text-xl font-bold text-foreground mb-2 tracking-tight">{prob.title}</h3>
+                  <p className="text-sm md:text-base text-muted-foreground leading-relaxed">{prob.desc}</p>
                 </div>
-                <h3 className="text-lg md:text-xl font-bold text-foreground mb-2 tracking-tight">{prob.title}</h3>
-                <p className="text-sm md:text-base text-muted-foreground leading-relaxed">{prob.desc}</p>
-              </div>
-            ))}
+              ))}
+            </div>
+
+            {/* Mobile swipe hint / pagination indicators */}
+            <div className="flex lg:hidden items-center justify-center gap-1.5 pt-2">
+              {problems.map((_, i) => (
+                <span key={i} className="w-2 h-2 rounded-full bg-primary/30 active:bg-primary transition-colors" />
+              ))}
+              <span className="text-[10px] font-semibold text-muted-foreground ml-2">Swipe for details →</span>
+            </div>
           </div>
 
         </div>

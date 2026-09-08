@@ -59,32 +59,37 @@ export default function TransformationSection() {
             </svg>
           </div>
 
-          <div className="flex flex-col lg:flex-row justify-between items-stretch lg:items-start relative z-20 gap-6 lg:gap-6">
+          <div className="flex flex-col lg:flex-row justify-between items-stretch lg:items-start relative z-20 gap-5 lg:gap-6">
             {stages.map((stage, i) => (
               <div key={i} className="flex-1 relative group">
                 
-                {/* Mobile Premium Card Shell (hidden on desktop) */}
-                <div className="absolute inset-0 bg-card rounded-[2rem] ring-1 ring-black/5 dark:ring-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgba(255,255,255,0.02)] lg:hidden pointer-events-none transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:ring-primary/30" />
+                {/* Mobile Connected Line */}
+                {i < stages.length - 1 && (
+                  <div className="absolute top-12 left-8 w-0.5 h-[calc(100%+1.25rem)] bg-primary/20 lg:hidden z-0" />
+                )}
+
+                {/* Mobile Premium Card Shell */}
+                <div className="absolute inset-0 bg-card border border-border/80 rounded-2xl shadow-xs lg:hidden pointer-events-none transition-all duration-300 group-hover:border-primary/40" />
 
                 {/* Content */}
-                <div className="relative z-10 flex flex-col lg:items-center lg:text-center p-6 lg:p-0 h-full">
-                  <div className="w-[56px] h-[56px] lg:w-[80px] lg:h-[80px] rounded-full bg-background lg:bg-card border border-border lg:border-border shadow-sm flex items-center justify-center relative mb-5 lg:mb-8 transition-[border-color,box-shadow,transform] duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:border-primary/50 group-hover:shadow-md group-hover:-translate-y-1 shrink-0">
-                    <div className="absolute inset-0 rounded-full bg-primary/10 group-hover:scale-[1.25] group-hover:opacity-0 transition-[transform,opacity] duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" />
+                <div className="relative z-10 flex flex-row lg:flex-col items-start lg:items-center lg:text-center p-5 lg:p-0 h-full gap-4 lg:gap-0">
+                  <div className="w-12 h-12 lg:w-[80px] lg:h-[80px] rounded-2xl lg:rounded-full bg-background lg:bg-card border border-border shadow-xs flex items-center justify-center relative mb-0 lg:mb-8 transition-[border-color,box-shadow,transform] duration-500 group-hover:border-primary/50 group-hover:shadow-md group-hover:-translate-y-1 shrink-0">
+                    <div className="absolute inset-0 rounded-2xl lg:rounded-full bg-primary/10 group-hover:scale-110 transition-transform duration-300" />
                     <div className="flex items-center justify-center relative z-20">
                       {stage.icon}
                     </div>
                   </div>
                   
                   <div className="flex-grow">
-                    <div className="flex items-center lg:justify-center gap-3 mb-3">
-                      <span className="text-[10px] font-bold text-primary/90 uppercase tracking-[0.2em] bg-primary/10 px-3 py-1 rounded-full shrink-0">
-                        {`0${i + 1}`}
+                    <div className="flex items-center lg:justify-center gap-2.5 mb-2">
+                      <span className="text-[10px] font-mono font-bold text-primary bg-primary/10 px-2.5 py-0.5 rounded-full shrink-0">
+                        {`STAGE 0${i + 1}`}
                       </span>
-                      <h3 className="text-xl font-bold text-foreground tracking-tight transition-colors duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:text-primary">
+                      <h3 className="text-lg lg:text-xl font-bold text-foreground tracking-tight group-hover:text-primary transition-colors">
                         {stage.title}
                       </h3>
                     </div>
-                    <p className="text-sm text-muted-foreground leading-relaxed max-w-sm lg:mx-auto">
+                    <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed max-w-sm lg:mx-auto">
                       {stage.desc}
                     </p>
                   </div>
