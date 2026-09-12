@@ -89,20 +89,20 @@ export default function RootLayout({ children }: LayoutProps) {
       className={cn("h-full", "antialiased", outfit.variable, "font-sans", geist.variable)}
       suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col" suppressHydrationWarning>
-        {/* Google Analytics */}
+      <head>
+        {/* Google Ads Tag */}
         <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-RX7WX718KB"
-          strategy="afterInteractive"
+          src="https://www.googletagmanager.com/gtag/js?id=AW-18442415161"
+          strategy="beforeInteractive"
         />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-RX7WX718KB');
-          `}
+        <Script id="google-ads-tag" strategy="beforeInteractive">
+          {`window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'AW-18442415161');`}
         </Script>
+      </head>
+      <body className="min-h-full flex flex-col" suppressHydrationWarning>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
