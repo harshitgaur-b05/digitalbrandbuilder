@@ -94,20 +94,20 @@ export default function Navbar() {
           />
         </div>
 
-        {/* Desktop Right: Theme Toggler + Brutalist CTA */}
+        {/* Desktop Right: Theme Toggler + CTA Button Block */}
         <div className="hidden lg:flex items-center gap-4">
           <AnimatedThemeToggler variant="star" />
-          <div className="flex flex-col items-end gap-0.5">
+          <div className="flex flex-col items-center gap-1">
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 bg-foreground text-background border-2 border-foreground px-5 py-2 rounded-md text-xs font-bold uppercase tracking-wider hover:bg-primary hover:border-primary hover:text-primary-foreground active:scale-95 transition-all duration-200 group shadow-xs"
+              className="inline-flex items-center gap-2 bg-primary text-primary-foreground border-2 border-foreground px-5 py-2 rounded-md text-xs font-black uppercase tracking-wider shadow-[3px_3px_0px_0px_var(--foreground)] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[5px_5px_0px_0px_var(--foreground)] active:translate-x-0.5 active:translate-y-0.5 active:shadow-[1px_1px_0px_0px_var(--foreground)] transition-all duration-200 group"
             >
               Build My Brand
               <ArrowRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1" />
             </Link>
             <a
               href="tel:+919211074113"
-              className="text-[12px] sm:text-[13px] font-mono font-bold text-foreground/90 hover:text-primary transition-colors tracking-wider mt-0.5"
+              className="text-[11px] font-mono font-bold text-foreground/80 hover:text-primary transition-colors tracking-wide text-center"
             >
               +91 92110 74113
             </a>

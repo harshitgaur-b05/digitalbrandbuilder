@@ -20,40 +20,18 @@ export interface ActionProps {
   className?: string;
 }
 
-// Magnetic button — pointer physics via motion values
-function MagneticButton({ children, onClick, className }: {
+// Brutalist button — stays fixed in place with tactile click press-down feedback
+function BrutalistButton({ children, onClick, className }: {
   children: React.ReactNode;
   onClick?: () => void;
   className?: string;
 }) {
-  const ref = useRef<HTMLButtonElement>(null);
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-  const springX = useSpring(x, { stiffness: 300, damping: 30 });
-  const springY = useSpring(y, { stiffness: 300, damping: 30 });
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLButtonElement>) => {
-    if (!ref.current) return;
-    const rect = ref.current.getBoundingClientRect();
-    const cx = rect.left + rect.width / 2;
-    const cy = rect.top + rect.height / 2;
-    x.set((e.clientX - cx) * 0.22);
-    y.set((e.clientY - cy) * 0.22);
-  };
-
-  const handleMouseLeave = () => {
-    x.set(0);
-    y.set(0);
-  };
-
   return (
     <motion.button
-      ref={ref}
       onClick={onClick}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      style={{ x: springX, y: springY }}
-      whileTap={{ scale: 0.96 }}
+      whileHover={{ y: 1 }}
+      whileTap={{ y: 3, scale: 0.98 }}
+      transition={{ type: "spring", stiffness: 400, damping: 25 }}
       className={className}
     >
       {children}
@@ -104,7 +82,7 @@ export function PlayfulWord({ children, badge }: { children: React.ReactNode; ba
       whileTap={{ scale: 0.95 }}
     >
       {/* The Text — shifts to primary on hover */}
-      <span className="relative z-10 text-white group-hover:text-primary transition-colors duration-200">
+      <span className="relative z-10 text-foreground group-hover:text-primary transition-colors duration-200">
         {children}
       </span>
 
@@ -130,7 +108,11 @@ export default function Hero() {
   const title = (
     <>
       WE BUILD DIGITAL BRANDS <br />
-      THAT <PlayfulWord badge="⚡ #1">DOMINATE</PlayfulWord> & <PlayfulWord badge="🚀 10X">SCALE</PlayfulWord>
+      <span className="relative inline-block mt-2">
+        <span className="relative z-10 bg-primary text-primary-foreground px-5 sm:px-7 py-1.5 rounded-lg font-black tracking-tight uppercase inline-block shadow-[4px_4px_0px_0px_var(--foreground)] border-2 border-foreground -rotate-1 transform font-sans text-[clamp(1.4rem,3vw,2.4rem)]">
+          THAT DOMINATE &amp; SCALE
+        </span>
+      </span>
     </>
   );
 
@@ -188,8 +170,8 @@ export default function Hero() {
           {/* ── Left: Text content ── */}
           <div className="flex flex-col items-start text-left">
 
-            {/* Headline — Abril Fatface serif, clean 2 lines, single white color */}
-            <h1 className="font-serif text-[clamp(1.4rem,2.8vw,2.2rem)] lg:text-[2.4rem] font-normal leading-[1.12] tracking-wide text-white uppercase mb-6">
+            {/* Headline — Abril Fatface serif, clean 2 lines */}
+            <h1 className="font-serif text-[clamp(1.4rem,2.8vw,2.2rem)] lg:text-[2.4rem] font-normal leading-[1.12] tracking-wide text-foreground uppercase mb-6">
               {title}
             </h1>
 
@@ -198,44 +180,42 @@ export default function Hero() {
               {subtitle}
             </p>
 
-            {/* CTAs — brutalist high contrast with hard offset shadows */}
+            {/* CTAs — brutalist high contrast with hard offset shadows & click press feedback */}
             <div className="flex flex-wrap items-center gap-6 mb-14">
               {actions.map((action, index) =>
                 index === 0 ? (
-                  <MagneticButton
+                  <BrutalistButton
                     key={index}
                     onClick={action.onClick}
                     className={cn(
-                      // Primary — brutalist solid white + primary offset hard shadow
-                      "font-sans relative inline-flex items-center gap-2.5 px-7 py-3.5 text-xs sm:text-sm font-bold tracking-wider uppercase rounded-md",
-                      "bg-white text-black border-2 border-white",
+                      "font-sans relative inline-flex items-center gap-2.5 px-7 py-3.5 text-xs sm:text-sm font-bold tracking-wider uppercase rounded-md cursor-pointer select-none",
+                      "bg-foreground text-background border-2 border-foreground",
                       "shadow-[4px_4px_0px_0px_var(--primary)]",
-                      "hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0px_0px_var(--primary)] hover:bg-primary hover:border-primary hover:text-white",
-                      "active:translate-x-0.5 active:translate-y-0.5 active:shadow-[2px_2px_0px_0px_var(--primary)]",
-                      "transition-all duration-200 group"
+                      "hover:shadow-[2px_2px_0px_0px_var(--primary)] hover:translate-x-[2px] hover:translate-y-[2px]",
+                      "active:shadow-none active:translate-x-[4px] active:translate-y-[4px]",
+                      "transition-all duration-150 group"
                     )}
                   >
                     {action.text}
                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none" className="transition-transform duration-200 group-hover:translate-x-1" aria-hidden>
                       <path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
-                  </MagneticButton>
+                  </BrutalistButton>
                 ) : (
-                  <MagneticButton
+                  <BrutalistButton
                     key={index}
                     onClick={action.onClick}
                     className={cn(
-                      // Secondary — brutalist ghost outline + white offset hard shadow
-                      "font-sans relative inline-flex items-center gap-2.5 px-7 py-3.5 text-xs sm:text-sm font-bold tracking-wider uppercase rounded-md",
-                      "bg-transparent text-white border-2 border-white/60",
-                      "shadow-[4px_4px_0px_0px_rgba(255,255,255,0.25)]",
-                      "hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0px_0px_rgba(255,255,255,0.6)] hover:border-white hover:bg-white/10",
-                      "active:translate-x-0.5 active:translate-y-0.5 active:shadow-[2px_2px_0px_0px_white]",
-                      "transition-all duration-200"
+                      "font-sans relative inline-flex items-center gap-2.5 px-7 py-3.5 text-xs sm:text-sm font-bold tracking-wider uppercase rounded-md cursor-pointer select-none",
+                      "bg-transparent text-foreground border-2 border-foreground/60",
+                      "shadow-[4px_4px_0px_0px_var(--border)]",
+                      "hover:border-foreground hover:shadow-[2px_2px_0px_0px_var(--border)] hover:translate-x-[2px] hover:translate-y-[2px] hover:bg-foreground/5",
+                      "active:shadow-none active:translate-x-[4px] active:translate-y-[4px]",
+                      "transition-all duration-150"
                     )}
                   >
                     {action.text}
-                  </MagneticButton>
+                  </BrutalistButton>
                 )
               )}
             </div>
