@@ -22,16 +22,19 @@
 
 .gooey-nav-container nav ul li > a {
   display: block;
-  padding: 0.45rem 1rem;
-  font-size: 0.875rem;
-  font-weight: 500;
+  padding: 0.4rem 0.9rem;
+  font-family: var(--font-lato), var(--font-sans), sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   color: var(--foreground);
   text-decoration: none;
-  border-radius: 9999px;
-  transition: color 0.3s ease;
+  border-radius: 6px;
+  transition: all 0.2s ease;
   position: relative;
   z-index: 3;
-  opacity: 0.65;
+  opacity: 0.75;
 }
 
 .gooey-nav-container nav ul li.active > a {
@@ -39,7 +42,8 @@
 }
 
 .gooey-nav-container nav ul li > a:hover {
-  opacity: 0.9;
+  opacity: 1;
+  transform: translateY(-1px);
 }
 
 /* Dropdown links — full opacity, white in dark mode, dark in light mode */
@@ -55,7 +59,7 @@
 /* Effect spans (filter blob + text clone) */
 .gooey-nav-container .effect {
   position: absolute;
-  border-radius: 9999px;
+  border-radius: 6px;
   pointer-events: none;
   z-index: 1;
   overflow: hidden;
@@ -88,8 +92,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.875rem;
-  font-weight: 500;
+  font-family: var(--font-lato), var(--font-sans), sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   color: var(--background);
   z-index: 4;
   opacity: 0;

@@ -12,7 +12,9 @@
   --color-sage-deep: var(--primary);
   --color-brand-text: var(--foreground);
   --color-brand-muted: var(--muted-foreground);
-  --font-sans: var(--font-outfit), system-ui, -apple-system, sans-serif;
+  --font-sans: var(--font-lato), system-ui, -apple-system, sans-serif;
+  --font-serif: var(--font-abril), Georgia, serif;
+  --font-display: var(--font-abril), Georgia, serif;
 
   /* Service page design system tokens */
   --color-on-surface: var(--foreground);

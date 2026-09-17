@@ -1,325 +1,292 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import { ArrowRight, Globe, Search, Target, Share2, ShoppingCart, Award, FileText, MessageSquare } from "lucide-react";
-import gsap from "gsap";
-import { AnimatedBeam } from "@/components/ui/AnimatedBeam";
+import { useRef } from "react";
+import { motion, useMotionValue, useTransform, useSpring } from "framer-motion";
+import { type ButtonProps } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import React from "react";
+import { Globe, TrendingUp, Award } from "lucide-react";
 
-// ─── Small icon node card ──────────────────────────────────────────────
-function ServiceNode({
-  nodeRef,
-  icon,
-  label,
-  className,
-}: {
-  nodeRef: React.RefObject<HTMLDivElement | null>;
-  icon: React.ReactNode;
+export interface StatProps {
+  value: string;
   label: string;
+  icon: React.ReactNode;
+}
+
+export interface ActionProps {
+  text: string;
+  onClick: () => void;
+  variant?: ButtonProps["variant"];
+  className?: string;
+}
+
+// Magnetic button — pointer physics via motion values
+function MagneticButton({ children, onClick, className }: {
+  children: React.ReactNode;
+  onClick?: () => void;
   className?: string;
 }) {
+  const ref = useRef<HTMLButtonElement>(null);
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const springX = useSpring(x, { stiffness: 300, damping: 30 });
+  const springY = useSpring(y, { stiffness: 300, damping: 30 });
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLButtonElement>) => {
+    if (!ref.current) return;
+    const rect = ref.current.getBoundingClientRect();
+    const cx = rect.left + rect.width / 2;
+    const cy = rect.top + rect.height / 2;
+    x.set((e.clientX - cx) * 0.22);
+    y.set((e.clientY - cy) * 0.22);
+  };
+
+  const handleMouseLeave = () => {
+    x.set(0);
+    y.set(0);
+  };
+
   return (
-    <div
-      ref={nodeRef}
-      className={cn(
-        "flex flex-col items-center justify-center gap-1.5 bg-card border border-border rounded-2xl px-4 py-3 shadow-md text-center w-28 h-20 select-none transition-[transform,opacity,border-color,box-shadow] duration-500 hover:shadow-[0_8px_30px_rgb(255,165,0,0.2)] dark:hover:shadow-[0_8px_30px_rgb(43,158,220,0.2)] hover:border-primary/50 motion-safe:hover:-translate-y-1.5 relative z-10",
-        className
+    <motion.button
+      ref={ref}
+      onClick={onClick}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      style={{ x: springX, y: springY }}
+      whileTap={{ scale: 0.96 }}
+      className={className}
+    >
+      {children}
+    </motion.button>
+  );
+}
+
+// Image card with hover tilt micro-interaction
+function ImageCard({ src, alt, className }: { src: string; alt: string; className?: string }) {
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const rotateX = useTransform(y, [-60, 60], [6, -6]);
+  const rotateY = useTransform(x, [-60, 60], [-6, 6]);
+  const springRotX = useSpring(rotateX, { stiffness: 200, damping: 20 });
+  const springRotY = useSpring(rotateY, { stiffness: 200, damping: 20 });
+
+  return (
+    <motion.div
+      className={cn("rounded-2xl overflow-hidden shadow-2xl cursor-pointer group", className)}
+      style={{ rotateX: springRotX, rotateY: springRotY, transformPerspective: 800 }}
+      onMouseMove={(e) => {
+        const rect = e.currentTarget.getBoundingClientRect();
+        x.set(e.clientX - rect.left - rect.width / 2);
+        y.set(e.clientY - rect.top - rect.height / 2);
+      }}
+      onMouseLeave={() => { x.set(0); y.set(0); }}
+      whileHover={{ scale: 1.03 }}
+      transition={{ type: "spring", stiffness: 200, damping: 25 }}
+    >
+      <img
+        src={src}
+        alt={alt}
+        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+      />
+    </motion.div>
+  );
+}
+
+// Playful interactive word wrapper for hero headline keywords
+export function PlayfulWord({ children, badge }: { children: React.ReactNode; badge?: string }) {
+  return (
+    <motion.span
+      className="inline-flex items-center cursor-pointer relative group px-1 mx-0.5 rounded-xs select-none"
+      initial={{ y: 0 }}
+      animate={{ y: [0, -5, 0] }}
+      transition={{ delay: 1.2, duration: 0.5, ease: "easeOut" }}
+      whileHover={{ scale: 1.08, y: -3 }}
+      whileTap={{ scale: 0.95 }}
+    >
+      {/* The Text — shifts to primary on hover */}
+      <span className="relative z-10 text-white group-hover:text-primary transition-colors duration-200">
+        {children}
+      </span>
+
+      {/* Persistent primary underline indicator that grows on hover */}
+      <span className="absolute bottom-[1px] left-0 right-0 h-[2px] bg-primary/80 group-hover:h-[4px] group-hover:bg-primary rounded-full transition-all duration-200" />
+
+      {/* Subtle interactive spark icon indicator */}
+      <span className="absolute -top-2.5 -right-2 text-[10px] text-primary group-hover:scale-125 group-hover:rotate-12 transition-transform duration-200 pointer-events-none">
+        ✦
+      </span>
+
+      {/* Hover Badge Pill */}
+      {badge && (
+        <span className="absolute -top-4 right-0 translate-x-1/2 text-[9px] font-sans font-bold bg-primary text-primary-foreground px-2 py-0.5 rounded-full shadow-md opacity-0 group-hover:opacity-100 transition-all duration-200 pointer-events-none scale-75 group-hover:scale-100 z-20 whitespace-nowrap">
+          {badge}
+        </span>
       )}
-    >
-      <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
-        {icon}
-      </div>
-      <span className="text-[11px] font-semibold text-card-foreground tracking-tight leading-tight">{label}</span>
-    </div>
+    </motion.span>
   );
 }
 
-// ─── Signal chip (compact card for the mobile channel manifold) ────────
-function SignalChip({
-  chipRef,
-  icon,
-  label,
-}: {
-  chipRef?: React.RefObject<HTMLDivElement | null>;
-  icon: React.ReactNode;
-  label: string;
-}) {
-  return (
-    <div
-      ref={chipRef}
-      className="flex flex-col items-center gap-1.5 select-none"
-    >
-      <div className="w-11 h-11 rounded-xl bg-card border border-border shadow-sm flex items-center justify-center transition-[border-color,box-shadow,transform] duration-300 active:scale-95 active:border-primary/50">
-        {icon}
-      </div>
-      <span className="text-[10px] font-semibold text-muted-foreground tracking-tight leading-none whitespace-nowrap">
-        {label}
-      </span>
-    </div>
-  );
-}
-
-// ─── Center hub card ───────────────────────────────────────────────────
-function CenterHub({ hubRef }: { hubRef: React.RefObject<HTMLDivElement | null> }) {
-  return (
-    <div
-      ref={hubRef}
-      className="relative flex flex-col items-center justify-center bg-card border border-border rounded-3xl px-6 py-5 shadow-[0_8px_40px_rgb(43,158,220,0.15)] dark:shadow-[0_8px_40px_rgb(255,165,0,0.15)] text-center w-44 h-36 z-20 transition-[transform,box-shadow] duration-500 motion-safe:hover:scale-105"
-    >
-      {/* Pulsing ring */}
-      <span className="absolute inset-0 rounded-3xl animate-ping bg-primary/5 pointer-events-none duration-1000" />
-      <span className="absolute inset-[-6px] rounded-[1.75rem] border border-primary/20 pointer-events-none" />
-
-      <span className="inline-block text-[9px] font-bold tracking-widest uppercase bg-primary/10 text-primary px-2.5 py-0.5 rounded-full mb-2">
-        Digital Profile
-      </span>
-      <h3 className="text-sm font-bold text-card-foreground tracking-tight leading-tight">YOUR BUSINESS</h3>
-      <p className="text-[11px] text-muted-foreground mt-0.5 mb-2">Local Brand</p>
-      <div className="inline-flex items-center gap-1 text-[10px] font-semibold text-primary">
-        <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse inline-block" />
-        Active Growth
-      </div>
-    </div>
-  );
-}
-
-// ─── Main Hero ─────────────────────────────────────────────────────────
 export default function Hero() {
-  const headlineRef = useRef<HTMLHeadingElement>(null);
-  const textRef = useRef<HTMLParagraphElement>(null);
-  const ctaGroupRef = useRef<HTMLDivElement>(null);
-  const eyebrowRef = useRef<HTMLSpanElement>(null);
-  const tagsRef = useRef<HTMLDivElement>(null);
+  const title = (
+    <>
+      WE BUILD DIGITAL BRANDS <br />
+      THAT <PlayfulWord badge="⚡ #1">DOMINATE</PlayfulWord> & <PlayfulWord badge="🚀 10X">SCALE</PlayfulWord>
+    </>
+  );
 
-  // Container and beam refs
-  const containerRef = useRef<HTMLDivElement>(null);
-  const hubRef = useRef<HTMLDivElement>(null);
+  const subtitle = "Digital Brand Builder helps ambitious local businesses and D2C brands dominate search, launch high-converting web experiences, and scale revenue with performance marketing.";
 
-  // 6 service node refs
-  const websiteRef = useRef<HTMLDivElement>(null);
-  const seoRef = useRef<HTMLDivElement>(null);
-  const marketingRef = useRef<HTMLDivElement>(null);
-  const socialRef = useRef<HTMLDivElement>(null);
-  const ecomRef = useRef<HTMLDivElement>(null);
-  const brandRef = useRef<HTMLDivElement>(null);
-  const blogRef = useRef<HTMLDivElement>(null);
-  const testimonialRef = useRef<HTMLDivElement>(null);
+  const actions: ActionProps[] = [
+    {
+      text: 'CLAIM FREE BRAND AUDIT',
+      onClick: () => {
+        const auditEl = document.getElementById('audit');
+        if (auditEl) auditEl.scrollIntoView({ behavior: 'smooth' });
+      },
+    },
+    {
+      text: 'EXPLORE OUR SERVICES',
+      onClick: () => {
+        const servicesEl = document.getElementById('services');
+        if (servicesEl) servicesEl.scrollIntoView({ behavior: 'smooth' });
+      },
+    },
+  ];
 
-  // Mobile "signal manifold" refs
-  const mobileHubRef = useRef<HTMLDivElement>(null);
-  const mobileTrunkRef = useRef<HTMLDivElement>(null);
-  const mobileChipsRef = useRef<HTMLDivElement>(null);
+  const stats: StatProps[] = [
+    {
+      value: '100+',
+      label: 'Brands Scaled',
+      icon: <Globe className="h-5 w-5 text-primary" />,
+    },
+    {
+      value: '5.2x',
+      label: 'Average ROAS',
+      icon: <TrendingUp className="h-5 w-5 text-primary" />,
+    },
+    {
+      value: '98%',
+      label: 'Client Satisfaction',
+      icon: <Award className="h-5 w-5 text-primary" />,
+    },
+  ];
 
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-
-    const targets = [
-      eyebrowRef.current,
-      headlineRef.current,
-      textRef.current,
-      ctaGroupRef.current,
-      tagsRef.current,
-    ];
-
-    gsap.set(targets, { opacity: 0, y: 30 });
-    gsap.to(targets, {
-      opacity: 1,
-      y: 0,
-      duration: 1,
-      stagger: 0.15,
-      delay: 0.1,
-      ease: "power4.out",
-    });
-  }, []);
-
-  // Mobile signal manifold — hub pulses in, trunk line draws down,
-  // then the 8 channel chips light up left-to-right, row by row.
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    const chips = mobileChipsRef.current
-      ? Array.from(mobileChipsRef.current.children)
-      : [];
-
-    const tl = gsap.timeline({ delay: 0.5 });
-
-    if (mobileHubRef.current) {
-      gsap.set(mobileHubRef.current, { opacity: 0, y: -10, scale: 0.9 });
-      tl.to(mobileHubRef.current, { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "back.out(1.7)" });
-    }
-    if (mobileTrunkRef.current) {
-      gsap.set(mobileTrunkRef.current, { scaleY: 0, transformOrigin: "top" });
-      tl.to(mobileTrunkRef.current, { scaleY: 1, duration: 0.35, ease: "power2.out" }, "-=0.1");
-    }
-    if (chips.length) {
-      gsap.set(chips, { opacity: 0, y: 8 });
-      tl.to(
-        chips,
-        { opacity: 1, y: 0, duration: 0.4, stagger: 0.06, ease: "power3.out" },
-        "-=0.1"
-      );
-    }
-  }, []);
-
-  const beamColor = "#2b9edc"; // Light Blue
-  const beamGradStart = "#2b9edc";
-  const beamGradStop = "#ffa500"; // Orangish
+  const images = [
+    'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80',
+    'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80',
+    'https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=800&q=80',
+  ];
 
   return (
-    <section className="relative min-h-screen flex items-center pt-28 pb-16 overflow-hidden bg-background transition-colors duration-500">
-      {/* ── Subtle editorial bg shapes ── */}
-      <div className="absolute pointer-events-none z-0 opacity-35 top-[-8%] right-[-8%] w-[50vw] h-[50vw] rounded-[42%_58%_30%_70%/_60%_30%_68%_40%] bg-[rgba(255,165,0,0.15)] dark:bg-[rgba(255,165,0,0.1)] blur-3xl animate-float-slow" />
-      <div className="absolute pointer-events-none z-0 opacity-30 bottom-[-12%] left-[-8%] w-[38vw] h-[38vw] rounded-[50%_30%_60%_40%/_40%_60%_30%_50%] bg-[rgba(43,158,220,0.15)] dark:bg-[rgba(43,158,220,0.1)] blur-3xl animate-float-medium" />
+    <section className="relative w-full overflow-hidden bg-background pt-24 pb-16 md:pt-32 md:pb-24">
+      {/* Brutalist accent line — top edge rule */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-foreground/20 dark:bg-white/10" />
 
-      <div className="max-w-7xl mx-auto w-full px-6 md:px-10 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 xl:gap-12 items-center relative z-10">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-8">
+        <div className="grid grid-cols-1 items-center gap-16 lg:grid-cols-[1fr_0.85fr] lg:gap-12">
 
-        {/* ──────── LEFT COLUMN ──────── */}
-        <div className="lg:col-span-6 xl:col-span-7 flex flex-col items-start text-left">
+          {/* ── Left: Text content ── */}
+          <div className="flex flex-col items-start text-left">
 
+            {/* Headline — Abril Fatface serif, clean 2 lines, single white color */}
+            <h1 className="font-serif text-[clamp(1.4rem,2.8vw,2.2rem)] lg:text-[2.4rem] font-normal leading-[1.12] tracking-wide text-white uppercase mb-6">
+              {title}
+            </h1>
 
-          <span
-            ref={eyebrowRef}
-            className="text-[10px] sm:text-[11px] font-bold tracking-[0.2em] text-primary mb-3 sm:mb-4 uppercase"
-          >
-            DIGITAL GROWTH FOR MODERN BUSINESSES
-          </span>
+            {/* Subtitle — Lato font-sans */}
+            <p className="font-sans max-w-[44ch] text-base leading-relaxed text-muted-foreground mb-10">
+              {subtitle}
+            </p>
 
-          <h1
-            ref={headlineRef}
-            className="font-sans text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-6xl font-medium leading-[1.15] tracking-[-0.02em] text-foreground mb-4 sm:mb-5"
-          >
-            Turn your business into a brand people{" "}
-            <span className="italic font-normal text-primary">find, trust &amp; choose.</span>
-          </h1>
-
-          <p
-            ref={textRef}
-            className="text-sm sm:text-base md:text-lg leading-relaxed text-muted-foreground max-w-xl mb-6 sm:mb-8"
-          >
-            Digital Brand Builder brings your digital presence together—from high-performing websites and SEO to Google Ads, social media, and ecommerce. We help businesses build a stronger online presence, reach the right customers, and turn digital visibility into sustainable growth.
-          </p>
-
-          <div ref={ctaGroupRef} className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 w-full sm:w-auto mb-8 sm:mb-10">
-            <a
-              href="#cta"
-              className="w-full sm:w-auto min-h-[48px] inline-flex items-center justify-center gap-3 bg-primary text-primary-foreground px-7 py-3.5 rounded-full text-sm font-semibold shadow-sm hover:shadow-[0_0_20px_rgba(255,165,0,0.4)] dark:hover:shadow-[0_0_20px_rgba(255,165,0,0.6)] active:scale-95 transition-[transform,box-shadow,background-color] duration-300 group"
-            >
-              Build Your Digital Brand
-              <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-            </a>
-            <a
-              href="#how-it-works"
-              className="w-full sm:w-auto min-h-[48px] inline-flex items-center justify-center px-7 py-3.5 rounded-full text-sm font-semibold border border-border text-foreground hover:border-primary hover:bg-primary/5 active:scale-95 transition-[border-color,background-color,transform] duration-300"
-            >
-              See How It Works
-            </a>
-          </div>
-
-          <div ref={tagsRef} className="flex flex-wrap items-center gap-2.5 sm:gap-3 text-xs sm:text-sm font-semibold text-muted-foreground">
-            {["Websites", "SEO", "Marketing", "Social", "Ecommerce"].map((t, i, arr) => (
-              <span key={t} className="inline-flex items-center gap-2.5 hover:text-primary transition-colors cursor-default">
-                <span className="bg-muted px-2.5 py-1 rounded-md border border-border/60">{t}</span>
-                {i < arr.length - 1 && <span className="text-primary/50 font-black">·</span>}
-              </span>
-            ))}
-          </div>
-        </div>
-
-        {/* ──────── RIGHT COLUMN — Animated Beam Visual (tablet & desktop only) ──────── */}
-        <div className="hidden sm:flex lg:col-span-6 xl:col-span-5 justify-center items-center">
-          {/* Beam container — MUST be `relative` and a measurable element */}
-          <div
-            ref={containerRef}
-            className="relative flex items-center justify-center w-full max-w-[100vw] scale-100 origin-center"
-            style={{ minHeight: 440 }}
-          >
-            {/* ── Grid Layout: 3 cols × 3 rows centred ── */}
-            <div className="grid grid-cols-[auto_auto_auto] gap-y-10 gap-x-4 sm:gap-x-6 items-center justify-items-center w-max mx-auto">
-              {/* Row 1 */}
-              <ServiceNode nodeRef={websiteRef} icon={<Globe size={16} className="text-primary" />} label="Website" />
-              <ServiceNode nodeRef={seoRef} icon={<Search size={16} className="text-primary" />} label="SEO" />
-              <ServiceNode nodeRef={marketingRef} icon={<Target size={16} className="text-primary" />} label="Marketing" />
-
-              {/* Row 2 — Hub takes full width of middle col */}
-              <ServiceNode nodeRef={blogRef} icon={<FileText size={16} className="text-primary" />} label="Blog" />
-              <CenterHub hubRef={hubRef} />
-              <ServiceNode nodeRef={testimonialRef} icon={<MessageSquare size={16} className="text-primary" />} label="Reviews" />
-
-              {/* Row 3 */}
-              <ServiceNode nodeRef={ecomRef} icon={<ShoppingCart size={16} className="text-primary" />} label="Ecommerce" />
-              <ServiceNode nodeRef={brandRef} icon={<Award size={16} className="text-primary" />} label="Brand" />
-              <ServiceNode nodeRef={socialRef} icon={<Share2 size={16} className="text-primary" />} label="Social" />
+            {/* CTAs — brutalist high contrast with hard offset shadows */}
+            <div className="flex flex-wrap items-center gap-6 mb-14">
+              {actions.map((action, index) =>
+                index === 0 ? (
+                  <MagneticButton
+                    key={index}
+                    onClick={action.onClick}
+                    className={cn(
+                      // Primary — brutalist solid white + primary offset hard shadow
+                      "font-sans relative inline-flex items-center gap-2.5 px-7 py-3.5 text-xs sm:text-sm font-bold tracking-wider uppercase rounded-md",
+                      "bg-white text-black border-2 border-white",
+                      "shadow-[4px_4px_0px_0px_var(--primary)]",
+                      "hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0px_0px_var(--primary)] hover:bg-primary hover:border-primary hover:text-white",
+                      "active:translate-x-0.5 active:translate-y-0.5 active:shadow-[2px_2px_0px_0px_var(--primary)]",
+                      "transition-all duration-200 group"
+                    )}
+                  >
+                    {action.text}
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" className="transition-transform duration-200 group-hover:translate-x-1" aria-hidden>
+                      <path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </MagneticButton>
+                ) : (
+                  <MagneticButton
+                    key={index}
+                    onClick={action.onClick}
+                    className={cn(
+                      // Secondary — brutalist ghost outline + white offset hard shadow
+                      "font-sans relative inline-flex items-center gap-2.5 px-7 py-3.5 text-xs sm:text-sm font-bold tracking-wider uppercase rounded-md",
+                      "bg-transparent text-white border-2 border-white/60",
+                      "shadow-[4px_4px_0px_0px_rgba(255,255,255,0.25)]",
+                      "hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0px_0px_rgba(255,255,255,0.6)] hover:border-white hover:bg-white/10",
+                      "active:translate-x-0.5 active:translate-y-0.5 active:shadow-[2px_2px_0px_0px_white]",
+                      "transition-all duration-200"
+                    )}
+                  >
+                    {action.text}
+                  </MagneticButton>
+                )
+              )}
             </div>
 
-            {/* ── Beams: all nodes → hub ── */}
-            <AnimatedBeam containerRef={containerRef} fromRef={websiteRef} toRef={hubRef} curvature={30} delay={0} duration={4} pathColor={beamColor} gradientStartColor={beamGradStart} gradientStopColor={beamGradStop} pathOpacity={0.25} />
-            <AnimatedBeam containerRef={containerRef} fromRef={seoRef} toRef={hubRef} curvature={0} delay={0.6} duration={4} pathColor={beamColor} gradientStartColor={beamGradStart} gradientStopColor={beamGradStop} pathOpacity={0.25} />
-            <AnimatedBeam containerRef={containerRef} fromRef={marketingRef} toRef={hubRef} curvature={-30} delay={1.2} duration={4} pathColor={beamColor} gradientStartColor={beamGradStart} gradientStopColor={beamGradStop} pathOpacity={0.25} />
-
-            <AnimatedBeam containerRef={containerRef} fromRef={blogRef} toRef={hubRef} curvature={20} delay={0.4} duration={4} pathColor={beamColor} gradientStartColor={beamGradStart} gradientStopColor={beamGradStop} pathOpacity={0.25} />
-            <AnimatedBeam containerRef={containerRef} fromRef={testimonialRef} toRef={hubRef} curvature={-20} delay={1.0} duration={4} pathColor={beamColor} gradientStartColor={beamGradStart} gradientStopColor={beamGradStop} pathOpacity={0.25} reverse />
-
-            <AnimatedBeam containerRef={containerRef} fromRef={ecomRef} toRef={hubRef} curvature={-30} delay={0.3} duration={4} pathColor={beamColor} gradientStartColor={beamGradStart} gradientStopColor={beamGradStop} pathOpacity={0.25} reverse />
-            <AnimatedBeam containerRef={containerRef} fromRef={brandRef} toRef={hubRef} curvature={0} delay={0.9} duration={4} pathColor={beamColor} gradientStartColor={beamGradStart} gradientStopColor={beamGradStop} pathOpacity={0.25} reverse />
-            <AnimatedBeam containerRef={containerRef} fromRef={socialRef} toRef={hubRef} curvature={30} delay={1.5} duration={4} pathColor={beamColor} gradientStartColor={beamGradStart} gradientStopColor={beamGradStop} pathOpacity={0.25} reverse />
-          </div>
-        </div>
-
-        {/* ──────── PHONE ONLY — Mobile Service Hub Card & Touch Matrix ──────── */}
-        <div className="sm:hidden w-full flex flex-col items-center mt-8">
-          {/* Mobile Center Hub */}
-          <div
-            ref={mobileHubRef}
-            className="w-full bg-card border border-border/90 rounded-2xl p-5 shadow-sm text-center relative overflow-hidden"
-          >
-            <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-primary/5 pointer-events-none" />
-            <span className="inline-block text-[9px] font-bold tracking-widest uppercase bg-primary/10 text-primary px-3 py-1 rounded-full mb-2">
-              DIGITAL SYSTEM
-            </span>
-            <h3 className="text-base font-bold text-card-foreground tracking-tight">YOUR BUSINESS BRAND</h3>
-            <p className="text-xs text-muted-foreground mt-1 mb-3">All digital channels connected for growth</p>
-
-            <div className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary bg-primary/10 px-3 py-1 rounded-full">
-              <span className="w-2 h-2 rounded-full bg-primary animate-pulse inline-block" />
-              Active Growth Strategy
-            </div>
-          </div>
-
-          {/* Connected Trunk Line */}
-          <div ref={mobileTrunkRef} className="w-px h-5 bg-gradient-to-b from-primary/50 to-primary/20 my-1" />
-
-          {/* 4-column Channel Touch Grid */}
-          <div className="w-full">
-            <div
-              ref={mobileChipsRef}
-              className="grid grid-cols-4 gap-2 w-full"
-            >
-              {[
-                { icon: <Globe size={18} className="text-primary" />, label: "Website", href: "/services/websites" },
-                { icon: <Search size={18} className="text-primary" />, label: "SEO", href: "/services/seo" },
-                { icon: <Target size={18} className="text-primary" />, label: "Ads", href: "/services/marketing" },
-                { icon: <FileText size={18} className="text-primary" />, label: "Blog", href: "/blog" },
-                { icon: <ShoppingCart size={18} className="text-primary" />, label: "Ecom", href: "/services" },
-                { icon: <Award size={18} className="text-primary" />, label: "Brand", href: "/services/brand-presence" },
-                { icon: <Share2 size={18} className="text-primary" />, label: "Social", href: "/services/social-media" },
-                { icon: <MessageSquare size={18} className="text-primary" />, label: "Reviews", href: "#results" },
-              ].map((item) => (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  className="flex flex-col items-center justify-center p-3 rounded-xl bg-card border border-border/80 shadow-xs hover:border-primary/50 active:scale-95 transition-all text-center min-h-[72px]"
-                >
-                  <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center mb-1">
-                    {item.icon}
+            {/* Stats — Lato font-sans */}
+            <div className="flex flex-wrap items-start gap-8 pt-8 border-t border-foreground/15 w-full">
+              {stats.map((stat, index) => (
+                <div key={index} className="flex items-center gap-3 group">
+                  <div className="text-primary shrink-0">{stat.icon}</div>
+                  <div>
+                    <p className="font-sans text-xl font-black leading-none text-foreground tracking-tight">
+                      {stat.value}
+                    </p>
+                    <p className="font-sans text-xs font-semibold uppercase tracking-wider text-muted-foreground mt-0.5">
+                      {stat.label}
+                    </p>
                   </div>
-                  <span className="text-[11px] font-semibold text-foreground tracking-tight leading-none">
-                    {item.label}
-                  </span>
-                </a>
+                </div>
               ))}
             </div>
           </div>
-        </div>
 
+          {/* ── Right: Image collage with tilt micro-interactions ── */}
+          <div className="relative h-[420px] sm:h-[520px] lg:h-[540px] w-full">
+            {/* Top-center card — largest */}
+            <ImageCard
+              src={images[0]}
+              alt="Digital marketing strategy"
+              className="absolute left-1/2 -translate-x-1/2 top-0 w-52 h-52 sm:w-64 sm:h-64 bg-muted"
+            />
+
+            {/* Right card */}
+            <ImageCard
+              src={images[1]}
+              alt="Agency team collaboration"
+              className="absolute right-0 top-[28%] w-44 h-44 sm:w-56 sm:h-56 bg-muted"
+            />
+
+            {/* Bottom-left card */}
+            <ImageCard
+              src={images[2]}
+              alt="Performance analytics"
+              className="absolute bottom-0 left-0 w-36 h-36 sm:w-48 sm:h-48 bg-muted"
+            />
+
+            {/* Brutalist accent — corner bracket */}
+            <div className="absolute top-4 right-4 w-8 h-8 border-t-2 border-r-2 border-primary/50 pointer-events-none" />
+            <div className="absolute bottom-4 left-4 w-8 h-8 border-b-2 border-l-2 border-primary/50 pointer-events-none" />
+          </div>
+
+        </div>
       </div>
     </section>
   );

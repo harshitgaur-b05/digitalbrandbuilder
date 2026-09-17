@@ -55,29 +55,32 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
         isScrolled
-          ? "py-3.5 bg-background/90 backdrop-blur-md border-b border-border shadow-xs dark:shadow-[0_4px_30px_rgba(43,158,220,0.15)]"
-          : "py-6 bg-transparent border-b border-transparent"
+          ? "py-3 bg-background/95 backdrop-blur-xl border-b border-foreground/20 shadow-sm"
+          : "py-5 bg-transparent border-b border-transparent"
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 md:px-8 flex items-center justify-between">
 
-        {/* Logo */}
-        <Link href="/" className="flex items-center gap-2 z-50 min-h-[44px]" aria-label="digitalbrandbuilder homepage">
+        {/* Logo — Brutalist branding with hover micro-interaction */}
+        <Link href="/" className="flex items-center gap-2.5 z-50 min-h-[44px] group" aria-label="digitalbrandbuilder homepage">
           <Image
             src="/logo.png"
             alt="Digital Brand Builder Logo"
-            width={32}
-            height={32}
-            className="rounded-lg"
+            width={30}
+            height={30}
+            className="rounded-md transition-transform duration-300 group-hover:scale-110"
             priority
           />
-          <span className="font-sans text-xl font-bold tracking-tight text-foreground lowercase hidden sm:inline-block">
-            digital
-            <span className="font-normal text-primary">brand</span>
-            <span className="font-light text-muted-foreground">builder</span>
-          </span>
+          <div className="flex items-center gap-1.5">
+            <span className="font-sans text-lg font-black tracking-tight text-foreground lowercase hidden sm:inline-block">
+              digital<span className="text-primary font-bold">brand</span>builder
+            </span>
+            <span className="font-mono text-[10px] uppercase font-bold px-1.5 py-0.5 rounded bg-foreground/10 text-foreground/80 border border-foreground/15 hidden md:inline-block">
+              DBB
+            </span>
+          </div>
         </Link>
 
         {/* Desktop Nav — GooeyNav */}
@@ -91,20 +94,20 @@ export default function Navbar() {
           />
         </div>
 
-        {/* Desktop Right: Theme Toggler + CTA */}
+        {/* Desktop Right: Theme Toggler + Brutalist CTA */}
         <div className="hidden lg:flex items-center gap-4">
           <AnimatedThemeToggler variant="star" />
-          <div className="flex flex-col items-center gap-1">
+          <div className="flex flex-col items-end gap-0.5">
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 bg-foreground text-background px-6 py-2.5 rounded-full text-sm font-medium hover:opacity-80 hover:-translate-y-px transition-all duration-300 group"
+              className="inline-flex items-center gap-2 bg-foreground text-background border-2 border-foreground px-5 py-2 rounded-md text-xs font-bold uppercase tracking-wider hover:bg-primary hover:border-primary hover:text-primary-foreground active:scale-95 transition-all duration-200 group shadow-xs"
             >
               Build My Brand
-              <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+              <ArrowRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1" />
             </Link>
             <a
               href="tel:+919211074113"
-              className="text-[10px] font-medium text-muted-foreground hover:text-primary transition-colors tracking-wide"
+              className="text-[12px] sm:text-[13px] font-mono font-bold text-foreground/90 hover:text-primary transition-colors tracking-wider mt-0.5"
             >
               +91 92110 74113
             </a>
@@ -139,8 +142,8 @@ export default function Navbar() {
               <div key={href} className="flex flex-col items-center gap-2 w-full">
                 <Link
                   href={href}
-                  className={`text-2xl font-medium tracking-tight py-2 min-h-[44px] flex items-center justify-center transition-colors w-full ${
-                    isActive ? "text-primary font-semibold" : "text-foreground hover:text-primary"
+                  className={`font-sans text-xl font-bold uppercase tracking-wider py-2 min-h-[44px] flex items-center justify-center transition-colors w-full ${
+                    isActive ? "text-primary" : "text-foreground hover:text-primary"
                   }`}
                 >
                   {label}
@@ -164,14 +167,14 @@ export default function Navbar() {
         <div className="flex flex-col items-center gap-3 w-full max-w-sm pt-4 border-t border-border/50">
           <Link
             href="/contact"
-            className="w-full inline-flex items-center justify-center gap-2 bg-foreground text-background px-8 py-4 rounded-full text-base font-semibold min-h-[48px] shadow-sm active:scale-95 transition-transform"
+            className="w-full inline-flex items-center justify-center gap-2 bg-foreground text-background border-2 border-foreground px-8 py-3.5 rounded-md text-sm font-bold uppercase tracking-wider min-h-[48px] shadow-sm active:scale-95 transition-transform"
           >
             Build My Brand
             <ArrowRight size={18} />
           </Link>
           <a
             href="tel:+919211074113"
-            className="text-xs font-mono font-medium text-muted-foreground hover:text-primary transition-colors py-1 min-h-[44px] flex items-center"
+            className="text-sm font-mono font-bold text-foreground/90 hover:text-primary transition-colors py-1 min-h-[44px] flex items-center"
           >
             📞 Call Us: +91 92110 74113
           </a>

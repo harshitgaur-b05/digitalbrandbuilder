@@ -1,16 +1,20 @@
 import type { Metadata } from "next";
-import { Outfit, Geist } from "next/font/google";
+import { Abril_Fatface, Lato } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import Script from "next/script";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 
-const geist = Geist({ subsets: ['latin'], variable: '--font-sans' });
-
-const outfit = Outfit({
-  variable: "--font-outfit",
+const abril = Abril_Fatface({
+  weight: "400",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-abril",
+});
+
+const lato = Lato({
+  weight: ["300", "400", "700", "900"],
+  subsets: ["latin"],
+  variable: "--font-lato",
 });
 
 export const metadata: Metadata = {
@@ -86,7 +90,7 @@ export default function RootLayout({ children }: LayoutProps) {
   return (
     <html
       lang="en"
-      className={cn("h-full", "antialiased", outfit.variable, "font-sans", geist.variable)}
+      className={cn("h-full", "antialiased", abril.variable, lato.variable, "font-sans")}
       suppressHydrationWarning
     >
       <head>
