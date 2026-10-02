@@ -14,7 +14,8 @@
   --color-brand-muted: var(--muted-foreground);
   --font-sans: var(--font-lato), system-ui, -apple-system, sans-serif;
   --font-serif: var(--font-abril), Georgia, serif;
-  --font-display: var(--font-abril), Georgia, serif;
+  /* font-display uses Lato — Abril Fatface is too heavy for card/body use */
+  --font-display: var(--font-lato), system-ui, -apple-system, sans-serif;
 
   /* Service page design system tokens */
   --color-on-surface: var(--foreground);
@@ -69,8 +70,8 @@ body {
 }
 
 @theme inline {
-  --font-heading: var(--font-sans);
-  --font-sans: var(--font-sans);
+  --font-heading: var(--font-lato), system-ui, -apple-system, sans-serif;
+  --font-sans: var(--font-lato), system-ui, -apple-system, sans-serif;
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
