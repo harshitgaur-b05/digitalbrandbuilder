@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, Clock, ImageIcon, Radio } from "lucide-react";
 import { getBlogPosts } from "@/lib/source";
 
@@ -52,8 +53,13 @@ export default async function BlogSection() {
                 {/* Thumbnail */}
                 <div className="w-full aspect-[16/9] bg-muted flex flex-col items-center justify-center gap-2 shrink-0 overflow-hidden relative border-b border-border/60">
                   {post.image ? (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img src={post.image} alt={post.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                    <Image
+                      src={post.image}
+                      alt={post.title}
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 400px"
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
                   ) : (
                     <>
                       <ImageIcon size={24} className="text-[var(--color-ember-orange)]/70" strokeWidth={1.5} />

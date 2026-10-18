@@ -68,9 +68,10 @@ export default function Footer() {
                 <button
                   onClick={() => handleCopyEmail(primaryEmail)}
                   title="Copy email address"
-                  className="min-h-[36px] min-w-[36px] p-2 rounded-full bg-muted border border-border hover:bg-[var(--color-ember-orange)]/10 text-muted-foreground hover:text-[var(--color-ember-orange)] transition-all shrink-0 flex items-center justify-center cursor-pointer"
+                  aria-label="Copy email address"
+                  className="min-h-[44px] min-w-[44px] p-2.5 rounded-full bg-muted border border-border hover:bg-[var(--color-ember-orange)]/10 text-muted-foreground hover:text-[var(--color-ember-orange)] transition-all shrink-0 flex items-center justify-center cursor-pointer focus-visible:outline-2 focus-visible:outline-primary"
                 >
-                  {copied ? <Check size={14} className="text-emerald-500" /> : <Copy size={14} />}
+                  {copied ? <Check size={16} className="text-emerald-500" /> : <Copy size={16} />}
                 </button>
               </div>
 
