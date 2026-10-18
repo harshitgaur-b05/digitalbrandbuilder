@@ -28,17 +28,23 @@ export default function Footer() {
 
           {/* Column 1: Brand & Contact Info */}
           <div className="lg:col-span-5 flex flex-col items-start">
-            <Link href="/" className="mb-5 inline-flex items-center gap-2.5 min-h-[44px]">
+            <Link href="/" className="mb-5 inline-flex items-center gap-3 min-h-[44px] group" aria-label="Digital Brand Builder homepage">
               <Image
-                src="/logo.png"
+                src="/newlogo/android-chrome-192x192.png"
                 alt="Digital Brand Builder Logo"
-                width={36}
-                height={36}
-                className="rounded-xl"
+                width={40}
+                height={40}
+                className="rounded-xl transition-transform duration-300 group-hover:scale-105"
               />
-              <span className="font-[family-name:var(--font-polysans)] text-xl font-bold tracking-tight text-foreground lowercase">
-                digital<span className="font-bold text-[var(--color-ember-orange)]">brand</span>builder
-              </span>
+              <div className="flex flex-col justify-center leading-[0.9] select-none">
+                <div className="font-[family-name:var(--font-polysans)] text-lg sm:text-xl font-black tracking-tight lowercase">
+                  <span className="text-foreground">digital </span>
+                  <span className="text-[var(--color-ember-orange)]">brand</span>
+                </div>
+                <span className="font-[family-name:var(--font-polysans)] text-lg sm:text-xl font-black tracking-tight text-foreground lowercase">
+                  builder
+                </span>
+              </div>
             </Link>
 
             <p className="font-[family-name:var(--font-inter)] text-sm text-muted-foreground leading-relaxed max-w-md mb-6">

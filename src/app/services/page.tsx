@@ -134,7 +134,7 @@ export default function ServicesPage() {
             {[
               { label: "Services", value: "6" },
               { label: "Industries served", value: "12+" },
-              { label: "Clients grown", value: "40+" },
+              { label: "Brands scaled", value: "80+" },
             ].map((s) => (
               <div key={s.label} className="px-5 py-4 sm:px-6 sm:py-5">
                 <p className="text-2xl md:text-3xl font-semibold text-foreground tracking-tight">{s.value}</p>
@@ -151,15 +151,13 @@ export default function ServicesPage() {
               <div
                 key={service.name}
                 className={[
-                  "group relative flex flex-col bg-card border border-border rounded-2xl",
+                  "group relative flex flex-col bg-card border border-border rounded-2xl overflow-hidden",
                   "shadow-sm hover:shadow-[0_8px_30px_rgba(43,158,220,0.12)] dark:hover:shadow-[0_8px_30px_rgba(43,158,220,0.18)]",
-                  "hover:border-primary/40 motion-safe:hover:-translate-y-1",
+                  "hover:border-primary/50 motion-safe:hover:-translate-y-1",
                   "transition-[transform,box-shadow,border-color] duration-500",
                   service.span,
                 ].join(" ")}
               >
-                {/* Subtle top accent line */}
-                <div className={`h-px w-full ${service.accent ? "bg-gradient-to-r from-primary/60 via-primary/20 to-transparent" : "bg-border"}`} />
 
                 <div className="p-7 md:p-8 flex flex-col gap-5 flex-1">
                   {/* Header row: icon + number */}
@@ -211,10 +209,10 @@ export default function ServicesPage() {
               </div>
 
               <Link
-                href="/contact"
+                href="/#audit"
                 className="inline-flex items-center gap-3 bg-primary text-primary-foreground px-7 py-3.5 rounded-full text-sm font-medium shadow-sm hover:shadow-[0_0_20px_rgba(255,165,0,0.4)] dark:hover:shadow-[0_0_20px_rgba(255,165,0,0.6)] motion-safe:hover:-translate-y-1 transition-[transform,box-shadow] duration-500 group shrink-0"
               >
-                Build Your Digital Brand
+                Claim Free Brand Audit
                 <ArrowRight size={16} strokeWidth={2} className="transition-transform duration-300 group-hover:translate-x-1" />
               </Link>
             </div>

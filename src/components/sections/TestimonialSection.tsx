@@ -37,11 +37,11 @@ export default function TestimonialSection() {
             </span>
           </div>
 
-          <h2 className="font-[family-name:var(--font-polysans)] text-[34px] sm:text-[44px] md:text-[54px] font-normal leading-[0.98] sm:leading-[0.94] tracking-[-1.5px] text-foreground max-w-2xl mx-auto uppercase">
-            Don&apos;t Just Take <br className="hidden sm:block" />
-            <span className="relative inline-block mt-2 text-foreground">
-              Our Word For It.
-              <span className="absolute bottom-1 left-0 right-0 h-[3px] bg-[var(--color-ember-orange)] opacity-80" />
+          <h2 className="font-[family-name:var(--font-polysans)] text-[34px] sm:text-[44px] md:text-[54px] font-normal leading-[0.98] sm:leading-[0.94] tracking-[-1.5px] text-foreground max-w-2xl mx-auto">
+            Don&apos;t just take <br className="hidden sm:block" />
+            <span className="relative inline-block mt-2 pb-3 text-foreground">
+              our word for it.
+              <span className="absolute bottom-0 left-0 right-0 h-[3.5px] rounded-full bg-[var(--color-ember-orange)]" />
             </span>
           </h2>
         </div>

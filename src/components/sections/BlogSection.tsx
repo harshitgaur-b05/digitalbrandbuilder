@@ -28,11 +28,11 @@ export default async function BlogSection() {
               </span>
             </div>
 
-            <h2 className="font-[family-name:var(--font-polysans)] text-[34px] sm:text-[44px] md:text-[54px] font-normal leading-[0.98] sm:leading-[0.94] tracking-[-1.5px] text-foreground uppercase">
-              Growth Insights <br className="hidden sm:block" />
-              <span className="relative inline-block mt-2 text-foreground">
-                &amp; Field Playbooks.
-                <span className="absolute bottom-1 left-0 right-0 h-[3px] bg-[var(--color-ember-orange)] opacity-80" />
+            <h2 className="font-[family-name:var(--font-polysans)] text-[34px] sm:text-[44px] md:text-[54px] font-normal leading-[0.98] sm:leading-[0.94] tracking-[-1.5px] text-foreground">
+              Growth insights <br className="hidden sm:block" />
+              <span className="relative inline-block mt-2 pb-3 text-foreground">
+                &amp; field playbooks.
+                <span className="absolute bottom-0 left-0 right-0 h-[3.5px] rounded-full bg-[var(--color-ember-orange)]" />
               </span>
             </h2>
           </div>

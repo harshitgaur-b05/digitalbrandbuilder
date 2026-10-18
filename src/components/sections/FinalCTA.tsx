@@ -20,11 +20,11 @@ export default function FinalCTA() {
             </span>
           </div>
 
-          <h2 className="font-[family-name:var(--font-polysans)] text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal leading-[0.98] sm:leading-[0.94] tracking-[-1.5px] text-foreground max-w-3xl mx-auto mb-5 sm:mb-7 uppercase">
-            Your Business Has The Potential. <br className="hidden sm:block" />
-            <span className="relative inline-block mt-2 text-foreground">
-              Let&apos;s Build The Brand To Match.
-              <span className="absolute bottom-1 left-0 right-0 h-[3px] bg-[var(--color-ember-orange)] opacity-80" />
+          <h2 className="font-[family-name:var(--font-polysans)] text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal leading-[0.98] sm:leading-[0.94] tracking-[-1.5px] text-foreground max-w-3xl mx-auto mb-5 sm:mb-7">
+            Your business has the potential. <br className="hidden sm:block" />
+            <span className="relative inline-block mt-2 pb-3 text-foreground">
+              Let&apos;s build the brand to match.
+              <span className="absolute bottom-0 left-0 right-0 h-[3.5px] rounded-full bg-[var(--color-ember-orange)]" />
             </span>
           </h2>
 
@@ -33,19 +33,19 @@ export default function FinalCTA() {
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-3 font-[family-name:var(--font-polysans)] bg-foreground text-background hover:bg-[var(--color-ember-orange)] hover:text-white px-8 py-4 rounded-md text-[13px] md:text-[15px] tracking-wider uppercase font-semibold shadow-xl active:scale-95 transition-all duration-200 group"
-            >
-              Build Your Digital Brand
-              <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-            </Link>
             <a
               href="#audit"
-              className="font-[family-name:var(--font-polysans)] bg-transparent border border-foreground/30 hover:border-foreground text-foreground px-8 py-4 rounded-full text-[13px] md:text-[15px] tracking-wider hover:bg-muted transition-all duration-200 uppercase font-semibold active:scale-95"
+              className="inline-flex items-center gap-3 font-[family-name:var(--font-polysans)] bg-foreground text-background hover:bg-[var(--color-ember-orange)] hover:text-white px-8 py-4 rounded-md text-[13px] md:text-[15px] tracking-wider uppercase font-semibold shadow-xl active:scale-95 transition-all duration-200 group"
             >
               Claim Free Brand Audit
+              <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
             </a>
+            <Link
+              href="/contact"
+              className="font-[family-name:var(--font-polysans)] bg-transparent border border-foreground/30 hover:border-foreground text-foreground px-8 py-4 rounded-full text-[13px] md:text-[15px] tracking-wider hover:bg-muted transition-all duration-200 uppercase font-semibold active:scale-95"
+            >
+              Book a strategy call
+            </Link>
           </div>
 
           <div className="mt-8 pt-8 border-t border-border/50 flex flex-wrap items-center justify-center gap-4 sm:gap-8 font-mono text-[11px] text-muted-foreground">
