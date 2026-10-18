@@ -117,22 +117,29 @@ export default function Hero() {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-              className="font-[family-name:var(--font-polysans)] text-[38px] sm:text-[48px] md:text-[56px] lg:text-[62px] font-normal leading-[0.98] sm:leading-[0.94] tracking-[-1.5px] text-foreground mb-6 uppercase"
+              className="font-[family-name:var(--font-polysans)] text-[38px] sm:text-[48px] md:text-[56px] lg:text-[62px] font-normal leading-[0.98] sm:leading-[0.94] tracking-[-1.5px] text-foreground mb-3 uppercase"
             >
-              We Build Digital Brands <br className="hidden sm:block" />
-              <span className="relative inline-block mt-2 text-foreground">
-                That Dominate & Scale
-                <span className="absolute bottom-1 left-0 right-0 h-[3px] bg-[var(--color-ember-orange)] opacity-80" />
-              </span>
+              We Build Digital <br />
+              Brands That Dominate &amp; <br />
+              <span className="text-[var(--color-ember-orange)]">Scale.</span>
             </motion.h1>
+
+            {/* Clean underline bar cleanly spaced below heading — matches screenshot */}
+            <motion.div
+              initial={{ opacity: 0, scaleX: 0 }}
+              animate={{ opacity: 1, scaleX: 1 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              style={{ transformOrigin: "left" }}
+              className="w-20 sm:w-24 h-1.5 rounded-full bg-[var(--color-ember-orange)] mb-6"
+            />
 
             <motion.p
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.6, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
               className="font-[family-name:var(--font-inter)] max-w-[520px] text-[16px] md:text-[18px] leading-[1.6] text-muted-foreground mb-10"
             >
-              Digital Brand Builder helps ambitious local businesses and D2C brands dominate search, launch high-converting web experiences, and scale revenue with precision performance marketing.
+              We help ambitious local businesses and D2C brands grow through search visibility, high-converting websites, and performance marketing that drives revenue.
             </motion.p>
 
             <motion.div
@@ -146,7 +153,7 @@ export default function Hero() {
                   <button
                     key={index}
                     onClick={action.onClick}
-                    className="font-[family-name:var(--font-polysans)] bg-foreground text-background px-6 py-3.5 rounded-md text-[13px] md:text-[15px] tracking-wider hover:opacity-90 transition-all duration-200 uppercase font-semibold shadow-md active:scale-95"
+                    className="font-[family-name:var(--font-polysans)] bg-foreground text-background hover:bg-[var(--color-ember-orange)] hover:text-white px-7 py-4 rounded-md text-[13px] md:text-[15px] tracking-wider uppercase font-semibold shadow-lg hover:shadow-[0_8px_25px_rgba(255,104,44,0.35)] active:scale-95 transition-all duration-300 cursor-pointer"
                   >
                     {action.text}
                   </button>
@@ -154,7 +161,7 @@ export default function Hero() {
                   <button
                     key={index}
                     onClick={action.onClick}
-                    className="font-[family-name:var(--font-polysans)] bg-transparent border border-foreground/30 hover:border-foreground text-foreground px-6 py-3.5 rounded-full text-[13px] md:text-[15px] tracking-wider hover:bg-muted transition-all duration-200 uppercase font-semibold active:scale-95"
+                    className="font-[family-name:var(--font-polysans)] bg-transparent border border-foreground/30 hover:border-[var(--color-ember-orange)] hover:text-[var(--color-ember-orange)] hover:bg-[var(--color-ember-orange)]/10 text-foreground px-7 py-4 rounded-full text-[13px] md:text-[15px] tracking-wider transition-all duration-300 uppercase font-semibold active:scale-95 cursor-pointer"
                   >
                     {action.text}
                   </button>

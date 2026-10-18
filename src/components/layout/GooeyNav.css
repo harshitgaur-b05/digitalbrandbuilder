@@ -23,7 +23,7 @@
 .gooey-nav-container nav ul li > a {
   display: block;
   padding: 0.4rem 0.9rem;
-  font-family: var(--font-lato), var(--font-sans), sans-serif;
+  font-family: var(--font-sans), sans-serif;
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -92,7 +92,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: var(--font-lato), var(--font-sans), sans-serif;
+  font-family: var(--font-sans), sans-serif;
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.08em;

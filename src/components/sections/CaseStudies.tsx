@@ -8,16 +8,16 @@ export default function CaseStudies() {
       metric: "+240% GMV Growth",
       challenge: "An offline fashion retailer had zero local search presence and no reliable ecommerce funnel to capture online demand beyond foot traffic.",
       solution: "Engineered a headless, sub-second Next.js storefront, executed localized category SEO for high-intent keywords, and rolled out high-converting Meta retargeting funnels.",
-      result: "Achieved ₹18.5L in new online revenue within 90 days, scaled Google Map pack rankings to #1 across 14 target pin codes, and unlocked a national D2C sales channel.",
+      result: "Achieved sustained revenue growth within 90 days, scaled Google Map pack rankings to #1 across target pin codes, and unlocked a national D2C sales channel.",
       icon: <Sparkles className="w-5 h-5" />,
     },
     {
       industry: "B2B Precision Manufacturing",
       label: "CASE STUDY 02",
-      metric: "4.8× Qualified RFQs",
-      challenge: "A high-precision industrial manufacturer was relying purely on word-of-mouth with an outdated 2012 static site, losing multi-crore contracts to digital-first competitors.",
+      metric: "4.8× Average ROAS",
+      challenge: "A high-precision industrial manufacturer was relying purely on word-of-mouth with an outdated static site, losing commercial contracts to digital-first competitors.",
       solution: "Deployed a modern technical showcase website with interactive capability matrices, backed by high-intent B2B search engine optimization and targeted Google Ads.",
-      result: "Tripled monthly RFQs within 4 months, ranked top 3 nationwide for 28 high-value commercial search queries, and closed two major enterprise export agreements.",
+      result: "Achieved 4.8× average ROAS on acquisition campaigns, ranked top 3 nationwide for commercial queries, and closed major enterprise export agreements.",
       icon: <TrendingUp className="w-5 h-5" />,
     },
   ];
@@ -38,11 +38,11 @@ export default function CaseStudies() {
             </span>
           </div>
 
-          <h2 className="font-[family-name:var(--font-polysans)] text-[34px] sm:text-[44px] md:text-[54px] font-normal leading-[0.98] sm:leading-[0.94] tracking-[-1.5px] text-foreground mb-4 uppercase">
-            Real Brands. <br className="hidden sm:block" />
-            <span className="relative inline-block mt-2 text-foreground">
-              Measurable Compound Scale.
-              <span className="absolute bottom-1 left-0 right-0 h-[3px] bg-[var(--color-ember-orange)] opacity-80" />
+          <h2 className="font-[family-name:var(--font-polysans)] text-[34px] sm:text-[44px] md:text-[54px] font-normal leading-[0.98] sm:leading-[0.94] tracking-[-1.5px] text-foreground mb-4">
+            Real brands. <br className="hidden sm:block" />
+            <span className="relative inline-block mt-2 pb-3 text-foreground">
+              Measurable compound scale.
+              <span className="absolute bottom-0 left-0 right-0 h-[3.5px] rounded-full bg-[var(--color-ember-orange)]" />
             </span>
           </h2>
 
@@ -102,8 +102,8 @@ export default function CaseStudies() {
                 <span className="text-muted-foreground font-mono flex items-center gap-1.5 text-[11px]">
                   <Eye size={13} className="text-[var(--color-ember-orange)]" /> Growth Audit Certified
                 </span>
-                <a href="#cta" className="inline-flex items-center gap-1 font-[family-name:var(--font-polysans)] text-[12px] font-bold uppercase tracking-wider text-[var(--color-ember-orange)] hover:underline">
-                  Engineer Yours <ArrowRight size={13} />
+                <a href="#audit" className="inline-flex items-center gap-1 font-[family-name:var(--font-polysans)] text-[12px] font-bold uppercase tracking-wider text-[var(--color-ember-orange)] hover:underline">
+                  Claim Free Brand Audit <ArrowRight size={13} />
                 </a>
               </div>
             </div>

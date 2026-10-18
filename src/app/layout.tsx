@@ -1,21 +1,9 @@
 import type { Metadata } from "next";
-import { Abril_Fatface, Lato, Inter, Space_Grotesk } from "next/font/google";
+import { Inter, Space_Grotesk } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import Script from "next/script";
 import "./globals.css";
 import { cn } from "@/lib/utils";
-
-const abril = Abril_Fatface({
-  weight: "400",
-  subsets: ["latin"],
-  variable: "--font-abril",
-});
-
-const lato = Lato({
-  weight: ["300", "400", "700", "900"],
-  subsets: ["latin"],
-  variable: "--font-lato",
-});
 
 const inter = Inter({
   subsets: ["latin"],
@@ -76,15 +64,14 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: "/favicon.png", type: "image/png", sizes: "1024x1024" },
-      { url: "/logo.png",    type: "image/png", sizes: "32x32" },
+      { url: "/favicon.png", type: "image/png", sizes: "512x512" },
+      { url: "/newlogo/favicon-32x32.png", type: "image/png", sizes: "32x32" },
+      { url: "/newlogo/favicon-16x16.png", type: "image/png", sizes: "16x16" },
+      { url: "/newlogo/android-chrome-512x512.png", type: "image/png", sizes: "512x512" },
     ],
-    shortcut: "/favicon.png",
+    shortcut: "/favicon.ico",
     apple: [
       { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
-    ],
-    other: [
-      { rel: "apple-touch-icon-precomposed", url: "/apple-touch-icon.png" },
     ],
   },
   verification: {
@@ -100,7 +87,7 @@ export default function RootLayout({ children }: LayoutProps) {
   return (
     <html
       lang="en"
-      className={cn("h-full", "antialiased", abril.variable, lato.variable, inter.variable, spaceGrotesk.variable, "font-sans")}
+      className={cn("h-full", "antialiased", inter.variable, spaceGrotesk.variable, "font-sans")}
       suppressHydrationWarning
     >
       <head>

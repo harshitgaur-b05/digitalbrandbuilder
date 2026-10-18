@@ -8,12 +8,12 @@ function WebsiteBg() {
       <div className="flex flex-col items-end gap-2.5 opacity-60">
         <div className="flex items-center gap-2 bg-muted/80 backdrop-blur-sm px-3 py-1 rounded-md border border-border text-[10px] font-mono">
           <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-          <span className="text-foreground font-semibold">100/100 Core Web Vitals</span>
+          <span className="text-foreground font-semibold">100/100 Google page speed</span>
         </div>
         <div className="flex items-center gap-2 bg-muted/70 px-2.5 py-1 rounded border border-border/60 text-[9px] font-mono text-muted-foreground">
-          <span>FCP: 0.4s</span>
+          <span>Loads in 0.4s on 4G (FCP)</span>
           <span>·</span>
-          <span>SSR Ready</span>
+          <span>Fast server rendering</span>
         </div>
         <div className="w-32 h-14 rounded-lg border border-[var(--color-ember-orange)]/30 bg-background/50 p-2 flex flex-col justify-between shadow-xs">
           <div className="w-12 h-1.5 rounded-full bg-[var(--color-ember-orange)]/70"></div>
@@ -31,10 +31,10 @@ function SeoBg() {
       <div className="flex flex-col items-end gap-2 opacity-65">
         <div className="flex items-center gap-2 bg-muted/80 backdrop-blur-sm px-3 py-1 rounded-md border border-[var(--color-ember-orange)]/30 text-[10px] font-mono text-[var(--color-ember-orange)] font-bold">
           <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-ember-orange)] animate-ping"></span>
-          <span>SERP Rank #1</span>
+          <span>Top Google search rank (#1)</span>
         </div>
         <div className="text-[9px] font-mono text-muted-foreground bg-muted/60 px-2 py-0.5 rounded border border-border/50">
-          +320% Organic Clicks
+          Verified organic search growth
         </div>
       </div>
     </div>
@@ -47,7 +47,7 @@ function MarketingBg() {
       <div className="flex flex-col items-end gap-1.5 opacity-65">
         <div className="bg-muted/80 backdrop-blur-sm px-3 py-1 rounded-md border border-border text-[11px] font-mono font-bold text-foreground flex items-center gap-1.5">
           <span className="text-[var(--color-ember-orange)]">4.8×</span>
-          <span className="text-muted-foreground text-[10px]">ROAS</span>
+          <span className="text-muted-foreground text-[10px]">Return on ad spend (ROAS)</span>
         </div>
         <div className="flex items-end gap-1 h-8 pt-1">
           {[35, 55, 75, 95].map((h, i) => (
@@ -69,7 +69,7 @@ function SocialBg() {
       <div className="flex flex-col items-end gap-2 opacity-60">
         <div className="flex items-center gap-1.5 bg-muted/80 px-2.5 py-1 rounded-md border border-border text-[10px] font-mono">
           <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-          <span className="text-foreground font-semibold">180K+ Impressions</span>
+          <span className="text-foreground font-semibold">Multi-channel reach &amp; engagement</span>
         </div>
         <div className="flex gap-1.5">
           {[1, 2, 3].map((_, i) => (
@@ -88,7 +88,7 @@ function EcomBg() {
     <div className="absolute inset-0 bg-gradient-to-br from-[var(--color-ember-orange)]/10 to-transparent overflow-hidden p-6 flex items-start justify-end">
       <div className="flex flex-col items-end gap-2 opacity-60">
         <div className="bg-muted/80 backdrop-blur-sm px-3 py-1 rounded-md border border-border text-[10px] font-mono text-foreground font-bold">
-          3.7% CVR · ₹12.4L GMV
+          +240% GMV growth (e-commerce)
         </div>
         <div className="w-28 h-6 flex items-end gap-1">
           {[20, 35, 50, 45, 65, 80, 95].map((val, i) => (
@@ -111,9 +111,9 @@ function BrandBg() {
         <div className="flex items-center gap-1.5 bg-muted/80 px-2.5 py-1 rounded-md border border-border text-[10px] font-mono">
           <div className="w-2.5 h-2.5 rounded-full bg-[var(--color-ember-orange)]" />
           <div className="w-2.5 h-2.5 rounded-full bg-[var(--color-brass)]" />
-          <span className="text-foreground font-mono font-semibold ml-1">Identity DNA</span>
+          <span className="text-foreground font-mono font-semibold ml-1">Brand identity system</span>
         </div>
-        <span className="text-[9px] font-mono text-muted-foreground uppercase">Space Grotesk + Inter</span>
+        <span className="text-[9px] font-mono text-muted-foreground uppercase">Design tokens + Guidelines</span>
       </div>
     </div>
   );
@@ -200,11 +200,11 @@ export default function ServicesSection() {
             </span>
           </div>
 
-          <h2 className="font-[family-name:var(--font-polysans)] text-[34px] sm:text-[44px] md:text-[54px] font-normal leading-[0.98] sm:leading-[0.94] tracking-[-1.5px] text-foreground mb-4 uppercase">
-            Everything Your Business <br className="hidden sm:block" />
-            <span className="relative inline-block mt-2 text-foreground">
-              Needs To Dominate &amp; Scale
-              <span className="absolute bottom-1 left-0 right-0 h-[3px] bg-[var(--color-ember-orange)] opacity-80" />
+          <h2 className="font-[family-name:var(--font-polysans)] text-[34px] sm:text-[44px] md:text-[54px] font-normal leading-[0.98] sm:leading-[0.94] tracking-[-1.5px] text-foreground mb-4">
+            Everything your business <br className="hidden sm:block" />
+            <span className="relative inline-block mt-2 pb-3 text-foreground">
+              needs to dominate &amp; scale
+              <span className="absolute bottom-0 left-0 right-0 h-[3.5px] rounded-full bg-[var(--color-ember-orange)]" />
             </span>
           </h2>
 

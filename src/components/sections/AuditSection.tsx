@@ -67,11 +67,11 @@ export default function AuditSection() {
             </span>
           </div>
 
-          <h2 className="font-[family-name:var(--font-polysans)] text-[34px] sm:text-[44px] md:text-[54px] font-normal leading-[0.98] sm:leading-[0.94] tracking-[-1.5px] text-foreground uppercase">
-            Stop Guessing. <br />
-            <span className="relative inline-block mt-2 text-foreground">
-              Start Dominating.
-              <span className="absolute bottom-1 left-0 right-0 h-[3px] bg-[var(--color-ember-orange)] opacity-80" />
+          <h2 className="font-[family-name:var(--font-polysans)] text-[34px] sm:text-[44px] md:text-[54px] font-normal leading-[0.98] sm:leading-[0.94] tracking-[-1.5px] text-foreground">
+            Stop guessing. <br />
+            <span className="relative inline-block mt-2 pb-3 text-foreground">
+              Start dominating.
+              <span className="absolute bottom-0 left-0 right-0 h-[3.5px] rounded-full bg-[var(--color-ember-orange)]" />
             </span>
           </h2>
 
@@ -224,7 +224,7 @@ export default function AuditSection() {
                   disabled={status === "submitting"}
                   className="mt-3 inline-flex items-center justify-center gap-3 font-[family-name:var(--font-polysans)] uppercase tracking-wider text-[13px] md:text-[14px] font-semibold bg-foreground text-background hover:bg-[var(--color-ember-orange)] hover:text-white px-8 py-3.5 rounded-md shadow-md active:scale-95 transition-all duration-200 w-full sm:w-auto self-start disabled:opacity-70 disabled:cursor-not-allowed cursor-pointer"
                 >
-                  {status === "submitting" ? "Compiling Audit Request..." : "Request Free Digital Audit"}
+                  {status === "submitting" ? "Compiling Audit Request..." : "Claim Free Brand Audit"}
                   {status !== "submitting" && <ArrowRight className="w-4 h-4" />}
                 </button>
               </form>

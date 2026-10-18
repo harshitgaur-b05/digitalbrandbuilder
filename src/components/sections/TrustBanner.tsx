@@ -1,8 +1,10 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
 export default function TrustBanner() {
+  const shouldReduceMotion = useReducedMotion();
+
   const brandLogos = [
     { name: "ICICI BANK", font: "font-sans tracking-tight text-sm sm:text-base font-black" },
     { name: "TATA MOTORS", font: "font-sans tracking-widest text-xs sm:text-sm font-extrabold" },
@@ -28,31 +30,46 @@ export default function TrustBanner() {
           </span>
         </div>
 
-        {/* Brand Logos Infinite Marquee Container */}
+        {/* Brand Logos Container */}
         <div className="w-full overflow-hidden relative py-2">
-          {/* Gradient Edge Fades */}
-          <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-card to-transparent z-10 pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-card to-transparent z-10 pointer-events-none" />
+          {shouldReduceMotion ? (
+            <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-12 w-full py-2">
+              {brandLogos.map((brand, index) => (
+                <div
+                  key={index}
+                  className="flex items-center justify-center min-w-[120px] sm:min-w-[150px] py-2 text-foreground/80 hover:text-foreground transition-colors select-none cursor-default"
+                >
+                  <span className={brand.font}>{brand.name}</span>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <>
+              {/* Gradient Edge Fades */}
+              <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-card to-transparent z-10 pointer-events-none" />
+              <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-card to-transparent z-10 pointer-events-none" />
 
-          {/* Continuous Left-to-Right Moving Track */}
-          <motion.div
-            className="flex items-center gap-12 sm:gap-16 w-max opacity-80 hover:opacity-100 transition-opacity duration-300"
-            animate={{ x: ["-50%", "0%"] }}
-            transition={{
-              ease: "linear",
-              duration: 28,
-              repeat: Infinity,
-            }}
-          >
-            {marqueeItems.map((brand, index) => (
-              <div
-                key={index}
-                className="shrink-0 flex items-center justify-center min-w-[120px] sm:min-w-[150px] py-2 text-muted-foreground hover:text-foreground transition-all duration-300 select-none cursor-default hover:scale-105"
+              {/* Continuous Left-to-Right Moving Track */}
+              <motion.div
+                className="flex items-center gap-12 sm:gap-16 w-max"
+                animate={{ x: ["-50%", "0%"] }}
+                transition={{
+                  ease: "linear",
+                  duration: 28,
+                  repeat: Infinity,
+                }}
               >
-                <span className={brand.font}>{brand.name}</span>
-              </div>
-            ))}
-          </motion.div>
+                {marqueeItems.map((brand, index) => (
+                  <div
+                    key={index}
+                    className="shrink-0 flex items-center justify-center min-w-[120px] sm:min-w-[150px] py-2 text-foreground/80 hover:text-foreground transition-all duration-300 select-none cursor-default hover:scale-105"
+                  >
+                    <span className={brand.font}>{brand.name}</span>
+                  </div>
+                ))}
+              </motion.div>
+            </>
+          )}
         </div>
       </div>
     </section>

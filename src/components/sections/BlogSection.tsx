@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, Clock, ImageIcon, Radio } from "lucide-react";
 import { getBlogPosts } from "@/lib/source";
 
@@ -27,11 +28,11 @@ export default async function BlogSection() {
               </span>
             </div>
 
-            <h2 className="font-[family-name:var(--font-polysans)] text-[34px] sm:text-[44px] md:text-[54px] font-normal leading-[0.98] sm:leading-[0.94] tracking-[-1.5px] text-foreground uppercase">
-              Growth Insights <br className="hidden sm:block" />
-              <span className="relative inline-block mt-2 text-foreground">
-                &amp; Field Playbooks.
-                <span className="absolute bottom-1 left-0 right-0 h-[3px] bg-[var(--color-ember-orange)] opacity-80" />
+            <h2 className="font-[family-name:var(--font-polysans)] text-[34px] sm:text-[44px] md:text-[54px] font-normal leading-[0.98] sm:leading-[0.94] tracking-[-1.5px] text-foreground">
+              Growth insights <br className="hidden sm:block" />
+              <span className="relative inline-block mt-2 pb-3 text-foreground">
+                &amp; field playbooks.
+                <span className="absolute bottom-0 left-0 right-0 h-[3.5px] rounded-full bg-[var(--color-ember-orange)]" />
               </span>
             </h2>
           </div>
@@ -52,8 +53,13 @@ export default async function BlogSection() {
                 {/* Thumbnail */}
                 <div className="w-full aspect-[16/9] bg-muted flex flex-col items-center justify-center gap-2 shrink-0 overflow-hidden relative border-b border-border/60">
                   {post.image ? (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img src={post.image} alt={post.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                    <Image
+                      src={post.image}
+                      alt={post.title}
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 400px"
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
                   ) : (
                     <>
                       <ImageIcon size={24} className="text-[var(--color-ember-orange)]/70" strokeWidth={1.5} />
