@@ -1,98 +1,103 @@
-import { Store, Globe, Search, ShieldCheck, TrendingUp } from "lucide-react";
+import { Store, Globe, Search, ShieldCheck, TrendingUp, Radio } from "lucide-react";
 
 export default function TransformationSection() {
   const stages = [
     {
       title: "Business",
-      desc: "Your existing business, products, services, and expertise become the foundation for a focused digital growth strategy.",
-      icon: <Store className="text-primary w-7 h-7" />,
+      desc: "Your existing products, services, and local expertise become the core foundation for a targeted digital growth strategy.",
+      icon: <Store className="w-6 h-6" />,
     },
     {
       title: "Website",
-      desc: "A fast, professional, mobile-friendly website that communicates your value and gives visitors a clear reason to take action.",
-      icon: <Globe className="text-primary w-7 h-7" />,
+      desc: "A high-performance, mobile-optimized experience engineered to convert cold visitors into qualified enquiries and buyers.",
+      icon: <Globe className="w-6 h-6" />,
     },
     {
       title: "Visibility",
-      desc: "Strategic SEO helps your business appear in front of people actively searching for your products and services across Google Search and Maps.",
-      icon: <Search className="text-primary w-7 h-7" />,
+      desc: "Dominate Google Search, Maps, and AI answer engines when high-intent prospects actively search for your solutions.",
+      icon: <Search className="w-6 h-6" />,
     },
     {
       title: "Trust",
-      desc: "Consistent branding, useful content, customer reviews, and a professional online presence help turn visitors into confident customers.",
-      icon: <ShieldCheck className="text-primary w-7 h-7" />,
+      desc: "Reputation architecture, social proof, and seamless brand authority that turn skeptics into confident repeat buyers.",
+      icon: <ShieldCheck className="w-6 h-6" />,
     },
     {
       title: "Growth",
-      desc: "A connected digital marketing system that continuously attracts, engages, and converts potential customers.",
-      icon: <TrendingUp className="text-primary w-7 h-7" />,
+      desc: "A closed-loop growth engine uniting SEO, performance ads, and CRM pipelines for compounding revenue.",
+      icon: <TrendingUp className="w-6 h-6" />,
     },
   ];
 
   return (
-    <section className="bg-muted py-24 md:py-32 relative overflow-hidden border-y border-border transition-colors duration-500">
+    <section className="bg-muted/40 py-24 md:py-32 relative overflow-hidden border-y border-border transition-colors duration-500">
+      {/* Ambient glow orbs */}
+      <div className="absolute top-1/3 right-10 w-96 h-96 bg-[var(--color-ember-orange)]/8 rounded-full blur-3xl pointer-events-none -z-10" />
+      <div className="absolute bottom-10 left-10 w-80 h-80 bg-[var(--color-brass)]/8 rounded-full blur-3xl pointer-events-none -z-10" />
+
       <div className="max-w-7xl mx-auto px-6 md:px-8">
 
-        <div className="text-center mb-20 md:mb-28">
-          <span className="text-xs font-semibold tracking-[0.15em] text-primary mb-3 uppercase block">
-            THE EVOLUTION
-          </span>
-          <h2 className="font-sans text-4xl md:text-5xl font-medium leading-[1.15] tracking-tight text-foreground mb-4">
-            From local business to digital brand.
+        <div className="text-center mb-16 md:mb-24">
+          <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-muted border border-border mb-6">
+            <Radio size={14} className="text-[var(--color-ember-orange)] animate-pulse" />
+            <span className="font-[family-name:var(--font-polysans)] text-[11px] md:text-[12px] tracking-wide uppercase font-semibold text-foreground/80">
+              The Evolution — Blueprint
+            </span>
+          </div>
+
+          <h2 className="font-[family-name:var(--font-polysans)] text-[34px] sm:text-[44px] md:text-[54px] font-normal leading-[0.98] sm:leading-[0.94] tracking-[-1.5px] text-foreground mb-5 uppercase">
+            From Local Business <br className="hidden sm:block" />
+            <span className="relative inline-block mt-2 text-foreground">
+              To Dominant Digital Brand
+              <span className="absolute bottom-1 left-0 right-0 h-[3px] bg-[var(--color-ember-orange)] opacity-80" />
+            </span>
           </h2>
-          <p className="text-base md:text-lg text-muted-foreground max-w-xl mx-auto leading-relaxed">
-            Digital Brand Builder builds the complete digital foundation your business needs to move from simply being online to becoming a recognizable, trusted, and growth-focused brand.
+
+          <p className="font-[family-name:var(--font-inter)] text-base md:text-lg text-muted-foreground max-w-xl mx-auto leading-relaxed">
+            Digital Brand Builder builds the complete digital infrastructure your business needs to move from simply existing online to becoming an authority in your market.
           </p>
         </div>
 
         <div className="relative w-full">
-          {/* Desktop static SVG path */}
-          <div className="absolute top-[40px] left-0 w-full h-[120px] z-10 pointer-events-none hidden lg:block text-primary">
+          {/* Desktop dynamic SVG path */}
+          <div className="absolute top-[40px] left-0 w-full h-[120px] z-10 pointer-events-none hidden lg:block text-[var(--color-ember-orange)] opacity-50">
             <svg className="w-full h-full" viewBox="0 0 1000 120" fill="none" preserveAspectRatio="none">
               <path
                 d="M 50,60 C 200,60 150,60 300,60 C 450,60 400,60 500,60 C 600,60 550,60 700,60 C 850,60 800,60 950,60"
                 stroke="currentColor"
-                strokeWidth="2"
-                strokeDasharray="8 6"
-                strokeOpacity="0.4"
+                strokeWidth="2.5"
+                strokeDasharray="6 6"
               />
             </svg>
           </div>
 
-          <div className="flex flex-col lg:flex-row justify-between items-stretch lg:items-start relative z-20 gap-5 lg:gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-5 relative z-20">
             {stages.map((stage, i) => (
-              <div key={i} className="flex-1 relative group">
-                
-                {/* Mobile Connected Line */}
-                {i < stages.length - 1 && (
-                  <div className="absolute top-12 left-8 w-0.5 h-[calc(100%+1.25rem)] bg-primary/20 lg:hidden z-0" />
-                )}
-
-                {/* Mobile Premium Card Shell */}
-                <div className="absolute inset-0 bg-card border border-border/80 rounded-2xl shadow-xs lg:hidden pointer-events-none transition-all duration-300 group-hover:border-primary/40" />
-
-                {/* Content */}
-                <div className="relative z-10 flex flex-row lg:flex-col items-start lg:items-center lg:text-center p-5 lg:p-0 h-full gap-4 lg:gap-0">
-                  <div className="w-12 h-12 lg:w-[80px] lg:h-[80px] rounded-2xl lg:rounded-full bg-background lg:bg-card border border-border shadow-xs flex items-center justify-center relative mb-0 lg:mb-8 transition-[border-color,box-shadow,transform] duration-500 group-hover:border-primary/50 group-hover:shadow-md group-hover:-translate-y-1 shrink-0">
-                    <div className="absolute inset-0 rounded-2xl lg:rounded-full bg-primary/10 group-hover:scale-110 transition-transform duration-300" />
-                    <div className="flex items-center justify-center relative z-20">
+              <div
+                key={i}
+                className="bg-card/95 backdrop-blur-md border border-border/80 rounded-[22px] p-6 shadow-[0_10px_35px_rgb(0,0,0,0.05)] dark:shadow-[0_10px_35px_rgb(0,0,0,0.35)] hover:shadow-2xl hover:border-[var(--color-ember-orange)]/50 transition-all duration-300 motion-safe:hover:-translate-y-1 group flex flex-col justify-between"
+              >
+                <div>
+                  <div className="flex items-center justify-between mb-6">
+                    <span className="text-[10px] font-mono font-bold text-[var(--color-ember-orange)] bg-[var(--color-ember-orange)]/10 border border-[var(--color-ember-orange)]/20 px-2.5 py-0.5 rounded-full shrink-0">
+                      {`STAGE 0${i + 1}`}
+                    </span>
+                    <div className="w-10 h-10 rounded-full bg-muted border border-border flex items-center justify-center text-[var(--color-ember-orange)] group-hover:scale-110 group-hover:bg-[var(--color-ember-orange)]/10 transition-all">
                       {stage.icon}
                     </div>
                   </div>
-                  
-                  <div className="flex-grow">
-                    <div className="flex items-center lg:justify-center gap-2.5 mb-2">
-                      <span className="text-[10px] font-mono font-bold text-primary bg-primary/10 px-2.5 py-0.5 rounded-full shrink-0">
-                        {`STAGE 0${i + 1}`}
-                      </span>
-                      <h3 className="text-lg lg:text-xl font-bold text-foreground tracking-tight group-hover:text-primary transition-colors">
-                        {stage.title}
-                      </h3>
-                    </div>
-                    <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed max-w-sm lg:mx-auto">
-                      {stage.desc}
-                    </p>
-                  </div>
+
+                  <h3 className="font-[family-name:var(--font-polysans)] text-lg font-bold text-foreground mb-2 tracking-wide uppercase group-hover:text-[var(--color-ember-orange)] transition-colors">
+                    {stage.title}
+                  </h3>
+                  <p className="font-[family-name:var(--font-inter)] text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                    {stage.desc}
+                  </p>
+                </div>
+
+                <div className="mt-5 pt-3 border-t border-border/50 flex items-center gap-1.5 text-[10px] font-mono text-muted-foreground">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-ember-orange)]"></span>
+                  <span>Pipeline Ready</span>
                 </div>
               </div>
             ))}

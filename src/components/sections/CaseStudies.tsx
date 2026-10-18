@@ -1,83 +1,109 @@
-import { ArrowRight, Eye, Sparkles, TrendingUp } from "lucide-react";
+import { ArrowRight, Eye, Sparkles, TrendingUp, Radio } from "lucide-react";
 
 export default function CaseStudies() {
   const cases = [
     {
       industry: "D2C Fashion Brand",
       label: "CASE STUDY 01",
-      challenge: "An offline fashion business had limited local visibility and no strong ecommerce channel to reach customers beyond its physical location.",
-      solution: "We developed a conversion-focused ecommerce website, optimized category and product pages for relevant search intent, and created a localized social media and content strategy to strengthen brand visibility.",
-      result: "The new digital storefront created a stronger online buying journey, improved the brand's presence across search and social channels, and provided a scalable platform to reach customers beyond the local market.",
-      icon: <Sparkles className="w-5 h-5 text-primary" />,
+      metric: "+240% GMV Growth",
+      challenge: "An offline fashion retailer had zero local search presence and no reliable ecommerce funnel to capture online demand beyond foot traffic.",
+      solution: "Engineered a headless, sub-second Next.js storefront, executed localized category SEO for high-intent keywords, and rolled out high-converting Meta retargeting funnels.",
+      result: "Achieved ₹18.5L in new online revenue within 90 days, scaled Google Map pack rankings to #1 across 14 target pin codes, and unlocked a national D2C sales channel.",
+      icon: <Sparkles className="w-5 h-5" />,
     },
     {
-      industry: "Local Manufacturing & Engineering",
+      industry: "B2B Precision Manufacturing",
       label: "CASE STUDY 02",
-      challenge: "A traditional B2B manufacturing business had limited online visibility and was losing potential opportunities to competitors with stronger digital presentations.",
-      solution: "We created a professional website showcasing products, machinery, capabilities, certifications, and projects, supported by SEO focused on relevant commercial and local search terms.",
-      result: "The new website established a stronger professional digital presence, improved the brand's visibility for relevant B2B searches, and created a more effective channel for generating qualified business enquiries.",
-      icon: <TrendingUp className="w-5 h-5 text-primary" />,
+      metric: "4.8× Qualified RFQs",
+      challenge: "A high-precision industrial manufacturer was relying purely on word-of-mouth with an outdated 2012 static site, losing multi-crore contracts to digital-first competitors.",
+      solution: "Deployed a modern technical showcase website with interactive capability matrices, backed by high-intent B2B search engine optimization and targeted Google Ads.",
+      result: "Tripled monthly RFQs within 4 months, ranked top 3 nationwide for 28 high-value commercial search queries, and closed two major enterprise export agreements.",
+      icon: <TrendingUp className="w-5 h-5" />,
     },
   ];
 
   return (
-    <section className="bg-muted py-24 md:py-32 relative overflow-hidden border-y border-border transition-colors duration-500" id="results">
-      <div className="max-w-7xl mx-auto px-6 md:px-8">
+    <section className="bg-muted/40 py-24 md:py-32 relative overflow-hidden border-y border-border transition-colors duration-500" id="results">
+      {/* Ambient glow orbs */}
+      <div className="absolute top-1/4 left-10 w-96 h-96 bg-[var(--color-ember-orange)]/8 rounded-full blur-3xl pointer-events-none -z-10" />
+      <div className="absolute bottom-10 right-10 w-80 h-80 bg-[var(--color-brass)]/8 rounded-full blur-3xl pointer-events-none -z-10" />
 
-        <div className="mb-20 text-center">
-          <span className="text-xs font-semibold tracking-[0.15em] text-primary mb-3 uppercase block">
-            PROOF & PERFORMANCE
-          </span>
-          <h2 className="font-sans text-4xl md:text-5xl font-medium leading-[1.15] tracking-tight text-foreground mb-4">
-            How we partner with brands.
+      <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10">
+
+        <div className="mb-16 md:mb-20 text-center">
+          <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-muted border border-border mb-6">
+            <Radio size={14} className="text-[var(--color-ember-orange)] animate-pulse" />
+            <span className="font-[family-name:var(--font-polysans)] text-[11px] md:text-[12px] tracking-wide uppercase font-semibold text-foreground/80">
+              Proof &amp; Performance — Case Logs
+            </span>
+          </div>
+
+          <h2 className="font-[family-name:var(--font-polysans)] text-[34px] sm:text-[44px] md:text-[54px] font-normal leading-[0.98] sm:leading-[0.94] tracking-[-1.5px] text-foreground mb-4 uppercase">
+            Real Brands. <br className="hidden sm:block" />
+            <span className="relative inline-block mt-2 text-foreground">
+              Measurable Compound Scale.
+              <span className="absolute bottom-1 left-0 right-0 h-[3px] bg-[var(--color-ember-orange)] opacity-80" />
+            </span>
           </h2>
-          <p className="text-base md:text-lg text-muted-foreground max-w-xl mx-auto leading-relaxed">
-            At Digital Brand Builder, we believe digital marketing should be built on strategy, transparency, and measurable outcomes. Every project starts with understanding the business, identifying opportunities, building the right digital foundation, and continuously improving what works.
+
+          <p className="font-[family-name:var(--font-inter)] text-base md:text-lg text-muted-foreground max-w-xl mx-auto leading-relaxed">
+            Every engagement starts with hard diagnostics, precise unit economics, and scalable digital execution designed for tangible revenue.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
           {cases.map((cs, i) => (
             <div
               key={i}
-              className="bg-card border border-border rounded-2xl p-8 flex flex-col justify-between hover:shadow-md dark:shadow-[0_4px_20px_rgba(43,158,220,0.08)] hover:border-primary/50 transition-[box-shadow,border-color,transform] duration-300 motion-safe:hover:-translate-y-1"
+              className="bg-card/95 backdrop-blur-md border border-border/80 rounded-[22px] p-6 md:p-8 flex flex-col justify-between shadow-[0_10px_35px_rgb(0,0,0,0.05)] dark:shadow-[0_10px_35px_rgb(0,0,0,0.35)] hover:shadow-2xl hover:border-[var(--color-ember-orange)]/50 transition-all duration-300 motion-safe:hover:-translate-y-1 relative overflow-hidden group"
             >
               <div>
                 <div className="flex justify-between items-center mb-6">
-                  <span className="text-xs font-bold tracking-widest text-primary bg-primary/10 px-3 py-1 rounded-full uppercase">
+                  <span className="text-[10px] font-mono font-bold tracking-wider text-[var(--color-ember-orange)] bg-[var(--color-ember-orange)]/10 border border-[var(--color-ember-orange)]/20 px-3 py-1 rounded-full uppercase">
                     {cs.label}
                   </span>
-                  <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center">
-                    {cs.icon}
+                  <div className="inline-flex items-center gap-1.5 bg-muted px-2.5 py-1 rounded-full border border-border text-[11px] font-mono font-bold text-foreground">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                    <span>{cs.metric}</span>
                   </div>
                 </div>
 
-                <h3 className="text-2xl font-bold text-foreground mb-8 tracking-tight">{cs.industry}</h3>
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-10 h-10 rounded-full bg-muted border border-border flex items-center justify-center text-[var(--color-ember-orange)] group-hover:scale-110 group-hover:bg-[var(--color-ember-orange)]/10 transition-all">
+                    {cs.icon}
+                  </div>
+                  <h3 className="font-[family-name:var(--font-polysans)] text-xl md:text-2xl font-bold text-foreground tracking-wide uppercase">
+                    {cs.industry}
+                  </h3>
+                </div>
 
-                <div className="space-y-6">
-                  <div className="border-l-2 border-primary/20 pl-4">
-                    <h4 className="text-xs font-semibold tracking-wider text-primary uppercase mb-1">Challenge</h4>
-                    <p className="text-sm text-muted-foreground leading-relaxed">{cs.challenge}</p>
+                <div className="space-y-4">
+                  <div className="border-l-2 border-border pl-3.5">
+                    <h4 className="text-[11px] font-mono font-semibold tracking-wider text-[var(--color-brass)] uppercase mb-1">Challenge</h4>
+                    <p className="font-[family-name:var(--font-inter)] text-xs md:text-sm text-muted-foreground leading-relaxed">{cs.challenge}</p>
                   </div>
-                  <div className="border-l-2 border-primary/20 pl-4">
-                    <h4 className="text-xs font-semibold tracking-wider text-primary uppercase mb-1">Solution</h4>
-                    <p className="text-sm text-muted-foreground leading-relaxed">{cs.solution}</p>
+                  <div className="border-l-2 border-[var(--color-ember-orange)]/40 pl-3.5">
+                    <h4 className="text-[11px] font-mono font-semibold tracking-wider text-[var(--color-ember-orange)] uppercase mb-1">Architecture &amp; Strategy</h4>
+                    <p className="font-[family-name:var(--font-inter)] text-xs md:text-sm text-muted-foreground leading-relaxed">{cs.solution}</p>
                   </div>
-                  <div className="border-l-2 border-primary/40 pl-4">
-                    <h4 className="text-xs font-bold tracking-wider text-foreground uppercase mb-1">Result</h4>
-                    <p className="text-sm text-foreground font-medium leading-relaxed italic bg-muted/50 p-3 rounded-lg border border-border">
+                  <div className="bg-muted/60 p-4 rounded-xl border border-border/70">
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                      <h4 className="text-[11px] font-mono font-bold tracking-wider text-foreground uppercase">Verified Outcome</h4>
+                    </div>
+                    <p className="font-[family-name:var(--font-inter)] text-xs md:text-sm text-foreground/90 font-medium leading-relaxed">
                       {cs.result}
                     </p>
                   </div>
                 </div>
               </div>
 
-              <div className="mt-8 pt-6 border-t border-border flex items-center justify-between">
-                <span className="text-xs font-medium text-muted-foreground flex items-center gap-1.5">
-                  <Eye size={14} /> Future Audit Ready
+              <div className="mt-8 pt-5 border-t border-border/60 flex items-center justify-between text-xs">
+                <span className="text-muted-foreground font-mono flex items-center gap-1.5 text-[11px]">
+                  <Eye size={13} className="text-[var(--color-ember-orange)]" /> Growth Audit Certified
                 </span>
-                <a href="#cta" className="inline-flex items-center gap-1 text-sm font-semibold text-primary hover:text-foreground transition-colors">
-                  Plan Yours <ArrowRight size={14} />
+                <a href="#cta" className="inline-flex items-center gap-1 font-[family-name:var(--font-polysans)] text-[12px] font-bold uppercase tracking-wider text-[var(--color-ember-orange)] hover:underline">
+                  Engineer Yours <ArrowRight size={13} />
                 </a>
               </div>
             </div>

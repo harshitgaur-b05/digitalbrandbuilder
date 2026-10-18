@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Abril_Fatface, Lato } from "next/font/google";
+import { Abril_Fatface, Lato, Inter, Space_Grotesk } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import Script from "next/script";
 import "./globals.css";
@@ -15,6 +15,16 @@ const lato = Lato({
   weight: ["300", "400", "700", "900"],
   subsets: ["latin"],
   variable: "--font-lato",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+});
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-space-grotesk",
 });
 
 export const metadata: Metadata = {
@@ -90,7 +100,7 @@ export default function RootLayout({ children }: LayoutProps) {
   return (
     <html
       lang="en"
-      className={cn("h-full", "antialiased", abril.variable, lato.variable, "font-sans")}
+      className={cn("h-full", "antialiased", abril.variable, lato.variable, inter.variable, spaceGrotesk.variable, "font-sans")}
       suppressHydrationWarning
     >
       <head>

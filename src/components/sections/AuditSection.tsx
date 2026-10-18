@@ -51,51 +51,74 @@ export default function AuditSection() {
   };
 
   return (
-    <section className="bg-background py-24 md:py-32 relative overflow-hidden transition-colors duration-500" id="free-audit">
-      <div className="absolute pointer-events-none z-0 opacity-40 top-[-20%] left-[-10%] w-[50vw] h-[50vw] rounded-[45%_55%_35%_65%/_55%_45%_65%_35%] bg-primary/10 blur-2xl" />
+    <section className="bg-background py-24 md:py-32 relative overflow-hidden transition-colors duration-500" id="audit">
+      {/* Ambient glow orbs */}
+      <div className="absolute top-1/4 left-5 w-96 h-96 bg-[var(--color-ember-orange)]/10 rounded-full blur-3xl pointer-events-none -z-10" />
+      <div className="absolute bottom-10 right-5 w-80 h-80 bg-[var(--color-brass)]/10 rounded-full blur-3xl pointer-events-none -z-10" />
 
       <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
         
         {/* Left: Info */}
         <div className="lg:col-span-5 flex flex-col gap-6">
-          <span className="text-xs font-semibold tracking-[0.2em] text-primary uppercase inline-block w-fit bg-primary/10 px-3 py-1.5 rounded-full">
-            FREE DIGITAL AUDIT
-          </span>
-          <h2 className="font-sans text-3xl md:text-5xl lg:text-6xl font-medium leading-[1.1] tracking-tight text-foreground">
-            Stop guessing. Start <span className="text-primary italic font-normal">growing.</span>
+          <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-muted border border-border w-fit shadow-xs">
+            <span className="w-2 h-2 rounded-full bg-[var(--color-ember-orange)] animate-pulse" />
+            <span className="font-[family-name:var(--font-polysans)] text-[11px] md:text-[12px] tracking-wide uppercase font-semibold text-foreground/80">
+              Free Digital Audit — Confidential Diagnostic
+            </span>
+          </div>
+
+          <h2 className="font-[family-name:var(--font-polysans)] text-[34px] sm:text-[44px] md:text-[54px] font-normal leading-[0.98] sm:leading-[0.94] tracking-[-1.5px] text-foreground uppercase">
+            Stop Guessing. <br />
+            <span className="relative inline-block mt-2 text-foreground">
+              Start Dominating.
+              <span className="absolute bottom-1 left-0 right-0 h-[3px] bg-[var(--color-ember-orange)] opacity-80" />
+            </span>
           </h2>
-          <p className="text-base md:text-lg text-muted-foreground leading-relaxed mt-2">
-            Get a comprehensive, no-obligation review of your website, SEO, and digital presence. Find out exactly what's holding you back and what you need to scale.
+
+          <p className="font-[family-name:var(--font-inter)] text-base md:text-lg text-muted-foreground leading-relaxed mt-1">
+            Receive an exhaustive, no-obligation growth report on your website performance, keyword rankings, conversion bottlenecks, and paid search potential.
           </p>
 
-          <div className="flex flex-col gap-5 mt-6">
-            <div className="flex gap-4">
-              <div className="w-10 h-10 rounded-xl bg-card border border-border flex items-center justify-center shrink-0">
-                <Search className="text-primary w-5 h-5" />
+          <div className="flex flex-col gap-5 mt-4">
+            <div className="flex gap-4 items-start">
+              <div className="w-10 h-10 rounded-full bg-muted border border-border flex items-center justify-center shrink-0 text-[var(--color-ember-orange)]">
+                <Search className="w-4 h-4" />
               </div>
               <div>
-                <h4 className="font-semibold text-foreground text-sm">SEO & Discoverability</h4>
-                <p className="text-xs text-muted-foreground leading-relaxed mt-1">We analyze your search rankings and local map visibility.</p>
+                <h4 className="font-[family-name:var(--font-polysans)] uppercase tracking-wide font-bold text-foreground text-sm">
+                  Search &amp; Local Pack Visibility
+                </h4>
+                <p className="font-[family-name:var(--font-inter)] text-xs text-muted-foreground leading-relaxed mt-1">
+                  In-depth competitor keyword gap analysis and Google Business Profile audit.
+                </p>
               </div>
             </div>
             
-            <div className="flex gap-4">
-              <div className="w-10 h-10 rounded-xl bg-card border border-border flex items-center justify-center shrink-0">
-                <Zap className="text-primary w-5 h-5" />
+            <div className="flex gap-4 items-start">
+              <div className="w-10 h-10 rounded-full bg-muted border border-border flex items-center justify-center shrink-0 text-[var(--color-ember-orange)]">
+                <Zap className="w-4 h-4" />
               </div>
               <div>
-                <h4 className="font-semibold text-foreground text-sm">Website Performance</h4>
-                <p className="text-xs text-muted-foreground leading-relaxed mt-1">We find the friction points in speed, mobile UX, and conversions.</p>
+                <h4 className="font-[family-name:var(--font-polysans)] uppercase tracking-wide font-bold text-foreground text-sm">
+                  Speed &amp; Conversion Diagnostics
+                </h4>
+                <p className="font-[family-name:var(--font-inter)] text-xs text-muted-foreground leading-relaxed mt-1">
+                  Core Web Vitals, mobile UX friction points, and checkout leak detection.
+                </p>
               </div>
             </div>
 
-            <div className="flex gap-4">
-              <div className="w-10 h-10 rounded-xl bg-card border border-border flex items-center justify-center shrink-0">
-                <TrendingUp className="text-primary w-5 h-5" />
+            <div className="flex gap-4 items-start">
+              <div className="w-10 h-10 rounded-full bg-muted border border-border flex items-center justify-center shrink-0 text-[var(--color-ember-orange)]">
+                <TrendingUp className="w-4 h-4" />
               </div>
               <div>
-                <h4 className="font-semibold text-foreground text-sm">Actionable Growth Plan</h4>
-                <p className="text-xs text-muted-foreground leading-relaxed mt-1">You'll walk away with a clear, prioritized list of steps to improve.</p>
+                <h4 className="font-[family-name:var(--font-polysans)] uppercase tracking-wide font-bold text-foreground text-sm">
+                  Strategic Scale Roadmap
+                </h4>
+                <p className="font-[family-name:var(--font-inter)] text-xs text-muted-foreground leading-relaxed mt-1">
+                  A high-impact, prioritized 90-day execution playbook engineered for revenue.
+                </p>
               </div>
             </div>
           </div>
@@ -104,88 +127,105 @@ export default function AuditSection() {
         {/* Right: Form */}
         <div className="lg:col-span-7">
           {status === "success" ? (
-            <div className="bg-card border border-border rounded-3xl p-10 md:p-14 text-center shadow-lg h-full flex flex-col items-center justify-center min-h-[400px]">
-              <div className="w-20 h-20 rounded-full bg-green-500/10 flex items-center justify-center mb-6">
-                <CheckCircle2 className="text-green-500 w-10 h-10" />
+            <div className="bg-card/95 backdrop-blur-md border border-border/80 rounded-[24px] p-10 md:p-14 text-center shadow-2xl h-full flex flex-col items-center justify-center min-h-[400px]">
+              <div className="w-16 h-16 rounded-full bg-[var(--color-ember-orange)]/15 border border-[var(--color-ember-orange)]/30 flex items-center justify-center mb-6 text-[var(--color-ember-orange)]">
+                <CheckCircle2 className="w-8 h-8" />
               </div>
-              <h3 className="text-3xl font-bold text-foreground mb-4 tracking-tight">Request Received!</h3>
-              <p className="text-muted-foreground text-lg max-w-md mx-auto leading-relaxed">
-                We'll review your details and prepare your custom digital audit. You can expect to hear from us within 1-2 business days.
+              <h3 className="font-[family-name:var(--font-polysans)] text-2xl md:text-3xl font-bold text-foreground mb-3 uppercase tracking-tight">
+                Audit Request Registered!
+              </h3>
+              <p className="font-[family-name:var(--font-inter)] text-muted-foreground text-base max-w-md mx-auto leading-relaxed">
+                Our growth team is running diagnostics on your digital presence. Expect your comprehensive audit dossier within 24-48 business hours.
               </p>
             </div>
           ) : (
-            <div className="bg-card border border-border rounded-3xl p-8 md:p-10 shadow-lg relative overflow-hidden group">
-              <div className="absolute inset-0 border border-primary/20 rounded-3xl pointer-events-none" />
-              
-              <h3 className="text-2xl font-bold text-foreground mb-6">Request your free audit</h3>
+            <div className="bg-card/95 backdrop-blur-md border border-border/80 rounded-[24px] p-7 md:p-10 shadow-[0_10px_35px_rgb(0,0,0,0.05)] dark:shadow-[0_10px_35px_rgb(0,0,0,0.35)] relative overflow-hidden group">
+              <div className="flex items-center justify-between mb-6 pb-4 border-b border-border/60">
+                <h3 className="font-[family-name:var(--font-polysans)] text-xl font-bold text-foreground uppercase tracking-wide">
+                  Claim Free Brand Audit
+                </h3>
+                <span className="font-mono text-[10px] text-[var(--color-ember-orange)] bg-[var(--color-ember-orange)]/10 px-2 py-0.5 rounded font-bold uppercase">
+                  100% Free · No Obligation
+                </span>
+              </div>
 
-              <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+              <form onSubmit={handleSubmit} className="flex flex-col gap-4">
                 
                 {status === "error" && (
-                  <div className="bg-red-500/10 border border-red-500/20 text-red-600 px-4 py-3 rounded-lg text-sm font-medium">
+                  <div className="bg-red-500/10 border border-red-500/20 text-red-500 px-4 py-3 rounded-lg text-sm font-medium font-mono">
                     {errorMessage}
                   </div>
                 )}
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="flex flex-col gap-1.5">
-                    <label htmlFor="name" className="text-[11px] font-bold text-foreground uppercase tracking-wider">Your Name *</label>
+                    <label htmlFor="name" className="font-[family-name:var(--font-polysans)] text-[11px] font-bold text-foreground uppercase tracking-wider">
+                      Your Name *
+                    </label>
                     <input
                       id="name" name="name" type="text" required
                       value={formData.name} onChange={handleChange}
-                      placeholder="John Doe"
-                      className="w-full px-4 py-3 rounded-xl border border-border bg-background/50 text-foreground text-sm placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors"
+                      placeholder="e.g. Rahul Verma"
+                      className="w-full px-4 py-3 rounded-lg border border-border bg-background/60 text-foreground text-sm placeholder:text-muted-foreground/50 focus:outline-none focus:border-[var(--color-ember-orange)] focus:ring-1 focus:ring-[var(--color-ember-orange)] transition-colors"
                     />
                   </div>
                   <div className="flex flex-col gap-1.5">
-                    <label htmlFor="email" className="text-[11px] font-bold text-foreground uppercase tracking-wider">Email Address *</label>
+                    <label htmlFor="email" className="font-[family-name:var(--font-polysans)] text-[11px] font-bold text-foreground uppercase tracking-wider">
+                      Business Email *
+                    </label>
                     <input
                       id="email" name="email" type="email" required
                       value={formData.email} onChange={handleChange}
-                      placeholder="john@yourbusiness.com"
-                      className="w-full px-4 py-3 rounded-xl border border-border bg-background/50 text-foreground text-sm placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors"
+                      placeholder="rahul@company.com"
+                      className="w-full px-4 py-3 rounded-lg border border-border bg-background/60 text-foreground text-sm placeholder:text-muted-foreground/50 focus:outline-none focus:border-[var(--color-ember-orange)] focus:ring-1 focus:ring-[var(--color-ember-orange)] transition-colors"
                     />
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="flex flex-col gap-1.5">
-                    <label htmlFor="phone" className="text-[11px] font-bold text-foreground uppercase tracking-wider">Phone Number</label>
+                    <label htmlFor="phone" className="font-[family-name:var(--font-polysans)] text-[11px] font-bold text-foreground uppercase tracking-wider">
+                      Phone Number *
+                    </label>
                     <input
-                      id="phone" name="phone" type="tel"
+                      id="phone" name="phone" type="tel" required
                       value={formData.phone} onChange={handleChange}
                       placeholder="+91 98765 43210"
-                      className="w-full px-4 py-3 rounded-xl border border-border bg-background/50 text-foreground text-sm placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors"
+                      className="w-full px-4 py-3 rounded-lg border border-border bg-background/60 text-foreground text-sm placeholder:text-muted-foreground/50 focus:outline-none focus:border-[var(--color-ember-orange)] focus:ring-1 focus:ring-[var(--color-ember-orange)] transition-colors"
                     />
                   </div>
                   <div className="flex flex-col gap-1.5">
-                    <label htmlFor="websiteUrl" className="text-[11px] font-bold text-foreground uppercase tracking-wider">Website URL *</label>
+                    <label htmlFor="websiteUrl" className="font-[family-name:var(--font-polysans)] text-[11px] font-bold text-foreground uppercase tracking-wider">
+                      Website URL *
+                    </label>
                     <input
                       id="websiteUrl" name="websiteUrl" type="url" required
                       value={formData.websiteUrl} onChange={handleChange}
-                      placeholder="https://yourwebsite.com"
-                      className="w-full px-4 py-3 rounded-xl border border-border bg-background/50 text-foreground text-sm placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors"
+                      placeholder="https://yourbrand.in"
+                      className="w-full px-4 py-3 rounded-lg border border-border bg-background/60 text-foreground text-sm placeholder:text-muted-foreground/50 focus:outline-none focus:border-[var(--color-ember-orange)] focus:ring-1 focus:ring-[var(--color-ember-orange)] transition-colors"
                     />
                   </div>
                 </div>
 
                 <div className="flex flex-col gap-1.5">
-                  <label htmlFor="message" className="text-[11px] font-bold text-foreground uppercase tracking-wider">What are your main goals/challenges? *</label>
+                  <label htmlFor="message" className="font-[family-name:var(--font-polysans)] text-[11px] font-bold text-foreground uppercase tracking-wider">
+                    Primary Goal or Challenge *
+                  </label>
                   <textarea
                     id="message" name="message" rows={3} required
                     value={formData.message} onChange={handleChange}
-                    placeholder="E.g., We need more local leads, our current website is too slow, or we want to start selling online."
-                    className="w-full px-4 py-3 rounded-xl border border-border bg-background/50 text-foreground text-sm placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors resize-none"
+                    placeholder="e.g. We need higher local search rank in Delhi, or our website conversions dropped after redesign."
+                    className="w-full px-4 py-3 rounded-lg border border-border bg-background/60 text-foreground text-sm placeholder:text-muted-foreground/50 focus:outline-none focus:border-[var(--color-ember-orange)] focus:ring-1 focus:ring-[var(--color-ember-orange)] transition-colors resize-none"
                   />
                 </div>
 
                 <button
                   type="submit"
                   disabled={status === "submitting"}
-                  className="mt-2 inline-flex items-center justify-center gap-3 bg-foreground text-background px-8 py-4 rounded-full text-sm font-semibold shadow-sm hover:bg-primary motion-safe:hover:-translate-y-px transition-[transform,background-color] duration-300 group w-full sm:w-auto self-start disabled:opacity-70 disabled:cursor-not-allowed"
+                  className="mt-3 inline-flex items-center justify-center gap-3 font-[family-name:var(--font-polysans)] uppercase tracking-wider text-[13px] md:text-[14px] font-semibold bg-foreground text-background hover:bg-[var(--color-ember-orange)] hover:text-white px-8 py-3.5 rounded-md shadow-md active:scale-95 transition-all duration-200 w-full sm:w-auto self-start disabled:opacity-70 disabled:cursor-not-allowed cursor-pointer"
                 >
-                  {status === "submitting" ? "Submitting..." : "Get My Free Audit"}
-                  {status !== "submitting" && <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />}
+                  {status === "submitting" ? "Compiling Audit Request..." : "Request Free Digital Audit"}
+                  {status !== "submitting" && <ArrowRight className="w-4 h-4" />}
                 </button>
               </form>
             </div>

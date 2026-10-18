@@ -18,26 +18,29 @@ export default function TrustBanner() {
   const marqueeItems = [...brandLogos, ...brandLogos, ...brandLogos, ...brandLogos];
 
   return (
-    <section className="bg-card border-y border-border py-8 md:py-10 overflow-hidden relative z-20" id="trust">
+    <section className="bg-card/70 backdrop-blur-md border-y border-border/80 py-8 md:py-10 overflow-hidden relative z-20" id="trust">
       <div className="max-w-7xl mx-auto px-6 md:px-8 flex flex-col items-center gap-6">
-        {/* Eyebrow Header */}
-        <span className="text-xs font-mono font-bold text-primary tracking-[0.25em] uppercase text-center">
-          TRUSTED BY INDUSTRY LEADERS
-        </span>
+        {/* Eyebrow Header — Live Pill matching Hero */}
+        <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-muted border border-border shadow-xs">
+          <span className="w-2 h-2 rounded-full bg-[var(--color-ember-orange)] animate-pulse" />
+          <span className="font-[family-name:var(--font-polysans)] text-[11px] md:text-[12px] tracking-wider uppercase font-semibold text-foreground/80">
+            Trusted by 80+ Industry Leaders &amp; Fast-Growing Brands
+          </span>
+        </div>
 
         {/* Brand Logos Infinite Marquee Container */}
         <div className="w-full overflow-hidden relative py-2">
           {/* Gradient Edge Fades */}
-          <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-card to-transparent z-10 pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-card to-transparent z-10 pointer-events-none" />
+          <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-card to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-card to-transparent z-10 pointer-events-none" />
 
           {/* Continuous Left-to-Right Moving Track */}
           <motion.div
-            className="flex items-center gap-12 sm:gap-16 w-max opacity-75 hover:opacity-100 transition-opacity duration-300"
+            className="flex items-center gap-12 sm:gap-16 w-max opacity-80 hover:opacity-100 transition-opacity duration-300"
             animate={{ x: ["-50%", "0%"] }}
             transition={{
               ease: "linear",
-              duration: 30,
+              duration: 28,
               repeat: Infinity,
             }}
           >
